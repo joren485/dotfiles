@@ -1,6 +1,6 @@
 ---
 
-- include: "install.yml"
+- import_tasks: "install.yml"
   when: "'machines' in group_names"
   become: yes
   tags:
