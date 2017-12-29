@@ -12,6 +12,7 @@
   command: which zsh
   register: "zsh_installed"
   changed_when: "'/zsh' not in zsh_installed.stdout"
+  check_mode: no
 
 - block:
   - block:

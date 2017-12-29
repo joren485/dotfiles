@@ -11,6 +11,7 @@
     register: "check_key"
     failed_when: "not check_key.stdout and 'No secret key' not in check_key.stderr"
     changed_when: no
+    check_mode: no
 
   - block:
     - name: "Writing private key to temporary file"
