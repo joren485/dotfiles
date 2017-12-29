@@ -84,6 +84,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias pacRQ="sudo pacman -Rns $(pacman -Qdtq)"
+
 # Fixes problem where rehash was needed for zsh to use a
 # newly installed program in autocomplete
 zstyle ':completion:*' rehash true
