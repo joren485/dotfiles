@@ -1,6 +1,6 @@
 ---
 
-- include: "xorg.yml"
+- import_tasks: "xorg.yml"
   when: "not headless"
   tags:
     - "xorg"

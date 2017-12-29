@@ -1,5 +1,6 @@
 ---
-- include: "i3.yml"
+
+- import_tasks: "i3.yml"
   when: "not headless"
   tags:
     - "i3"
