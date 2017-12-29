@@ -1,6 +1,6 @@
 ---
 
 - import_tasks: "polybar.yml"
-  when: "not headless"
+  when: "monitors"
   tags:
     - "polybar"

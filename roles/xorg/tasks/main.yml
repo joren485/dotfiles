@@ -1,6 +1,6 @@
 ---
 
 - import_tasks: "xorg.yml"
-  when: "not headless"
+  when: "monitors"
   tags:
     - "xorg"
