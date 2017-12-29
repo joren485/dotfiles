@@ -1,0 +1,32 @@
+---
+
+- name: "Update pacman cache"
+  pacman:
+    update_cache: yes
+    upgrade: yes
+
+- name: "Install packages"
+  pacman:
+    name: "{{ item.name }}"
+    state: "{{ item.state|default('present') }}"
+  with_items: "{{ common_packages }}"
+
+- name: "Install laptop packages"
+  when: "is_laptop"
+  pacman:
+    name: "{{ item.name }}"
+    state: "{{ item.state|default('present') }}"
+  with_items: "{{ laptop_packages }}"
+
+- name: "Install pip packages"
+  pip:
+    name: "{{ item.name }}"
+    executable: "{{ 'pip' if item.version == '3' else 'pip2' }}"
+    state: "{{ item.state|default('present') }}"
+  with_items: "{{ pip_packages }}"
+
+- name: "Enable NetworkManager"
+  service:
+    name: "NetworkManager"
+    state: "started"
+    enabled: yes

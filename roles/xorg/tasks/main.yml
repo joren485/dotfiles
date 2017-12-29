@@ -1,0 +1,6 @@
+---
+
+- include: "xorg.yml"
+  when: "not headless"
+  tags:
+    - "xorg"
