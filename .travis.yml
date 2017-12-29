@@ -1,0 +1,9 @@
+---
+language: python
+
+install:
+  - pip install ansible-lint
+
+script:
+  - ansible-lint pc.yml
+  - ansible-lint remote.yml
