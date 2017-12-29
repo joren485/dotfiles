@@ -1,0 +1,14 @@
+wallpaper_location: "{{ home_directory }}/wallpaper.jpg"
+xresources_location: "{{ home_directory }}/.Xresources"
+
+xorg_packages:
+  - name: "xorg-server"
+  - name: "xorg-server-devel"
+  - name: "xorg-xset"
+  - name: "xorg-apps"
+  - name: "xorg-xrandr"
+  - name: "xorg-xinit"
+  - name: "xterm"
+  - name: "xf86-video-vesa"
+  - name: "mesa"
+  - name: "ttf-dejavu"

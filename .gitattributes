@@ -1,0 +1,4 @@
+* text=auto
+
+*.jpg binary
+vars/vault.yml binary

@@ -1,0 +1,7 @@
+[user]
+        email = jorenvrancken@gmail.com
+        name = Joren Vrancken
+
+[alias]
+        l = log --pretty=oneline --graph --abbrev-commit
+        s = status

@@ -1,0 +1,6 @@
+---
+ansible_user: "joren"
+home_directory: "/home/{{ ansible_user }}"
+config_directory: "{{ home_directory}}/.config"
+headless: yes
+is_laptop: no

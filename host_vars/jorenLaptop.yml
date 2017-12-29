@@ -1,0 +1,11 @@
+---
+ansible_ssh_pass: "{{ vault_password_jorenLaptop }}"
+ansible_become_password: "{{ vault_password_jorenLaptop }}"
+ssh_key_pair: "{{ vault_ssh_key_pair_jorenLaptop }}"
+ansible_host: "192.168.100.137"
+
+# Custom variables
+headless: no
+is_laptop: yes
+
+# boot_parameters: acpi_osi=Linux acpi_backlight=vendor quiet splash

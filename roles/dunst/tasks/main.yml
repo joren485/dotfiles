@@ -1,0 +1,6 @@
+---
+
+- include: "dunst.yml"
+  when: "not headless and 'machines' in group_names"
+  tags:
+    - "dunst"

@@ -1,0 +1,11 @@
+---
+ansible_ssh_pass: "{{ vault_password_jorenPC }}"
+ansible_become_password: "{{ vault_password_jorenPC }}"
+ansible_host: "192.168.1.2"
+ansible_connection: "local"
+
+# Custom variables
+headless: no
+ssh_key_pair: "{{ vault_ssh_key_pair_jorenPC }}"
+
+# boot_parameters: quiet splash
