@@ -1,0 +1,11 @@
+---
+- name: "Configure PC"
+  hosts:
+    - "lilo5"
+  become: no
+  vars_files:
+    - "vars/vault.yml"
+  roles:
+    - "user"
+    - "zsh"
+    - "ssh"

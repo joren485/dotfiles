@@ -1,0 +1,7 @@
+---
+
+- include: "install.yml"
+  when: "'machines' in group_names"
+  become: yes
+  tags:
+    - "packages"

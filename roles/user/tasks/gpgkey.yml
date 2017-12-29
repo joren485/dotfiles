@@ -1,0 +1,28 @@
+---
+  - name: "Install gnupng"
+    become: yes
+    pacman:
+      name: "gnupg"
+      state: "present"
+      update_cache: yes
+
+  - name: "Checking if key needs to be imported"
+    command: gpg --list-secret-keys "{{ gpg_mail }}"
+    register: "check_key"
+    failed_when: "not check_key.stdout and 'No secret key' not in check_key.stderr"
+    changed_when: no
+
+  - block:
+    - name: "Writing private key to temporary file"
+      copy:
+        content: "{{ gpg_private_key }}"
+        dest: "{{ temp_priv_key }}"
+
+    - name: "Import private key"
+      command: gpg2 --batch --import "{{ temp_priv_key }}"
+
+    - name: "Removing file"
+      file:
+        state: "absent"
+        path: "{{ temp_priv_key }}"
+    when: "check_key.stderr != ''"

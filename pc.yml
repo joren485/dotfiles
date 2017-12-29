@@ -1,0 +1,17 @@
+---
+- name: "Configure PC"
+  hosts:
+    - "jorenLaptop"
+    - "jorenPC"
+  become: no
+  vars_files:
+    - "vars/vault.yml"
+  roles:
+    - "packages"
+    - "user"
+    - "ssh"
+    - "zsh"
+    - "i3"
+    - "polybar"
+    - "dunst"
+    - "xorg"
