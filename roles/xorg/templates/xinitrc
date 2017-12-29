@@ -15,10 +15,5 @@ sleep 1; xset dpms 0 0 300
 
 # Set wallpaper
 feh --bg-fill --no-xinerama  {{ wallpaper_location }}
-{% if not is_laptop and not headless%}
 
-# set keyboard leds
-xset led
-
-{% endif %}
 exec i3
