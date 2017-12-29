@@ -1,9 +1,19 @@
 ---
-language: python
+language: "python"
 
 install:
-  - pip install ansible-lint
+  - "pip install ansible"
+  - "pip install ansible-lint"
+
+before_script:
+  - "echo placeholder >> password_file"
 
 script:
-  - ansible-lint pc.yml
-  - ansible-lint remote.yml
+  - "ansible-playbook pc.yml --syntax-check"
+  - "ansible-playbook remote.yml --syntax-check"
+  - "ansible-lint pc.yml"
+  - "ansible-lint remote.yml"
+
+env:
+  global:
+    - VAULT="placeholder_vault"
