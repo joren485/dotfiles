@@ -30,6 +30,7 @@
     git:
       repo: "https://github.com/robbyrussell/oh-my-zsh"
       dest: "{{ oh_my_zsh_directory }}"
+      version: "master"
 
   - name: "Copy .zshrc"
     template:
@@ -40,4 +41,6 @@
     git:
       repo: "https://github.com/zsh-users/zsh-autosuggestions"
       dest: "{{ oh_my_zsh_directory }}/custom/plugins/zsh-autosuggestions"
+      version: "master"
+
   when: "'/zsh' in zsh_installed.stdout"
