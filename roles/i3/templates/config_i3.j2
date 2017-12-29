@@ -166,7 +166,13 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +3%
 bindsym $mod+F10 exec --no-startup-id pactl set-sink-volume 1 +3%
 
 # Start Polybar
-exec --no-startup-id polybar main
+{% if monitors|length == 1 %}
+exec --no-startup-id MONITOR={{ monitors[0] }} polybar single_monitor
+{% else %}
+{# This should always be more than 1, because monitors is not empty in the i3 role #}
+exec --no-startup-id MONITOR={{ monitors[0] }} polybar multi_monitor_0
+exec --no-startup-id MONITOR={{ monitors[1] }} polybar multi_monitor_1
+{% endif %}
 
 # Start notification daemon
 exec --no-startup-id dunst
