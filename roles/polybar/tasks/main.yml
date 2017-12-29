@@ -1,0 +1,6 @@
+---
+
+- include: "polybar.yml"
+  when: "not headless"
+  tags:
+    - "polybar"

@@ -1,0 +1,90 @@
+---
+
+common_packages:
+  - name: "arandr"
+  - name: "linux-headers"
+  - name: "reflector"
+  - name: "evince"
+  - name: "zip"
+  - name: "htop"
+  - name: "ansible"
+  - name: "sshpass" # for ansible
+  - name: "expac" # for ansible
+  - name: "networkmanager"
+  - name: "network-manager-applet" # for networkmanager
+  - name: "networkmanager-openvpn" # for networkmanager
+  - name: "rxvt-unicode"
+  - name: "rxvt-unicode-terminfo" # for urxvt
+  - name: "pidgin"
+  - name: "pidgin-otr" # for pidgin
+  - name: "vlc"
+  - name: "qt4" # for vlc
+  - name: "atom"
+  - name: "gvfs" # for atom
+  - name: "deluge"
+  - name: "ntfs-3g"
+  - name: "acpi"
+  - name: "feh"
+  - name: "lxappearance"
+  - name: "nano"
+  - name: "nmap"
+  - name: "pulseaudio"
+  - name: "pavucontrol"
+  - name: "perl"
+  - name: "progress"
+  - name: "python"
+  - name: "python2"
+  - name: "python-pip"
+  - name: "python-virtualenv"
+  - name: "python2-pip"
+  - name: "python2-virtualenv"
+  - name: "util-linux"
+  - name: "udiskie"
+  - name: "unzip"
+  - name: "veracrypt"
+  - name: "playerctl"
+  - name: "arc-icon-theme"
+  - name: "whois"
+  - name: "wget"
+  - name: "unrar"
+  - name: "openbsd-netcat"
+  - name: "bind-tools"
+  - name: "mtr"
+  - name: "dsniff"
+  - name: "ntp"
+
+laptop_packages:
+  - name: "xf86-input-synaptics"
+  - name: "gnome-keyring" # for network-manager-applet with wifi
+  - name: "iw"
+  - name: "wpa_supplicant"
+  - name: "broadcom-wl-dkms"
+
+laptop_aur_packages:
+  - name: "light-git"
+  - name: "laptop-mode-tools"
+
+aur_packages:
+    - name: "dropbox"
+    - name: "google-chrome"
+    - name: "gtk-theme-arc"
+    - name: "i3lock-color-git"
+    - name: "megasync"
+    - name: "pycharm-professional"
+    - name: "spotify"
+    - name: "tor-browser-en"
+    - name: "xss-lock-git"
+    - name: "ckb-next"
+    - name: "etc-update"
+    - name: "powerline-fonts-git"
+    - name: "polybar"
+
+pip_packages:
+  - name: "requests"
+    version: "3"
+  - name: "requests"
+    version: "2"
+  - name: "beautifulsoup4"
+    version: "3"
+  - name: "beautifulsoup4"
+    version: "2"

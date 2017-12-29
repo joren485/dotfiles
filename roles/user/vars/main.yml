@@ -1,0 +1,6 @@
+---
+  shared_virtualbox_directory: "{{ home_directory }}/virtualbox_shared/"
+  temp_priv_key: "/tmp/priv.key"
+  gpg_mail: "{{ vault_gpg_mail }}"
+  gpg_private_key: "{{ vault_gpg_private_key }}"
+  gpg_passphrase: "{{ vault_gpg_passphrase }}"

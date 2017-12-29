@@ -1,0 +1,28 @@
+---
+
+- name: "Install Polybar dependencies"
+  become: yes
+  pacman:
+    name: "otf-font-awesome,python-dbus,pulseaudio-alsa"
+    state: "present"
+    update_cache: yes
+
+- name: "Create Polybar config directory"
+  file:
+    path: "{{ config_directory_polybar }}"
+    state: "directory"
+
+- name: "Copy polybar config"
+  template:
+    src: "config_polybar.j2"
+    dest: "{{ config_directory_polybar }}/config"
+
+- name: "Copy python scripts files"
+  become: yes
+  copy:
+    src: "scripts/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
+    mode: "0755"
+  with_items:
+    - "coinbase_usd_checker.py"
+    - "spotify_info.py"
