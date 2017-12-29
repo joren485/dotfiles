@@ -9,9 +9,13 @@ alert = ${xrdb:color9}
 green = ${xrdb:color2}
 cyan = ${xrdb:color6}
 
+; Bars
+
 [bar/main]
 width = 100%
 height = 30
+
+monitor = ${env:MONITOR}
 
 fixed-center = true
 
@@ -31,6 +35,12 @@ font-1 = "Font Awesome 5 Free Solid:size=8:antialias=true;0"
 font-2 = "Font Awesome 5 Free Regular:size=8:antialias=true;0"
 font-3 = "Font Awesome 5 Brands:size=8:antialias=true;0"
 
+cursor-click = pointer
+cursor-scroll = pointer
+
+[bar/single_monitor]
+inherit = bar/main
+
 modules-left = i3
 modules-center = spotify
 modules-right = bitcoin{{ ' backlight' if is_laptop else '' }} volume{{ ' battery' if is_laptop else '' }} date powermenu
@@ -39,13 +49,31 @@ tray-position = right
 tray-padding = 2
 tray-background = ${colors.secondary}
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+[bar/multi_monitor_0]
+inherit = bar/main
+
+modules-left = i3
+modules-center = spotify
+modules-right =
+
+tray-position = right
+tray-padding = 2
+tray-background = ${colors.secondary}
+
+[bar/multi_monitor_1]
+inherit = bar/main
+
+modules-left = i3
+modules-center = spotify
+modules-right = bitcoin{{ ' backlight' if is_laptop else '' }} volume{{ ' battery' if is_laptop else '' }} date powermenu
+
+; Modules
 
 [module/i3]
 type = internal/i3
 index-sort = true
 enable-scroll = false
+pin-workspaces = true
 
 ; focused = Active workspace on focused monitor
 label-focused = "%index%| %icon%"
