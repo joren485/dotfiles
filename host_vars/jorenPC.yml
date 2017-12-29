@@ -5,7 +5,10 @@ ansible_host: "192.168.1.2"
 ansible_connection: "local"
 
 # Custom variables
-headless: no
 ssh_key_pair: "{{ vault_ssh_key_pair_jorenPC }}"
+
+monitors:
+  - "DVI-D-0"
+  - "DVI-D-1"
 
 # boot_parameters: quiet splash

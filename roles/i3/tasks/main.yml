@@ -1,6 +1,6 @@
 ---
 
 - import_tasks: "i3.yml"
-  when: "not headless"
+  when: "monitors"
   tags:
     - "i3"

@@ -1,6 +1,6 @@
 ---
 
 - import_tasks: "dunst.yml"
-  when: "not headless and 'machines' in group_names"
+  when: "monitors"
   tags:
     - "dunst"
