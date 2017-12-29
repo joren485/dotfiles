@@ -1,6 +1,6 @@
 ---
 
-- include: "polybar.yml"
+- import_tasks: "polybar.yml"
   when: "not headless"
   tags:
     - "polybar"

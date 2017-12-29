@@ -1,9 +1,10 @@
 ---
-- include: "user.yml"
+
+- import_tasks: "user.yml"
   tags:
     - "user"
 
-- include: "gpgkey.yml"
+- import_tasks: "gpgkey.yml"
   when: "'machines' in group_names"
   tags:
     - "user"
