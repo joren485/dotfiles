@@ -1,0 +1,4 @@
+---
+- include: "oh_my_zsh.yml"
+  tags:
+    - "zsh"

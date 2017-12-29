@@ -1,0 +1,4 @@
+---
+ansible_user: "jvrancken"
+ansible_ssh_pass: "{{ vault_password_lilo }}"
+ansible_host: "lilo5.science.ru.nl"

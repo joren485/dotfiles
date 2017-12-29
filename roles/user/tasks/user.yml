@@ -1,0 +1,61 @@
+---
+
+- name: "Install relevant packages"
+  become: yes
+  when: "'machines' in group_names"
+  pacman:
+    name: "zsh,android-tools,android-udev"
+    state: "present"
+    update_cache: yes
+
+- name: "Create user(s)"
+  become: yes
+  when: "'machines' in group_names"
+  user:
+    name: "{{ ansible_user }}"
+    groups:
+      - "adbusers"
+      - "wheel"
+    append: yes
+    shell: "/bin/zsh"
+    state: "present"
+
+- name: "Install git configuration files"
+  copy:
+    src: "git/{{ item }}"
+    dest: "{{ home_directory }}/.{{ item }}"
+  with_items:
+    - "gitconfig"
+    - "gitattributes"
+
+- name: "Create folders"
+  when: "'machines' in group_names"
+  file:
+    path: "{{ home_directory }}/{{ item }}"
+    state: "directory"
+  with_items:
+    - "Thalia"
+    - "Studie"
+    - "Downloads"
+
+- block:
+  - name: "Create shared VirtualBox folder"
+    file:
+      path: "{{ shared_virtualbox_directory }}"
+      state: "directory"
+
+  - name: "Place pyinstaller files"
+    copy:
+      src: "pyinstaller/{{ item }}"
+      dest: "{{ shared_virtualbox_directory }}/{{ item }}"
+    with_items:
+      - "client.spec"
+      - "compile.bat"
+  when: "inventory_hostname == 'jorenPC'"
+
+- name: "Copy print script to lilo"
+  when: "inventory_hostname.startswith('lilo')"
+  copy:
+    src: "lilo_print_script.sh"
+    dest: "{{ home_directory }}/print_script.sh"
+    mode: "0700"

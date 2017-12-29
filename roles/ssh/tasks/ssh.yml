@@ -1,0 +1,42 @@
+---
+
+- name: "Add SSH public keys"
+  authorized_key:
+    user: "{{ ansible_user }}"
+    key: "{{ item }}"
+  with_items:
+    - "{{ vault_ssh_key_pair_jorenLaptop.public_key }}"
+    - "{{ vault_ssh_key_pair_jorenPC.public_key }}"
+
+- block:
+  - name: "Install public key"
+    copy:
+      content: "{{ ssh_key_pair.public_key }}"
+      mode: "0600"
+      dest: "{{ home_directory }}/.ssh/id_rsa.pub"
+
+  - name: "Install private key"
+    copy:
+      content: "{{ ssh_key_pair.private_key }}"
+      mode: "0600"
+      dest: "{{ home_directory }}/.ssh/id_rsa"
+  when: "ssh_key_pair is defined and 'machines' in group_names"
+
+- name: "Enable services"
+  become: yes
+  when: "not is_laptop and 'machines' in group_names"
+  service:
+    name: "sshd"
+    state: "started"
+    enabled: yes
+
+- name: "Disable PasswordAuthentication"
+  become: yes
+  when: "'machines' in group_names"
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "^#?PasswordAuthentication (yes|no)$"
+    line: "PasswordAuthentication no"
+    state: "present"
+  notify:
+  - "restart sshd"
