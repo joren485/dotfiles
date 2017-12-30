@@ -42,7 +42,7 @@ cursor-scroll = pointer
 inherit = bar/main
 
 modules-left = i3
-modules-center = spotify
+modules-center = spotify ping
 modules-right = bitcoin{{ ' backlight' if is_laptop else '' }} volume{{ ' battery' if is_laptop else '' }} date powermenu
 
 tray-position = right
@@ -53,7 +53,7 @@ tray-background = ${colors.secondary}
 inherit = bar/main
 
 modules-left = i3
-modules-center = spotify
+modules-center = spotify ping
 modules-right =
 
 tray-position = right
@@ -64,7 +64,7 @@ tray-background = ${colors.secondary}
 inherit = bar/main
 
 modules-left = i3
-modules-center = spotify
+modules-center = spotify ping
 modules-right = bitcoin{{ ' backlight' if is_laptop else '' }} volume{{ ' battery' if is_laptop else '' }} date powermenu
 
 ; Modules
@@ -219,6 +219,19 @@ format = " <label>"
 exec-if = ping -c 1 coinbase.com &> /dev/null
 exec = coinbase_usd_checker.py
 interval = 60
+
+[module/ping]
+type = custom/script
+
+label = %output%
+format = " <label>"
+format-foreground = ${colors.alert}
+format-overline = ${colors.alert}
+
+; If `ping` exits with a code other than 0 (thus if `ping` fails), exit with 0
+exec-if = [[ `ping -w 1 -c 1 8.8.8.8 &> /dev/null` -ne 0 ]] && exit 0 || exit 1
+exec = "echo NO INTERNET CONNECTION"
+interval = 1
 
 [settings]
 screenchange-reload = true
