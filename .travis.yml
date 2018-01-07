@@ -19,3 +19,8 @@ cache: "pip"
 env:
   global:
     - "VAULT=placeholder_vault"
+
+notifications:
+  email:
+    on_success: "never"
+    on_failure: "always"
