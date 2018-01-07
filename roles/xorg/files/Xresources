@@ -54,6 +54,9 @@ URxvt*letterSpace: -1
 
 !! Scrollbar
 URxvt.scrollBar:            false
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
 
 !! Copy and paste
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
