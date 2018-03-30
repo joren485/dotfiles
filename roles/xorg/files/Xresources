@@ -46,6 +46,8 @@ URxvt.saveLines:            65535
 URxvt.iso14755: off
 URxvt.iso14755_52: off
 
+URxvt.perl-ext-common: default,matcher
+
 !! Fonts
 URxvt.font: xft:DejaVu Sans Mono for Powerline:pixelsize=15
 
@@ -71,3 +73,8 @@ URxvt.keysym.Control-Right:    \033[1;5C
 !! Cursor
 URxvt.cursorBlink:          true
 URxvt.cursorUnderline:      true
+
+!! Urls
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold
