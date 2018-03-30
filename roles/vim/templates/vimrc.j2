@@ -1,0 +1,65 @@
+set nocompatible
+filetype off
+
+" Vundle Settings
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Plugins
+
+" Vundle
+Plugin 'VundleVim/Vundle.vim'
+
+" Ansible
+Plugin 'pearofducks/ansible-vim'
+
+" ALE syntax checkers and linters
+Plugin 'w0rp/ale'
+
+" Tree Explorer
+Plugin 'scrooloose/nerdtree'
+
+" Git
+Plugin 'airblade/vim-gitgutter'
+set updatetime=100
+
+call vundle#end()
+
+filetype plugin indent on
+syntax on
+
+" TODO:
+"  - docs
+"  - spell check
+
+set mouse=a
+set hidden
+set t_vb=
+set wildmenu
+set showcmd
+set nostartofline
+set ruler
+set laststatus=2
+set confirm
+set visualbell
+set t_vb=
+set cmdheight=2
+set number
+set notimeout ttimeout ttimeoutlen=200
+
+" Indentation
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set autoindent
+
+" Searchine
+set hlsearch
+set ignorecase
+set smartcase
+
+set showmatch
+nnoremap <C-L> :nohl<CR><C-L>
+
+" copy
+set clipboard=unnamedplus
