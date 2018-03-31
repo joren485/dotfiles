@@ -19,8 +19,6 @@ common_packages:
   - name: "pidgin-otr" # for pidgin
   - name: "vlc"
   - name: "qt4" # for vlc
-  - name: "atom"
-  - name: "gvfs" # for atom
   - name: "deluge"
   - name: "ntfs-3g"
   - name: "acpi"
@@ -52,6 +50,7 @@ common_packages:
   - name: "mtr"
   - name: "dsniff"
   - name: "ntp"
+  - name: "arc-gtk-theme" 
 
 laptop_packages:
   - name: "xf86-input-synaptics"
@@ -67,7 +66,6 @@ laptop_aur_packages:
 aur_packages:
     - name: "dropbox"
     - name: "google-chrome"
-    - name: "gtk-theme-arc"
     - name: "i3lock-color-git"
     - name: "megasync"
     - name: "pycharm-professional"
