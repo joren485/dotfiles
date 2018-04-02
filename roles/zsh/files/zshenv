@@ -1,2 +1,2 @@
-export VISUAL=nano
-export EDITOR=nano
+export VISUAL=vim
+export EDITOR=vim
