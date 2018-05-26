@@ -6,7 +6,7 @@
     sort = yes
     alignment = center
     show_age_threshold = 60 # TODO
-    word_wrap = true
+    word_wrap = false
     idle_threshold = 120
     follow = mouse
     padding = 8
