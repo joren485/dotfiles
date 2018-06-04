@@ -50,7 +50,8 @@ common_packages:
   - name: "mtr"
   - name: "dsniff"
   - name: "ntp"
-  - name: "arc-gtk-theme" 
+  - name: "arc-gtk-theme"
+  - name: "pacman-contrib"
 
 laptop_packages:
   - name: "xf86-input-synaptics"
