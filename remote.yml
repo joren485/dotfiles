@@ -4,6 +4,11 @@
     - "lilo5"
   become: no
   roles:
-    - "user"
-    - "zsh"
-    - "ssh"
+    - role: "user"
+      tags: "user"
+
+    - role: "zsh"
+      tags: "zsh"
+
+    - role: "ssh"
+      tags: "ssh"

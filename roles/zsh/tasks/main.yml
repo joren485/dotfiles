@@ -1,5 +1,47 @@
 ---
 
-- import_tasks: "oh_my_zsh.yml"
-  tags:
-    - "zsh"
+- name: "Install zsh, git and curl"
+  become: yes
+  when: "'machines' in group_names"
+  pacman:
+    name: "zsh,git,curl"
+    state: "present"
+    update_cache: yes
+
+- name: "Check zsh installation"
+  command: which zsh
+  register: "zsh_installed"
+  changed_when: "'/zsh' not in zsh_installed.stdout"
+  check_mode: no
+
+- block:
+  - block:
+    - name: "Copy .zlogin"
+      copy:
+        src: "zlogin"
+        dest: "{{ home_directory }}/.zlogin"
+
+    - name: "Copy .zshenv"
+      copy:
+        src: "zshenv"
+        dest: "{{ home_directory }}/.zshenv"
+    when: "'machines' in group_names"
+
+  - name: "Cloning oh-my-zsh"
+    git:
+      repo: "https://github.com/robbyrussell/oh-my-zsh"
+      dest: "{{ oh_my_zsh_directory }}"
+      version: "master"
+
+  - name: "Copy .zshrc"
+    template:
+      src: "zshrc.j2"
+      dest: "{{ home_directory }}/.zshrc"
+
+  - name: "Clone oh-my-zsh autosuggestions"
+    git:
+      repo: "https://github.com/zsh-users/zsh-autosuggestions"
+      dest: "{{ oh_my_zsh_directory }}/custom/plugins/zsh-autosuggestions"
+      version: "master"
+
+  when: "'/zsh' in zsh_installed.stdout"
