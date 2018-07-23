@@ -13,7 +13,7 @@ scrot $TMPBG && convert $TMPBG -scale 20% -scale 501% -draw "fill black fill-opa
 
 i3lock \
   -i $TMPBG \
-  --timepos="x-90:h-ch-20" \
+  --timepos="x+120:h-120" \
   --datepos="tx+24:ty+25" \
   --clock --datestr "Type password to unlock..." \
   --insidecolor=00000000 --ringcolor=ffffffff --line-uses-inside \
@@ -21,6 +21,6 @@ i3lock \
   --insidevercolor=fecf4dff --insidewrongcolor=d23c3dff \
   --ringvercolor=ffffffff --ringwrongcolor=ffffffff --indpos="x+290:h-120" \
   --radius=20 --ring-width=3 --veriftext="" --wrongtext="" \
-  --textcolor="ffffffff" --timecolor="ffffffff" --datecolor="ffffffff"
+  --timecolor="ffffffff" --datecolor="ffffffff"
 
 rm /tmp/screen.png
