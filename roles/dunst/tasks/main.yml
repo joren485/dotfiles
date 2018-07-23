@@ -2,5 +2,3 @@
 
 - import_tasks: "dunst.yml"
   when: "monitors"
-  tags:
-    - "dunst"

@@ -6,6 +6,11 @@
   vars_files:
     - "vars/{{ lookup('env', 'VAULT') | default('vault', true) }}.yml"
   roles:
-    - "user"
-    - "zsh"
-    - "ssh"
+    - role: "user"
+      tags: "user"
+
+    - role: "zsh"
+      tags: "zsh"
+
+    - role: "ssh"
+      tags: "ssh"

@@ -7,11 +7,29 @@
   vars_files:
     - "vars/{{ lookup('env', 'VAULT') | default('vault', true) }}.yml"
   roles:
-    - "packages"
-    - "user"
-    - "ssh"
-    - "zsh"
-    - "i3"
-    - "polybar"
-    - "dunst"
-    - "xorg"
+    - role: "packages"
+      tags: "packages"
+
+    - role: "user"
+      tags: "user"
+
+    - role: "ssh"
+      tags: "ssh"
+
+    - role: "zsh"
+      tags: "zsh"
+
+    - role: "i3"
+      tags: "i3"
+
+    - role: "polybar"
+      tags: "polybar"
+
+    - role: "dunst"
+      tags: "polybar"
+
+    - role: "xorg"
+      tags: "xorg"
+
+    - role: "vim"
+      tags: "vim"
