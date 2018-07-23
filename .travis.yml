@@ -7,6 +7,7 @@ install:
   - "pip install -r requirements_travis.txt"
 
 before_script:
+  - "chmod 700 $TRAVIS_BUILD_DIR"
   - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
 
 script:
