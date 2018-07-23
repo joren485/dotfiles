@@ -3,8 +3,6 @@
   hosts:
     - "lilo5"
   become: no
-  vars_files:
-    - "vars/{{ lookup('env', 'VAULT') | default('vault', true) }}.yml"
   roles:
     - "user"
     - "zsh"

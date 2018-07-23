@@ -7,7 +7,7 @@ install:
   - "pip install -r requirements_travis.txt"
 
 before_script:
-  - "echo placeholder >> password_file"
+  - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
 
 script:
   - "ansible-playbook pc.yml --syntax-check"
@@ -16,10 +16,6 @@ script:
   - "ansible-lint remote.yml"
 
 cache: "pip"
-
-env:
-  global:
-    - "VAULT=placeholder_vault"
 
 notifications:
   email:
