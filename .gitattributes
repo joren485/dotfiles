@@ -1,4 +1,5 @@
 * text=auto
 
 *.jpg binary
-vars/vault.yml binary
+
+group_vars/*/vault*.yml diff=ansible-vault merge=binary
