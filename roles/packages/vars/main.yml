@@ -76,11 +76,5 @@ aur_packages:
   - "polybar"
 
 pip_packages:
-  - name: "requests"
-    version: "3"
-  - name: "requests"
-    version: "2"
-  - name: "beautifulsoup4"
-    version: "3"
-  - name: "beautifulsoup4"
-    version: "2"
+  - "requests"
+  - "beautifulsoup4"

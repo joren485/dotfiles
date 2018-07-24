@@ -20,10 +20,13 @@
 
 - name: "Install pip packages"
   pip:
-    name: "{{ item.name }}"
-    executable: "{{ 'pip' if item.version == '3' else 'pip2' }}"
-    state: "{{ item.state|default('present') }}"
-  with_items: "{{ pip_packages }}"
+    name: "{{ pip_packages }}"
+    executable: "{{ item }}"
+    state: "present"
+    extra_args: "--user"
+  with_items:
+    - "pip2"
+    - "pip3"
 
 - name: "Enable NetworkManager"
   service:
