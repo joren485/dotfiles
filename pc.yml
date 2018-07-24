@@ -24,7 +24,7 @@
       tags: "polybar"
 
     - role: "dunst"
-      tags: "polybar"
+      tags: "dunst"
 
     - role: "xorg"
       tags: "xorg"
