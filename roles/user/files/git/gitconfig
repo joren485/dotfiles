@@ -1,6 +1,7 @@
 [user]
         email = jorenvrancken@gmail.com
         name = Joren Vrancken
+        signingkey = D652D799A645F8F566FE8EB56D8EF14C28B44FA7
 
 [alias]
         l = log --pretty=oneline --graph --abbrev-commit
@@ -8,3 +9,6 @@
 
 [diff "ansible-vault"]
 	textconv = ansible-vault view
+
+[commit]
+        gpgsign = true
