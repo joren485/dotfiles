@@ -1,8 +1,39 @@
 ---
 
-- import_tasks: "user.yml"
+- name: "Install relevant packages"
+  become: yes
+  when: "has_sudo"
+  pacman:
+    name: "{{ item }}"
+    state: "present"
+    update_cache: yes
+  loop:
+    - "zsh"
+    - "{{ packages_adb }}"
 
-- import_tasks: "gpgkey.yml"
-  when: "'machines' in group_names"
-  tags:
-    - "gpg"
+- name: "Create user(s)"
+  become: yes
+  when: "has_sudo"
+  user:
+    name: "{{ ansible_user }}"
+    groups:
+      - "adbusers"
+      - "wheel"
+    append: yes
+    shell: "/bin/zsh"
+    state: "present"
+
+- name: "Install git configuration files"
+  copy:
+    src: "git/{{ item }}"
+    dest: "{{ home_directory }}/.{{ item }}"
+  loop:
+    - "gitconfig"
+    - "gitattributes"
+
+- name: "Copy print script to lilo"
+  when: "in_ru_network|default(False, True)"
+  copy:
+    src: "lilo_print_script.sh"
+    dest: "{{ home_directory }}/print_script.sh"
+    mode: "0700"

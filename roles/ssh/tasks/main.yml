@@ -1,30 +1,31 @@
 ---
 
-- name: "Add SSH public keys"
+- name: "Add SSH public keys to authorized keys"
+  when: "hostvars[item].ssh_public_key|default(False)"
   authorized_key:
     user: "{{ ansible_user }}"
-    key: "{{ item }}"
-  with_items:
-    - "{{ vault_ssh_key_pair_jorenLaptop.public_key }}"
-    - "{{ vault_ssh_key_pair_jorenPC.public_key }}"
+    key: "{{ hostvars[item].ssh_public_key }}"
+    state: "present"
+  loop: "{{ hostvars|list }}"
 
-- block:
+- name: "Install SSH keys"
+  when: "ssh_public_key is defined and vault_ssh_private_key is defined"
+  block:
   - name: "Install public key"
     copy:
-      content: "{{ ssh_key_pair.public_key }}"
+      content: "{{ ssh_public_key }}"
       mode: "0600"
       dest: "{{ home_directory }}/.ssh/id_rsa.pub"
 
-  - name: "Install private key"
+  - name: "Install SSH private key"
     copy:
-      content: "{{ ssh_key_pair.private_key }}"
+      content: "{{ vault_ssh_private_key }}"
       mode: "0600"
       dest: "{{ home_directory }}/.ssh/id_rsa"
-  when: "ssh_key_pair is defined and 'machines' in group_names"
 
 - name: "Enable services"
   become: yes
-  when: "not is_laptop and 'machines' in group_names"
+  when: "has_sudo and not is_laptop|default(False, True)"
   service:
     name: "sshd"
     state: "started"
@@ -32,7 +33,7 @@
 
 - name: "Disable PasswordAuthentication"
   become: yes
-  when: "'machines' in group_names"
+  when: "has_sudo"
   lineinfile:
     dest: "/etc/ssh/sshd_config"
     regexp: "^#?PasswordAuthentication (yes|no)$"

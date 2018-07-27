@@ -1,10 +1,10 @@
 ---
 
 - name: "Install zsh, git and curl"
+  when: "has_sudo"
   become: yes
-  when: "'machines' in group_names"
   pacman:
-    name: "zsh,git,curl"
+    name: "{{ packages_zsh }}"
     state: "present"
     update_cache: yes
 
@@ -14,18 +14,18 @@
   changed_when: "'/zsh' not in zsh_installed.stdout"
   check_mode: no
 
-- block:
-  - block:
-    - name: "Copy .zlogin"
-      copy:
-        src: "zlogin"
-        dest: "{{ home_directory }}/.zlogin"
+- name: "Place zsh files"
+  when: "'/zsh' in zsh_installed.stdout"
+  block:
+  - name: "Copy .zlogin"
+    copy:
+      src: "zlogin"
+      dest: "{{ home_directory }}/.zlogin"
 
-    - name: "Copy .zshenv"
-      copy:
-        src: "zshenv"
-        dest: "{{ home_directory }}/.zshenv"
-    when: "'machines' in group_names"
+  - name: "Copy .zshenv"
+    copy:
+      src: "zshenv"
+      dest: "{{ home_directory }}/.zshenv"
 
   - name: "Cloning oh-my-zsh"
     git:
@@ -43,5 +43,3 @@
       repo: "https://github.com/zsh-users/zsh-autosuggestions"
       dest: "{{ oh_my_zsh_directory }}/custom/plugins/zsh-autosuggestions"
       version: "master"
-
-  when: "'/zsh' in zsh_installed.stdout"

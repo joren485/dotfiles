@@ -1,8 +1,6 @@
 ---
-- name: "Configure PC"
-  hosts:
-    - "lilo5"
-  become: no
+- name: "Configure shells on remote machines"
+  hosts: "remote"
   roles:
     - role: "user"
       tags: "user"

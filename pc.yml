@@ -1,15 +1,15 @@
 ---
 - name: "Configure PC"
-  hosts:
-    - "jorenLaptop"
-    - "jorenPC"
-  become: no
+  hosts: "personal_computer"
   roles:
     - role: "packages"
       tags: "packages"
 
     - role: "user"
       tags: "user"
+
+    - role: "gnupg"
+      tags: "gpg"
 
     - role: "ssh"
       tags: "ssh"
@@ -19,15 +19,19 @@
 
     - role: "i3"
       tags: "i3"
+      when: "monitors|default(False, True)"
 
     - role: "polybar"
       tags: "polybar"
+      when: "monitors|default(False, True)"
 
     - role: "dunst"
       tags: "dunst"
+      when: "monitors|default(False, True)"
 
     - role: "xorg"
       tags: "xorg"
+      when: "monitors|default(False, True)"
 
     - role: "vim"
       tags: "vim"

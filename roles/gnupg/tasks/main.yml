@@ -1,5 +1,6 @@
 ---
   - name: "Install gnupng"
+    when: "has_sudo"
     become: yes
     pacman:
       name: "gnupg"
@@ -7,13 +8,15 @@
       update_cache: yes
 
   - name: "Checking if key needs to be imported"
-    command: gpg --list-secret-keys "{{ gpg_mail }}"
+    command: gpg2 --list-secret-keys "{{ gpg_mail }}"
     register: "check_key"
     failed_when: "not check_key.stdout and 'No secret key' not in check_key.stderr"
     changed_when: no
     check_mode: no
 
-  - block:
+  - name: "Import PGP private key"
+    when: "check_key.stderr != ''"
+    block:
     - name: "Writing private key to temporary file"
       copy:
         content: "{{ gpg_private_key }}"
@@ -26,4 +29,3 @@
       file:
         state: "absent"
         path: "{{ temp_priv_key }}"
-    when: "check_key.stderr != ''"

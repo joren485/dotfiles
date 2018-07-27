@@ -1,9 +1,11 @@
 ---
 - name: "Install vim"
+  when: "has_sudo"
+  become: yes
   pacman:
     state: "present"
-    name: "gvim"
-  become: yes
+    name: "{{ package_vim|default('gvim') }}"
+    update_cache: yes
 
 - name: "Copy vimrc"
   template:

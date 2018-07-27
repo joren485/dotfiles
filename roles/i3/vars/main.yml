@@ -3,3 +3,9 @@
 config_directory_i3: "{{ config_directory }}/i3"
 
 command_screen_lock: "lock"
+
+packages_i3:
+  - "i3-wm"
+  - "scrot"
+  - "imagemagick"
+  - "rofi"
