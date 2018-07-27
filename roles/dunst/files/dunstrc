@@ -5,7 +5,7 @@
     geometry = "200x5-6+30"
     sort = yes
     alignment = center
-    show_age_threshold = 60 # TODO
+    show_age_threshold = -1
     word_wrap = false
     idle_threshold = 120
     follow = mouse
