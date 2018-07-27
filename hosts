@@ -1,8 +1,6 @@
-# Machines I own
-[machines]
+[personal_computer]
 jorenPC
 jorenLaptop
 
-# Shells
 [remote]
-lilo5
+lilo
