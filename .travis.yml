@@ -1,20 +1,23 @@
 ---
+
 sudo: false
 language: "python"
 
-install:
-  - "pip install -U pip wheel"
-  - "pip install -r requirements_travis.txt"
-
-before_script:
-  - "chmod 700 $TRAVIS_BUILD_DIR"
-  - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
-
-script:
-  - "ansible-playbook pc.yml --syntax-check"
-  - "ansible-playbook remote.yml --syntax-check"
-  - "ansible-lint pc.yml"
-  - "ansible-lint remote.yml"
+jobs:
+    include:
+        - stage: "lint"
+          python: "3.6"
+          install:
+              - "pip install --upgrade pip wheel"
+              - "pip install --upgrade -r requirements_travis.txt"
+          before_script:
+              - "chmod 700 $TRAVIS_BUILD_DIR"
+              - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
+          script:
+              - "ansible-playbook pc.yml --syntax-check"
+              - "ansible-playbook remote.yml --syntax-check"
+              - "ansible-lint pc.yml"
+              - "ansible-lint remote.yml"
 
 cache: "pip"
 
