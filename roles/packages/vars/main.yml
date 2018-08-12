@@ -49,6 +49,7 @@ common_packages:
   - "ntp"
   - "arc-gtk-theme"
   - "pacman-contrib"
+  - "p7zip"
 
 laptop_packages:
   - "xf86-input-synaptics"
