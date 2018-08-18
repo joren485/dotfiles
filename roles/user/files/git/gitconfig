@@ -6,6 +6,7 @@
 [alias]
         l = log --pretty=oneline --graph --abbrev-commit
         s = status
+        pa = pull --all
 
 [diff "ansible-vault"]
 	textconv = ansible-vault view
