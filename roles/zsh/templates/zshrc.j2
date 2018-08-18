@@ -85,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 {% if 'Arch' in ansible_os_family %}
-alias pacRQ="sudo pacman -Rns $(pacman -Qdtq)"
+alias pacRQ="sudo pacman -Rns \$(pacman -Qdtq)"
 {% endif %}
 {% if monitors|default(False, True) %}
 alias disable_screensaver="xset s off -dpms"
