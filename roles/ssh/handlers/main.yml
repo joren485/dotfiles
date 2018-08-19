@@ -2,6 +2,7 @@
 
 - name: "restart sshd"
   become: yes
+  when: "use_services"
   systemd:
     name: "sshd"
     state: "restarted"

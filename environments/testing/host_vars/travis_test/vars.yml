@@ -1,0 +1,13 @@
+---
+
+# Ansible connection variables
+ansible_user: "travis"
+ansible_become_password: "travis"
+ansible_connection: "local"
+
+has_sudo: yes
+
+ssh_public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvkv6CD7ARVkM4wqVRxdE0+zZ6ANIWpLi0Th019YZ/vmiAgSKdFDLKN/bkfJcRgWvz2xabcjVY1Y7Jt5ZHDz+RcZyeZxdeTLgCbXQsKNjMaW6nNyNjdknhY4CWy4oH0c4s89V3qzSD1uKzaiHLUGo0HS2aknuz8srRMs5wUEaxxw3W5IRYyxjemeHPAQxBjb6lWW3bUEjEkrGOFvYqg7L8VI8CrNIqtcebw+9pn4JTbj10nXS/JrzRRGHRnPb2237HXW9JlxkBYutRx9ehayVQwBODx1dud91n2ZtMyMeIxmR4JkfD32s6Bn1aNvtceI4bJon+Reboy5/j2J/B+N5PPykWLyzmTdgl4CmrHsL0vIGthWTUfNqNuFY9YSQenSDbgmCD1jP4jO+fhPw0twbjNeJVcxH6QYJaMycRsqf/Tnp1x7wuvaMVjYqeudXZqgIBV4Z34B6QFph64hi0iiFiN/XGUMIRAZp2Ij/OkuWsLxeMmwEpQkeiDeSw8dZusp+ZDvaXM1stKvdP1e5hd36Ga+achkDMY/Zqn3pvlKw8vrTimF44hQc9Xl5qn2OyL9kjEh5eQDwbNH/ylln3NgpHY52ae/AHIhEEDbJRdmIZ2BoDvWWcdWOeeRlWh+9vmpm0WMNGNxTuD3qRTrl/ppKedR5on0eotigs54cIckDDTQ=="
+
+monitors:
+  - "Fake Screen"

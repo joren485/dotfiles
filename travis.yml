@@ -1,7 +1,8 @@
 ---
 
-- name: "Configure PC"
-  hosts: "personal_computer"
+- name: "Test roles using Travis CI"
+  hosts:
+    - "travis_test"
   roles:
     - role: "packages"
       tags: "packages"

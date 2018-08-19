@@ -30,6 +30,7 @@
 
 - name: "Enable NetworkManager"
   become: yes
+  when: "use_services"
   systemd:
     name: "NetworkManager"
     state: "started"
