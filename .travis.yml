@@ -9,7 +9,7 @@ jobs:
           python: "3.6"
           install:
               - "pip install --upgrade pip wheel"
-              - "pip install --upgrade -r requirements_travis.txt"
+              - "pip install --upgrade ansible ansible-lint"
           before_script:
               - "chmod 700 $TRAVIS_BUILD_DIR"
               - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
