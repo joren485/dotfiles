@@ -30,6 +30,7 @@
     name: "sshd"
     state: "started"
     enabled: yes
+    daemon_reload: yes
 
 - name: "Disable PasswordAuthentication"
   become: yes
