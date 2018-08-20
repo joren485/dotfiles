@@ -10,8 +10,9 @@ jobs:
           env:
               - PLAYBOOK=pc.yml
               - PLAYBOOK=remote.yml
-          install:
+          before_install:
               - "pip install --upgrade pip wheel"
+          install:
               - "pip install --progress-bar=off --upgrade ansible ansible-lint"
           before_script:
               - "chmod 700 $TRAVIS_BUILD_DIR"
