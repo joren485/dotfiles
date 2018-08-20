@@ -12,7 +12,7 @@ jobs:
               - PLAYBOOK=remote.yml
           install:
               - "pip install --upgrade pip wheel"
-              - "pip install --upgrade ansible ansible-lint"
+              - "pip install --progress-bar=off --upgrade ansible ansible-lint"
           before_script:
               - "chmod 700 $TRAVIS_BUILD_DIR"
               - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
