@@ -7,6 +7,9 @@ jobs:
     include:
         - stage: "lint"
           python: "3.6"
+          env:
+              - PLAYBOOK=pc.yml
+              - PLAYBOOK=remote.yml
           install:
               - "pip install --upgrade pip wheel"
               - "pip install --upgrade ansible ansible-lint"
@@ -14,10 +17,25 @@ jobs:
               - "chmod 700 $TRAVIS_BUILD_DIR"
               - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
           script:
-              - "ansible-playbook pc.yml --syntax-check"
-              - "ansible-playbook remote.yml --syntax-check"
-              - "ansible-lint pc.yml"
-              - "ansible-lint remote.yml"
+              - "ansible-playbook ${PLAYBOOK} --syntax-check"
+              - "ansible-lint ${PLAYBOOK}"
+
+        - stage: "test"
+          language: "generic"
+          env:
+              - NAME_DOCKER=travis_test DIRECTORY_WORKING=/ansible
+          before_install:
+              - "docker pull pritunl/archlinux:latest"
+              - "docker run --rm --detach --name=${NAME_DOCKER} --hostname=${NAME_DOCKER} --volume=${TRAVIS_BUILD_DIR}:${DIRECTORY_WORKING} --workdir=${DIRECTORY_WORKING} pritunl/archlinux:latest tail -f /dev/null"
+          install:
+              - "docker exec ${NAME_DOCKER} pacman -Sy --noconfirm --needed ansible"
+          before_script:
+              - "chmod 700 $TRAVIS_BUILD_DIR"
+              - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
+          script:
+              - "docker exec ${NAME_DOCKER} ansible-playbook pc.yml --syntax-check"
+          after_script:
+              - "docker stop ${NAME_DOCKER}"
 
 cache: "pip"
 
