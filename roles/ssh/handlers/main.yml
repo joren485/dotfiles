@@ -2,6 +2,8 @@
 
 - name: "restart sshd"
   become: yes
-  service:
+  when: "use_services"
+  systemd:
     name: "sshd"
     state: "restarted"
+    daemon_reload: yes

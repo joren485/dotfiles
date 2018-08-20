@@ -50,6 +50,7 @@ common_packages:
   - "arc-gtk-theme"
   - "pacman-contrib"
   - "p7zip"
+  - "openssh"
 
 laptop_packages:
   - "xf86-input-synaptics"
