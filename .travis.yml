@@ -39,7 +39,7 @@ jobs:
           services:
               - "docker"
           env:
-              - "NAME_DOCKER=travis_test DIRECTORY_WORKING=/ansiblei ANSIBLE_USER_NAME=travis ANSIBLE_USER_PASSWORD=travis"
+              - "NAME_DOCKER=travis_test DIRECTORY_WORKING=/ansible ANSIBLE_USER_NAME=travis ANSIBLE_USER_PASSWORD=travis"
           before_install:
               - "docker pull pritunl/archlinux:latest"
               - >
