@@ -1,9 +1,22 @@
 #!/usr/bin/env python
 
 import dbus
-session_bus = dbus.SessionBus()
+
+from enum import Enum
+
+
+class PlaybackStatus(Enum):
+    PAUSED = 'Paused'
+    PLAYING = 'Playing'
+
+
+ICON_PLAY = ''
+ICON_PAUSE = ''
 
 try:
+
+    session_bus = dbus.SessionBus()
+
     spotify_bus = session_bus.get_object(
         'org.mpris.MediaPlayer2.spotify',
         '/org/mpris/MediaPlayer2'
@@ -19,13 +32,26 @@ try:
         'Metadata'
     )
 
+    playback_status = spotify_properties.Get(
+        'org.mpris.MediaPlayer2.Player',
+        'PlaybackStatus'
+    )
+
 except dbus.exceptions.DBusException:
     print(' ~ ')
 
 else:
+
+    icon = ''
+    if PlaybackStatus(playback_status) == PlaybackStatus.PAUSED:
+        icon = ICON_PAUSE
+    elif PlaybackStatus(playback_status) == PlaybackStatus.PLAYING:
+        icon = ICON_PLAY
+
     string = (
+        f"{ icon }"
         f"{','.join(metadata['xesam:artist'])}"
-        f" ~ "
+        " ~ "
         f"{ metadata['xesam:title'].strip() }"
     )
 
