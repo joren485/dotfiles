@@ -1,24 +1,61 @@
 #!/usr/bin/env python
 
 import dbus
-import sys
-session_bus = dbus.SessionBus()
+
+from enum import Enum
+
+
+class PlaybackStatus(Enum):
+    PAUSED = 'Paused'
+    PLAYING = 'Playing'
+
+
+ICON_PLAY = ''
+ICON_PAUSE = ''
 
 try:
-	spotify_bus = session_bus.get_object('org.mpris.MediaPlayer2.spotify',
-                                         '/org/mpris/MediaPlayer2')
+
+    session_bus = dbus.SessionBus()
+
+    spotify_bus = session_bus.get_object(
+        'org.mpris.MediaPlayer2.spotify',
+        '/org/mpris/MediaPlayer2'
+    )
+
+    spotify_properties = dbus.Interface(
+        spotify_bus,
+        'org.freedesktop.DBus.Properties'
+    )
+
+    metadata = spotify_properties.Get(
+        'org.mpris.MediaPlayer2.Player',
+        'Metadata'
+    )
+
+    playback_status = spotify_properties.Get(
+        'org.mpris.MediaPlayer2.Player',
+        'PlaybackStatus'
+    )
 
 except dbus.exceptions.DBusException:
-	string = ' ~ '
+    print(' ~ ')
+
 else:
-	spotify_properties = dbus.Interface(spotify_bus,
-                                        'org.freedesktop.DBus.Properties')
-	metadata = spotify_properties.Get('org.mpris.MediaPlayer2.Player',
-                                      'Metadata')
 
-	string = ','.join(metadata['xesam:artist']) + ' ~ {}'.format(
-    				metadata['xesam:title'].strip())
+    icon = ''
+    if PlaybackStatus(playback_status) == PlaybackStatus.PAUSED:
+        icon = ICON_PAUSE
+    elif PlaybackStatus(playback_status) == PlaybackStatus.PLAYING:
+        icon = ICON_PLAY
 
-	if len(string) > 80:
-		string = string[:77] + '...'
-print(string)
+    string = (
+        f"{ icon }"
+        f"{','.join(metadata['xesam:artist'])}"
+        " ~ "
+        f"{ metadata['xesam:title'].strip() }"
+    )
+
+    if len(string) > 80:
+        string = string[:77] + '...'
+
+    print(string)
