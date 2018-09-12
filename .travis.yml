@@ -4,7 +4,7 @@ jobs:
     include:
 
         - &syntax_check
-          stage: "lint" 
+          stage: "lint"
           sudo: false
           language: "python"
           python: "3.6"
@@ -18,7 +18,7 @@ jobs:
               - "chmod 700 $TRAVIS_BUILD_DIR"
               - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
           script:
-              - "ansible-playbook ${PLAYBOOK} --inventory-file=environments/${ENVIRONMENT}/hosts --syntax-check" 
+              - "ansible-playbook ${PLAYBOOK} --inventory-file=environments/${ENVIRONMENT}/hosts --syntax-check"
 
         - <<: *syntax_check
           env: "PLAYBOOK=remote.yml ENVIRONMENT=production"
@@ -43,14 +43,14 @@ jobs:
           before_install:
               - "docker pull pritunl/archlinux:latest"
               - >
-                  docker run 
-                  --rm 
-                  --detach 
-                  --name=${NAME_DOCKER} 
-                  --hostname=${NAME_DOCKER} 
-                  --volume=${TRAVIS_BUILD_DIR}:${DIRECTORY_WORKING} 
-                  --workdir=${DIRECTORY_WORKING} 
-                  pritunl/archlinux:latest 
+                  docker run
+                  --rm
+                  --detach
+                  --name=${NAME_DOCKER}
+                  --hostname=${NAME_DOCKER}
+                  --volume=${TRAVIS_BUILD_DIR}:${DIRECTORY_WORKING}
+                  --workdir=${DIRECTORY_WORKING}
+                  pritunl/archlinux:latest
                   tail -f /dev/null
           install:
               - "docker exec ${NAME_DOCKER} pacman -Sy --noconfirm --needed ansible sudo"
