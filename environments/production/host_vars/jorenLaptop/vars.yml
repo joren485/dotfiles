@@ -1,5 +1,7 @@
 ---
 
+has_sudo: yes
+
 # Custom variables
 is_laptop: yes
 monitors:
