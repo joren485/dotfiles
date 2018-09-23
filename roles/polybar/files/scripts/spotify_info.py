@@ -8,10 +8,12 @@ from enum import Enum
 class PlaybackStatus(Enum):
     PAUSED = 'Paused'
     PLAYING = 'Playing'
+    STOPPED = 'Stopped'
 
 
 ICON_PLAY = ''
 ICON_PAUSE = ''
+ICON_STOP = ''
 
 try:
 
@@ -47,6 +49,8 @@ else:
         icon = ICON_PAUSE
     elif PlaybackStatus(playback_status) == PlaybackStatus.PLAYING:
         icon = ICON_PLAY
+    elif PlaybackStatus(playback_status) == PlaybackStatus.STOPPED:
+        icon = ICON_STOP
 
     string = (
         f"{ icon }"
