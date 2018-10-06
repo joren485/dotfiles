@@ -1,5 +1,10 @@
 ---
 
+- name: "Set hostname"
+  when: "use_services"
+  hostname:
+    name: "{{ inventory_hostname }}"
+
 - name: "Update pacman cache"
   become: yes
   pacman:
