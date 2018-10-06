@@ -4,6 +4,7 @@ jobs:
     include:
 
         - &syntax_check
+          name: "syntax-check pc.yml"
           stage: "lint"
           sudo: false
           language: "python"
@@ -21,12 +22,15 @@ jobs:
               - "ansible-playbook ${PLAYBOOK} --inventory-file=environments/${ENVIRONMENT}/hosts --syntax-check"
 
         - <<: *syntax_check
+          name: "syntax-check remote.yml"
           env: "PLAYBOOK=remote.yml ENVIRONMENT=production"
 
         - <<: *syntax_check
+          name: "syntax-check travis.yml"
           env: "PLAYBOOK=travis.yml ENVIRONMENT=testing"
 
         - <<: *syntax_check
+          name: "ansible-lint"
           env: ""
           install:
               - "pip install --progress-bar=off --upgrade ansible-lint"
@@ -34,6 +38,7 @@ jobs:
               - "ansible-lint *.yml"
 
         - stage: "playbook"
+          name: "Run pc.yml on PC"
           sudo: "required"
           language: "generic"
           services:
