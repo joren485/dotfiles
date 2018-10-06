@@ -41,7 +41,7 @@ jobs:
           env:
               - "NAME_DOCKER=travis_test DIRECTORY_WORKING=/ansible ANSIBLE_USER_NAME=travis ANSIBLE_USER_PASSWORD=travis"
           before_install:
-              - "docker pull pritunl/archlinux:latest"
+              - "docker pull archlinux/base:latest"
               - >
                   docker run
                   --rm
@@ -50,15 +50,13 @@ jobs:
                   --hostname=${NAME_DOCKER}
                   --volume=${TRAVIS_BUILD_DIR}:${DIRECTORY_WORKING}
                   --workdir=${DIRECTORY_WORKING}
-                  pritunl/archlinux:latest
+                  archlinux/base:latest
                   tail -f /dev/null
           install:
-              - "docker exec ${NAME_DOCKER} pacman -Sy --noconfirm --needed ansible sudo"
+              - "docker exec ${NAME_DOCKER} pacman -Sy --noconfirm --needed ansible sudo which"
           before_script:
               - "chmod 700 $TRAVIS_BUILD_DIR"
               - "sed -i 's/^vault_password_file/# &/' ansible.cfg"
-              - "docker exec ${NAME_DOCKER} groupadd users"
-              - "docker exec ${NAME_DOCKER} groupadd wheel"
               - "docker exec ${NAME_DOCKER} /bin/bash -c \"echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers\""
               - "docker exec ${NAME_DOCKER} useradd -m -G wheel ${ANSIBLE_USER_NAME}"
               - "docker exec ${NAME_DOCKER} /bin/bash -c \"echo ${ANSIBLE_USER_NAME}:${ANSIBLE_USER_PASSWORD} | chpasswd\""
