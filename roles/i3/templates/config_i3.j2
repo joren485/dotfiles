@@ -24,7 +24,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # Activate scrot selection
-bindsym --release $mod+Shift+s exec scrot -s '/tmp/%Y-%m-%d_$wx$h.png'
+bindsym --release $mod+Shift+s exec scrot -s '/tmp/%Y_%m_%d_%H_%M_%S.png'
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show run
