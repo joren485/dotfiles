@@ -51,6 +51,7 @@ common_packages:
   - "pacman-contrib"
   - "p7zip"
   - "openssh"
+  - "sshpass"
 
 laptop_packages:
   - "xf86-input-synaptics"
