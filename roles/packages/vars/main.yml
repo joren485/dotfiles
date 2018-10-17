@@ -52,6 +52,7 @@ common_packages:
   - "p7zip"
   - "openssh"
   - "sshpass"
+  - "pwgen"
 
 laptop_packages:
   - "xf86-input-synaptics"
