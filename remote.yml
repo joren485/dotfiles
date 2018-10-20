@@ -1,6 +1,8 @@
 ---
 - name: "Configure shells on remote machines"
   hosts: "remote"
+  vars_files:
+    - "environments/defaults.yml"
   roles:
     - role: "user"
       tags: "user"
