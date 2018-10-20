@@ -1,6 +1,3 @@
 ---
 
 use_services: no
-
-home_directory: "/home/{{ ansible_user }}"
-config_directory: "{{ home_directory}}/.config"

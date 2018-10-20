@@ -8,6 +8,3 @@ ansible_ssh_pass: "{{ vault_user_password }}"
 ansible_become_password: "{{ vault_user_password }}"
 
 has_sudo: no
-
-home_directory: "/home/{{ ansible_user }}"
-config_directory: "{{ home_directory}}/.config"

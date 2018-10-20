@@ -3,6 +3,8 @@
 - name: "Test roles using Travis CI"
   hosts:
     - "travis_test"
+  vars_files:
+    - "environments/defaults.yml"
   roles:
     - role: "packages"
       tags: "packages"
