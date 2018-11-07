@@ -20,7 +20,6 @@ common_packages:
   - "ntfs-3g"
   - "acpi"
   - "feh"
-  - "lxappearance"
   - "nano"
   - "nmap"
   - "pulseaudio"
