@@ -35,7 +35,10 @@ jobs:
           install:
               - "pip install --progress-bar=off --upgrade ansible-lint"
           script:
-              - "ansible-lint *.yml"
+              # Rule 701 checks for galaxy_info, which we don't use, so we exclude it
+              # Rule 405 checks for a retry rule in the task, which we don't want to use
+              # Rule 204 checks for lines over 120 characters
+              - "ansible-lint -x 701,405,204 *.yml"
 
         - stage: "playbook"
           name: "Run pc.yml on PC"
