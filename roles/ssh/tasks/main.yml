@@ -15,13 +15,13 @@
     copy:
       content: "{{ ssh_public_key }}"
       mode: "0600"
-      dest: "{{ home_directory }}/.ssh/id_rsa.pub"
+      dest: "{{ home_directory }}/.ssh/id_ed25519.pub"
 
   - name: "Install SSH private key"
     copy:
       content: "{{ vault_ssh_private_key }}"
       mode: "0600"
-      dest: "{{ home_directory }}/.ssh/id_rsa"
+      dest: "{{ home_directory }}/.ssh/id_ed25519"
 
 - name: "Enable services"
   become: yes
