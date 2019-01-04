@@ -9,4 +9,4 @@ monitors:
 
 ssh_public_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBy5lFA0B1SZ8+t6TaR1/g1Mtg+AFmdfSYt0M0trUEr+ joren@jorenLaptop"
 
-# boot_parameters: acpi_osi=Linux acpi_backlight=vendor quiet splash
+# boot parameters: iommu=soft acpi_backlight=vendor amdgpu.dc=0
