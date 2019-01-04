@@ -2,7 +2,7 @@
 
 has_sudo: yes
 
-ssh_public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzyQM4ROOSltlfMjAqYU2txKF3NHGQwIoDJ/yBUVB2Wcyn7IYInlEq65c+nwxEuph4yqAJYXCRElrjOoNc+GaLWC103Q8MYUkvQqHaF/5GR0QUC32MFkqAp4dCEY6GDkTvC9iUEKK+2Olw6l6iReuPgKZsvzyzIbW5N07mRgseJjDzrNmNvDcjtvnio9+PCjulMu7kJnbw9LsuAfugdtzc+xcyDAOAF+D0cBLFd2drtJBbDGKBXdtK/dXe5OjP2v1kY6RlqrWdtIjUHTV0c1ih1KGWbH4XfcNPYrHJD7hwAj9UYHEchxGu6YBVmgYdaVxVZIEyN819Mi4mSDsfvj1Z joren@JorenPC"
+ssh_public_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJw2wAiOf4+UUBPdYd3pKTcCMEosiAGBLnFUX31ki6SL joren@jorenPC"
 
 monitors:
   - "DVI-D-0"

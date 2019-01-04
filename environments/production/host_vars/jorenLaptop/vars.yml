@@ -7,6 +7,6 @@ is_laptop: yes
 monitors:
   - "eDP"
 
-ssh_public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4yeSD0yzvS3g6tJnzNMb/vxZvy2DZFdULksqgVMJZLovJ9x6YQuocPDiM//DBzwMsPrchXG3XkaJcCuCZ2DTQcL7RWQiwb3YvZZHDiUQNV8lNEFds96R/TunAJ5pudnkM9IXDZAVjAxpLHEHtWGdONeoOmdWrbJMZRdzmpnkONH7bnK9knRUASldmJxNPP03VBaEZp2+K0wgC1UFR+Nr+wnuHyJulNw/EAlCpbE6uqGjIdA0VukYDV3icRAx0xHCda68nSbRE4V+vckwWDkWsaUrD2O+Dg2EiwXrFxBMkqhu86yN3IlfmlI008u+gVn8zywV3J20hdmeqOCZGUP+V joren@JorenLaptop"
+ssh_public_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBy5lFA0B1SZ8+t6TaR1/g1Mtg+AFmdfSYt0M0trUEr+ joren@jorenLaptop"
 
 # boot_parameters: acpi_osi=Linux acpi_backlight=vendor quiet splash
