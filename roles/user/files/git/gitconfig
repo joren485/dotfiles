@@ -16,5 +16,15 @@
 
 [fetch]
         prune = true
+
 [core]
         editor = vim
+
+[url "git@github.com"]
+        pushInsteadOf = git://github.com
+
+[url "git@github.com:"]
+        pushInsteadOf = "git://github.com/"
+
+[url "git@github.com:"]
+        pushInsteadOf = "https://github.com/"
