@@ -7,6 +7,11 @@
         l = log --pretty=oneline --graph --abbrev-commit
         s = status
         pa = pull --all
+        pushf = push --force-with-lease
+        rbi = rebase --interactive master
+        publish = "!git push -u origin $(git branch-name)"
+        amend = "commit --amend"
+        aa = "commit --amend --all"
 
 [diff "ansible-vault"]
 	textconv = ansible-vault view
