@@ -9,6 +9,7 @@
         pa = pull --all
         pushf = push --force-with-lease
         rbi = rebase --interactive master
+        branch-name = rev-parse --abbrev-ref HEAD
         publish = "!git push -u origin $(git branch-name)"
         amend = "commit --amend"
         aa = "commit --amend --all"
