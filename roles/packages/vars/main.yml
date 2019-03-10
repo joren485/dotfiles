@@ -52,6 +52,7 @@ common_packages:
   - "openssh"
   - "sshpass"
   - "pwgen"
+  - "ttf-liberation"
 
 laptop_packages:
   - "xf86-input-synaptics"
@@ -77,6 +78,7 @@ aur_packages:
   - "etc-update"
   - "powerline-fonts-git"
   - "polybar"
+  - "ttf-emojione-color"
 
 pip_packages:
   - "requests"
