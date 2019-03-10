@@ -7,12 +7,12 @@
         l = log --pretty=oneline --graph --abbrev-commit
         s = status
         pa = pull --all
-        pushf = push --force-with-lease
         rbi = rebase --interactive master
         branch-name = rev-parse --abbrev-ref HEAD
-        publish = "!git push -u origin $(git branch-name)"
-        amend = "commit --amend"
-        aa = "commit --amend --all"
+        publish = !git push -u origin $(git branch-name)
+        publishf = publish --force-with-lease
+        amend = commit --amend
+        aa = commit --amend --all
 
 [diff "ansible-vault"]
 	textconv = ansible-vault view
@@ -30,7 +30,7 @@
         pushInsteadOf = git://github.com
 
 [url "git@github.com:"]
-        pushInsteadOf = "git://github.com/"
+        pushInsteadOf = git://github.com/
 
 [url "git@github.com:"]
-        pushInsteadOf = "https://github.com/"
+        pushInsteadOf = https://github.com/
