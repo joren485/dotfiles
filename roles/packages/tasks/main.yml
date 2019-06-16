@@ -1,7 +1,7 @@
 ---
 
 - name: "Set hostname"
-  when: "use_services"
+  when: "use_services|bool"
   hostname:
     name: "{{ inventory_hostname }}"
 
@@ -35,7 +35,7 @@
 
 - name: "Enable NetworkManager"
   become: yes
-  when: "use_services"
+  when: "use_services|bool"
   systemd:
     name: "NetworkManager"
     state: "started"
