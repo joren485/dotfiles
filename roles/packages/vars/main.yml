@@ -15,7 +15,6 @@ common_packages:
   - "pidgin"
   - "pidgin-otr" # for pidgin
   - "vlc"
-  - "qt4" # for vlc
   - "deluge"
   - "ntfs-3g"
   - "acpi"
