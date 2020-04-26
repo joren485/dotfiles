@@ -1,2 +1,18 @@
 export VISUAL=vim
 export EDITOR=vim
+export PAGER=vimpager
+
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_CACHE_HOME=${HOME}/.cache
+export XDG_DATA_HOME=${HOME}/.local/share
+
+export LANG=en_US.UTF-8
+export LC_NUMERIC=nl_NL.UTF-8
+export LC_TIME=nl_NL.UTF-8
+export LC_MONETARY=nl_NL.UTF-8
+export LC_PAPER=nl_NL.UTF-8
+export LC_NAME=nl_NL.UTF-8
+export LC_ADDRESS=nl_NL.UTF-8
+export LC_TELEPHONE=nl_NL.UTF-8
+export LC_MEASUREMENT=nl_NL.UTF-8
+export LC_IDENTIFICATION=nl_NL.UTF-8

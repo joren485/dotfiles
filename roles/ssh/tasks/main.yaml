@@ -1,0 +1,39 @@
+---
+
+- name: "Install packages"
+  become: yes
+  package:
+    name: "openssh"
+    state: "present"
+
+- name: "Create .ssh directory"
+  file:
+    path: "{{ ansible_user_dir }}/.ssh/"
+    state: "directory"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "0700"
+
+- name: "Install SSH key"
+  block:
+    - name: "Install public key"
+      copy:
+        content: "{{ ssh_key.public }}"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0644"
+        dest: "{{ ansible_user_dir }}/.ssh/id_ed25519.pub"
+
+    - name: "Install SSH private key"
+      copy:
+        content: "{{ ssh_key.private }}"
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0600"
+        dest: "{{ ansible_user_dir }}/.ssh/id_ed25519"
+
+- name: "Copy user config"
+  copy:
+    src: "config"
+    mode: "0644"
+    dest: "{{ ansible_user_dir }}/.ssh/config"

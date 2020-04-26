@@ -1,47 +1,57 @@
 ! Colors
+#define FOREGROUND  #c9c3c3
+#define BACKGROUND  #270f0f
 
-!! special
-*.foreground:                   #ffffff
-*.background:                   #161616
-*.cursorColor:                  #ffffff
+#define COLOR0      #270f0f
+#define COLOR8      #5d4b4b
+#define COLOR1      #c6504c
+#define COLOR9      #c6504c
+#define COLOR2      #be3b36
+#define COLOR10     #be3b36
+#define COLOR3      #aa6758
+#define COLOR11     #aa6758
+#define COLOR4      #9ea465
+#define COLOR12     #9ea465
+#define COLOR5      #a0b133
+#define COLOR13     #a0b133
+#define COLOR6      #97a88c
+#define COLOR14     #97a88c
+#define COLOR7      #c9c3c3
+#define COLOR15     #c9c3c3
 
-!! black
-*.color0:                       #222222
-*.color8:                       #666666
+*.foreground:       FOREGROUND
+*.background:       BACKGROUND
 
-!! red
-*.color1:                       #e84f4f
-*.color9:                       #d23d3d
+*.color0:           COLOR0
+*.color8:           COLOR8
+*.color1:           COLOR1
+*.color9:           COLOR9
+*.color2:           COLOR2
+*.color10:          COLOR10
+*.color3:           COLOR3
+*.color11:          COLOR11
+*.color4:           COLOR4
+*.color12:          COLOR12
+*.color5:           COLOR5
+*.color13:          COLOR13
+*.color6:           COLOR6
+*.color14:          COLOR14
+*.color7:           COLOR7
+*.color15:          COLOR15
 
-!! green
-*.color2:                       #b7ce42
-*.color10:                      #bde077
 
-!! yellow
-*.color3:                       #fea63c
-*.color11:                      #ffe863
+! XTerm
+XTerm*foreground:   FOREGROUND
+XTerm*background:   BACKGROUND
+XTerm*cursorColor:  FOREGROUND
 
-!! blue
-*.color4:                       #66aabb
-*.color12:                      #aaccbb
-
-!! magenta
-*.color5:                       #b7416e
-*.color13:                      #e16a98
-
-!! cyan
-*.color6:                       #6d878d
-*.color14:                      #42717b
-
-!! white
-*.color7:                       #dddddd
-*.color15:                      #cccccc
 
 ! URxvt
+URxvt*cursorColor:              FOREGROUND
 URxvt.depth:                    32
 URxvt.transparent:              true
 URxvt.fading:                   50
-URxvt.shading:  	        30
+URxvt.shading:                  30
 URxvt.saveLines:                65535
 URxvt.iso14755:                 off
 URxvt.iso14755_52:              off
@@ -49,7 +59,7 @@ URxvt.iso14755_52:              off
 URxvt.perl-ext-common:          default,matcher
 
 !! Fonts
-URxvt.font:                     xft:DejaVu Sans Mono for Powerline:pixelsize=15
+URxvt.font:                     xft:DejaVuSansMono Nerd Font Mono, xft:DejaVu Sans Mono
 
 !! Fix font space
 URxvt*letterSpace:              -1
@@ -64,9 +74,7 @@ URxvt*scrollTtyKeypress:        true
 URxvt.keysym.Shift-Control-V:   eval:paste_clipboard
 URxvt.keysym.Shift-Control-C:   eval:selection_to_clipboard
 
-!!
-URxvt.keysym.Control-Up:        \033[1;5A
-URxvt.keysym.Control-Down:      \033[1;5B
+!! Movement
 URxvt.keysym.Control-Left:      \033[1;5D
 URxvt.keysym.Control-Right:     \033[1;5C
 
@@ -78,3 +86,10 @@ URxvt.cursorUnderline:          true
 URxvt.url-launcher:             /usr/bin/xdg-open
 URxvt.matcher.button:           1
 URxvt.matcher.rend.0:           Uline Bold
+
+
+! Rofi
+rofi.modi:          window,drun,run
+rofi.sidebar-mode:  true
+rofi.theme:         .config/rofi/theme.rasi
+rofi.termial:       urxvt

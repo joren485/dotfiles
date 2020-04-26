@@ -1,0 +1,47 @@
+---
+
+- name: "Check if polybar is manually installed"
+  command: "which polybar"
+  changed_when: no
+  check_mode: no
+
+- name: "Install dependencies"
+  become: yes
+  package:
+    name:
+      - "python-dbus"
+      - "ttf-dejavu"
+    state: "present"
+
+- name: "Create .config/polybar/"
+  file:
+    path: "{{ ansible_user_dir }}/.config/polybar/"
+    state: "directory"
+
+- name: "Create .local/bin/"
+  file:
+    path: "{{ ansible_user_dir }}/.local/bin/"
+    state: "directory"
+
+- name: "Copy Polybar config"
+  copy:
+    src: "config"
+    dest: "{{ ansible_user_dir }}/.config/polybar/config"
+
+- name: "Add user to video group"
+  become: yes
+  user:
+    name: "{{ ansible_user }}"
+    groups:
+      - "video"
+    append: yes
+
+- name: "Copy python scripts files"
+  become: yes
+  copy:
+    src: "scripts/{{ item }}"
+    dest: "{{ ansible_user_dir }}/.local/bin/{{ item }}"
+    mode: "0755"
+  loop:
+    - "coinbase_usd_checker.py"
+    - "spotify_info.py"

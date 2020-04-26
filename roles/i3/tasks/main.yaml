@@ -1,0 +1,50 @@
+---
+
+- name: "Install i3 and dependencies"
+  become: yes
+  package:
+    name:
+      - "i3-wm"
+      - "i3lock"
+      - "scrot"
+      - "imagemagick"
+      - "rofi"
+      - "xss-lock"
+      - "playerctl"
+      - "ttf-dejavu"
+      - "feh"
+    state: "present"
+
+
+- name: "Create necessary directories"
+  file:
+    path: "{{ ansible_user_dir }}/{{ item }}"
+    state: "directory"
+  loop:
+    - ".local/bin/"
+    - ".local/share/backgrounds/"
+    - ".config/dunst/"
+    - ".config/rofi/"
+    - ".config/i3/"
+
+- name: "Copy configuration files"
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+    mode: "{{ item.mode|default('0644') }}"
+  loop:
+    - src: "rofi/theme.rasi"
+      dest: ".config/rofi/theme.rasi"
+
+    - src: "dunst/dunstrc"
+      dest: ".config/dunst/dunstrc"
+
+    - src: "dino.png"
+      dest: ".local/share/backgrounds/dino.png"
+
+    - src: "lock_screen"
+      dest: ".local/bin/lock_screen"
+      mode: "0755"
+
+    - src: "i3/config"
+      dest: ".config/i3/config"

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+setxkbmap -layout us -variant intl
+xrdb -merge -I"${HOME}" .Xresources
+exec i3

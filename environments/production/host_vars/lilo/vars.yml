@@ -1,6 +1,0 @@
----
-
-ansible_user: "jvrancken"
-ansible_host: "lilo5.science.ru.nl"
-
-in_ru_network: yes

@@ -1,0 +1,70 @@
+---
+
+- name: "Install zsh and dependencies"
+  when: "has_sudo"
+  become: yes
+  package:
+    name:
+      - "zsh"
+      - "git"
+      - "curl"
+      - "python-pexpect"
+    state: "present"
+
+- name: "Check if zsh is installed"
+  command: "which zsh"
+  changed_when: no
+  check_mode: no
+
+- name: "Check for installed modules"
+  include_tasks: "packages.yaml"
+
+- name: "Copy ZSH configuration files"
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_user_dir }}/.{{ item }}"
+  loop:
+    - "zlogin"
+    - "zshenv"
+
+- name: "Copy .zshrc"
+  template:
+    src: "zshrc.j2"
+    dest: "{{ ansible_user_dir }}/.zshrc"
+
+- name: "Clone oh-my-zsh"
+  git:
+    repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/"
+    version: "master"
+
+- name: "Clone zsh-autosuggestions"
+  git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/"
+    version: "master"
+
+- name: "Clone zsh-completions"
+  git:
+    repo: "https://github.com/zsh-users/zsh-completions"
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-completions/"
+    version: "master"
+
+- name: "Install Poetry completions"
+  when: "poetry_installed"
+  block:
+    - name: "Create Poetry plugin directory"
+      file:
+        state: "directory"
+        path: "{{ ansible_user_dir }}/.oh-my-zsh/plugins/poetry/"
+
+    - name: "Generate Poetry completions"
+      shell: "poetry completions zsh > {{ ansible_user_dir }}/.oh-my-zsh/plugins/poetry/_poetry"
+      changed_when: yes
+
+- name: "Change user shell to ZSH"
+  when: "'zsh' not in ansible_user_shell"
+  expect:
+    command: "chsh --shell /usr/bin/zsh"
+    responses:
+      Password: "{{ password }}"

@@ -1,7 +1,0 @@
----
-config_directory_polybar: "{{ config_directory }}/polybar"
-
-packages_dependencies_polybar:
-  - "otf-font-awesome"
-  - "python-dbus"
-  - "pulseaudio-alsa"
