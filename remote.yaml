@@ -1,0 +1,10 @@
+---
+
+- name: "Configure Remote hosts"
+  hosts: "remote"
+  roles:
+    - role: "zsh"
+      tags: "zsh"
+
+    - role: "vim"
+      tags: "vim"

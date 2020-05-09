@@ -1,8 +1,0 @@
----
-
-oh_my_zsh_directory: "{{ home_directory }}/.oh-my-zsh"
-
-packages_zsh:
-  - "zsh"
-  - "git"
-  - "curl"

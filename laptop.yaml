@@ -1,0 +1,41 @@
+---
+
+- name: "Configure laptop"
+  hosts: "druif"
+  roles:
+      - role: "common"
+        tags: "common"
+
+      - role: "ssh"
+        tags: "ssh"
+
+      - role: "gnupg"
+        tags:
+            - "gnupg"
+            - "gpg"
+            - "gpg2"
+            - "pgp"
+
+      - role: "zsh"
+        tags: "zsh"
+
+      - role: "xorg"
+        tags: "xorg"
+
+      - role: "i3"
+        tags: "i3"
+
+      - role: "polybar"
+        tags: "polybar"
+
+      - role: "vim"
+        tags: "vim"
+
+      - role: "packages"
+        tags:
+            - "packages"
+            - "git"
+            - "docker"
+            - "ssh"
+            - "openssh"
+            - "dunst"

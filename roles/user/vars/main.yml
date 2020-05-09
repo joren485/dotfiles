@@ -1,7 +1,0 @@
----
-
-shared_virtualbox_directory: "{{ home_directory }}/virtualbox_shared/"
-
-packages_adb:
-  - "android-tools"
-  - "android-udev"

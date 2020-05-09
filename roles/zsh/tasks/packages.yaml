@@ -1,0 +1,56 @@
+---
+
+- name: "Check which plugin dependencies are installed"
+  vars:
+    dependencies:
+      - "ansible"
+      - "docker"
+      - "gpg"
+      - "poetry"
+  block:
+    - name: "Check if {{ item }} is installed"
+      command: "which {{ item }}"
+      register: "which_output"
+      changed_when: no
+      failed_when: no
+      check_mode: no
+      loop: "{{ dependencies }}"
+
+    - name: "Set '{{ item.item }}_installed' boolean value"
+      set_fact:
+        "{{ item.item }}_installed": "{{ item.rc == 0 }}"
+      loop: "{{ which_output.results }}"
+
+- name: "Check if Ansible is installed"
+  command: "which ansible"
+  register: "which_ansible"
+  changed_when: no
+  failed_when: no
+  check_mode: no
+
+- name: "Check if Docker is installed"
+  command: "which docker"
+  register: "which_docker"
+  changed_when: no
+  failed_when: no
+  check_mode: no
+
+- name: "Check if Poetry is installed"
+  command: "which poetry"
+  register: "which_poetry"
+  changed_when: no
+  failed_when: no
+  check_mode: no
+
+- name: "Check if GPG is installed"
+  command: "which gpg"
+  register: "which_gpg"
+  changed_when: no
+  failed_when: no
+  check_mode: no
+
+- name: "Set boolean values"
+  set_fact:
+    ansible_installed: "{{ which_ansible.rc == 0 }}"
+    docker_installed: "{{ which_docker.rc == 0 }}"
+    poetry_installed: "{{ which_poetry.rc == 0 }}"

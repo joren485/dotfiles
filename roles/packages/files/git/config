@@ -1,0 +1,36 @@
+[user]
+        email = jorenvrancken@gmail.com
+        name = Joren Vrancken
+        signingkey = D652D799A645F8F566FE8EB56D8EF14C28B44FA7
+
+[alias]
+        l = log --pretty=oneline --graph --abbrev-commit
+        s = status
+        pa = pull --all
+        rbi = rebase --interactive master
+        branch-name = rev-parse --abbrev-ref HEAD
+        publish = !git push --set-upstream origin $(git branch-name)
+        publishf = publish --force-with-lease
+        amend = commit --amend
+        aa = commit --amend --all
+
+[diff "ansible-vault"]
+	textconv = ansible-vault view
+
+[commit]
+        gpgsign = true
+
+[fetch]
+        prune = true
+
+[core]
+        editor = vim
+
+[url "git@github.com"]
+        pushInsteadOf = git://github.com
+
+[url "git@github.com:"]
+        pushInsteadOf = git://github.com/
+
+[url "git@github.com:"]
+        pushInsteadOf = https://github.com/

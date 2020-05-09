@@ -1,0 +1,18 @@
+---
+
+- name: "Install gnupng"
+  become: yes
+  package:
+    name: "gnupg"
+    state: "present"
+
+- name: "Import PGP key"
+  shell: "echo {{ vault_pgp_private_key | quote }} | gpg --batch --import"
+  register: "result_private_key_import"
+  changed_when: "result_private_key_import is defined and 'secret keys imported: 1' in result_private_key_import.stderr"
+
+- name: "Copy gpg-agent.conf"
+  copy:
+    src: "gpg-agent.conf"
+    dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
+  notify: "Reload gpg-agent"

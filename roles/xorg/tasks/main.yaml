@@ -1,0 +1,35 @@
+---
+
+- name: "Install Xorg"
+  become: yes
+  package:
+    name:
+      - "xorg"
+      - "rxvt-unicode"
+      - "rxvt-unicode-terminfo"
+      - "ttf-dejavu"
+      - "xterm"
+      - "arandr"
+    state: "present"
+
+- name: "Create .local/bin/"
+  file:
+    path: "{{ ansible_user_dir }}/.local/bin/"
+    state: "directory"
+
+- name: "Copy Xorg user configuration files"
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_user_dir }}/.{{ item }}"
+  loop:
+    - "Xresources"
+    - "xinitrc"
+
+- name: "Place dock scripts"
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_user_dir }}/.local/bin/{{ item }}"
+    mode: "0755"
+  loop:
+    - "undock.sh"
+    - "dock.sh"

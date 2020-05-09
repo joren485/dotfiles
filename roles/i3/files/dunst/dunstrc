@@ -1,0 +1,27 @@
+[global]
+    follow = mouse
+    geometry = "320x5-45+45"
+    padding = 10
+    horizontal_padding = 10
+    font = "DejaVuSansMono Nerd Font Mono 10, DejaVu Sans Mono 10"
+    markup = full
+    format = "<span foreground='#c4c5c7'><b>%s %p</b></span>\n%b"
+    alignment = left
+    word_wrap = yes
+    show_indicators = yes
+    icon_position = left
+    max_icon_size = 32
+
+[urgency_low]
+    foreground = "#c9c3c3"
+    background = "#270f0f"
+    timeout = 2
+
+[urgency_normal]
+    foreground = "#c9c3c3"
+    background = "#270f0f"
+    timeout = 2
+
+[urgency_critical]
+    foreground = "#c9c3c3"
+    background = "#270f0f"
