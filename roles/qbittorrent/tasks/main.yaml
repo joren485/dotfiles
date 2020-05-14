@@ -1,0 +1,132 @@
+---
+
+- include_vars: "vault.yaml"
+
+- name: "Install qBittorrent and dependencies"
+  become: yes
+  package:
+    name:
+      - "qbittorrent-nox"
+      - "python-pip"
+      - "python-requests"
+      - "openvpn"
+      - "nfs-utils"
+    state: "present"
+
+- name: "Install python-qBittorrent"
+  pip:
+    name: "python-qbittorrent"
+    extra_args: "--user"
+
+- name: "Create qBittorrent download directory"
+  file:
+    path: "/srv/qbittorrent/downloads/"
+    state: "directory"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: "755"
+
+- name: "Create Plex directories"
+  file:
+    path: "/srv/qbittorrent/{{ item }}"
+    state: "directory"
+    owner: "plex"
+    group: "plex"
+    mode: "755"
+  loop:
+    - "plex/"
+    - "plex/movies/"
+    - "plex/tv-shows/"
+
+- name: "Setup Private Internet Access VPN"
+  block:
+    - name: "Copy Frankfurt config"
+      become: yes
+      copy:
+        src: "openvpn/frankfurt.conf"
+        dest: "/etc/openvpn/client/frankfurt.conf"
+        owner: "root"
+        group: "root"
+        mode: "0600"
+
+    - name: "Copy Private Internet Access credentials"
+      become: yes
+      template:
+        src: "openvpn_login.j2"
+        dest: "/etc/openvpn/login"
+        owner: "root"
+        group: "root"
+        mode: "0600"
+
+    - name: "Enable and start OpenVPN"
+      become: yes
+      systemd:
+        name: "openvpn-client@frankfurt"
+        state: "started"
+        enabled: yes
+
+- name: "Setup qBittorrent"
+  block:
+    - name: "Create .config/qBittorrent/"
+      file:
+        path: "{{ ansible_user_dir }}/.config/qBittorrent/"
+        state: "directory"
+
+    - name: "Copy qBittorrent.conf"
+      template:
+        src: "qBittorrent.conf.j2"
+        dest: "{{ ansible_user_dir }}/.config/qBittorrent/qBittorrent.conf"
+
+    - name: "Enable and start qBittorrent"
+      become: yes
+      systemd:
+        name: "qbittorrent-nox@{{ ansible_user }}"
+        state: "started"
+        enabled: yes
+
+- name: "Setup port forward script"
+  block:
+    - name: "Create .local/bin/"
+      file:
+        path: "{{ ansible_user_dir }}/.local/bin/"
+        state: "directory"
+
+    - name: "Copy port forward script"
+      copy:
+        src: "setup-port-forward.py"
+        dest: "{{ ansible_user_dir }}/.local/bin/setup-port-forward.py"
+        mode: "0755"
+
+    - name: "Copy port forward unit file"
+      become: yes
+      copy:
+        src: "pia-qbittorrent-port-forward.service"
+        dest: "/usr/lib/systemd/system/pia-qbittorrent-port-forward.service"
+        owner: "root"
+        group: "root"
+        mode: "0644"
+
+    - name: "Enable port forward service"
+      become: yes
+      systemd:
+        name: "pia-qbittorrent-port-forward"
+        enabled: yes
+        daemon_reload: yes
+
+- name: "Setup NFS shares"
+  become: yes
+  block:
+    - name: "Copy /etc/exports"
+      copy:
+        src: "exports"
+        dest: "/etc/exports"
+        owner: "root"
+        group: "root"
+        mode: "0644"
+
+    - name: "Enable NFS server service"
+      become: yes
+      systemd:
+        name: "nfs-server"
+        enabled: yes
+        daemon_reload: yes

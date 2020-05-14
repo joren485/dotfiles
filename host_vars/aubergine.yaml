@@ -1,0 +1,4 @@
+---
+
+packages_host_aur:
+  - "plex-media-server"

@@ -6,7 +6,7 @@
   package:
     state: "present"
     name:
-      - "gvim"
+      - "{{ package_vim }}"
       - "vim-spell-nl"
       - "vimpager"
 

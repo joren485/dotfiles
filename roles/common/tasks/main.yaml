@@ -11,6 +11,14 @@
     name: "root"
     password_lock: yes
 
+- name: "Create plex user"
+  become: yes
+  user:
+    name: "plex"
+    comment: "Plex Media Server"
+    uid: "976"
+    state: "present"
+
 - name: "Set locale"
   become: yes
   block:
@@ -24,25 +32,9 @@
         name: "nl_NL.UTF-8"
         state: "present"
 
-- name: "Copy logind.conf"
-  become: yes
-  copy:
-    src: "logind.conf"
-    dest: "/etc/systemd/logind.conf"
-
-- name: "Setup fonts"
-  block:
-    - name: "Install fonts"
-      package:
-        name: "ttf-dejavu"
-        state: "present"
-
-    - name: "Create .local/share/fonts/"
-      file:
-        path: "{{ ansible_user_dir }}/.local/share/fonts/"
-        state: "directory"
-
-    - name: "Install nerd font"
-      get_url:
-        url: "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
-        dest: "{{ ansible_user_dir }}/.local/share/fonts/DejaVu Sans Mono Nerd Font Complete Mono.ttf"
+- name: "Disable SSH password logins"
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "^#?PasswordAuthentication (yes|no)$"
+    line: "PasswordAuthentication no"
+    state: "present"

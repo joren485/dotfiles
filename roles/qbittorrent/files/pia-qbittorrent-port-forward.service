@@ -1,0 +1,16 @@
+[Unit]
+Description=Setup Port Forwarding for qBittorrent
+Requisite=qbittorrent-nox@joren.service
+PartOf=openvpn-client@frankfurt.service
+After=network.target qbittorrent-nox@joren.service openvpn-client@frankfurt.service
+
+[Service]
+User=joren
+Type=oneshot
+ExecStartPre=/bin/sleep 5
+ExecStart=/home/joren/.local/bin/setup-port-forward.py
+RemainAfterExit=true
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
