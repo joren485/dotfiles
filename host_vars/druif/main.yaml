@@ -1,13 +1,51 @@
 ---
 
-ansible_user: "joren"
 ansible_connection: "local"
-ansible_become_password: "{{ password }}"
-
-password: "{{ vault_password }}"
 
 pgp_private_key: "{{ vault_pgp_private_key }}"
 
 ssh_key:
   public: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJw2wAiOf4+UUBPdYd3pKTcCMEosiAGBLnFUX31ki6SL {{ ansible_user }}@{{ ansible_hostname }}"
   private: "{{ vault_ssh_private_key }}"
+
+package_vim: "gvim"
+
+packages_host:
+  - "android-tools"
+  - "android-udev"
+  - "ansible"
+  - "ansible-lint"
+  - "arch-wiki-docs"
+  - "archlinux-wallpaper"
+  - "dkms"
+  - "docker"
+  - "docker-compose"
+  - "firefox"
+  - "gpart"
+  - "gparted"
+  - "intel-ucode"
+  - "iw"
+  - "networkmanager-openvpn"
+  - "pass"
+  - "pavucontrol"
+  - "pulseaudio"
+  - "pwgen"
+  - "python-poetry"
+  - "python-pywal"
+  - "usbutils"
+  - "veracrypt"
+  - "vlc"
+  - "wireshark-qt"
+  - "xf86-video-intel"
+  - "zathura"
+  - "zathura-pdf-poppler"
+
+packages_host_aur:
+  - "google-chrome"
+  - "megasync"
+  - "pycharm-professional"
+  - "spotify"
+  - "tor-browser"
+  - "ckb-next"
+  - "polybar"
+  - "ledger-live-bin"

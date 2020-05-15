@@ -15,7 +15,6 @@
       - "feh"
     state: "present"
 
-
 - name: "Create necessary directories"
   file:
     path: "{{ ansible_user_dir }}/{{ item }}"
@@ -48,3 +47,9 @@
 
     - src: "i3/config"
       dest: ".config/i3/config"
+
+- name: "Copy logind.conf"
+  become: yes
+  copy:
+    src: "logind.conf"
+    dest: "/etc/systemd/logind.conf"

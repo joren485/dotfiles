@@ -1,0 +1,4 @@
+---
+
+has_sudo: yes
+package_vim: "vim"

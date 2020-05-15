@@ -1,3 +1,4 @@
 ---
 
 ansible_user: "jvrancken"
+has_sudo: no
