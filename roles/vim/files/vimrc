@@ -73,6 +73,7 @@ set clipboard=unnamedplus
 
 " Spellcheck
 set spelllang=en,nl
+set spell
 nnoremap <F7> :setlocal spell! <CR>
 
 "" Clear highlighting
