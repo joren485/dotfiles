@@ -21,6 +21,7 @@ packages_host:
   - "docker"
   - "docker-compose"
   - "firefox"
+  - "git"
   - "gpart"
   - "gparted"
   - "intel-ucode"
