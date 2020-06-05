@@ -80,6 +80,6 @@
     path: "/mnt/plex/"
     fstype: "nfs"
     opts: "defaults,timeo=900,retrans=5,_netdev"
-    dump: 0
-    passno: 0
+    dump: "0"
+    passno: "0"
     state: "present"

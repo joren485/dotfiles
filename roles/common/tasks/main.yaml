@@ -33,6 +33,7 @@
         state: "present"
 
 - name: "Disable SSH password logins"
+  become: yes
   lineinfile:
     dest: "/etc/ssh/sshd_config"
     regexp: "^#?PasswordAuthentication (yes|no)$"

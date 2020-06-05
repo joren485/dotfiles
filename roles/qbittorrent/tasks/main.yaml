@@ -27,6 +27,7 @@
     mode: "755"
 
 - name: "Create Plex directories"
+  become: yes
   file:
     path: "/srv/qbittorrent/{{ item }}"
     state: "directory"
