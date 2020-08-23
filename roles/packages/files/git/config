@@ -15,7 +15,7 @@
         aa = commit --amend --all
 
 [diff "ansible-vault"]
-	textconv = ansible-vault view
+        textconv = ansible-vault view
 
 [commit]
         gpgsign = true
