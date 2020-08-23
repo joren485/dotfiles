@@ -26,6 +26,7 @@ packages_host:
   - "gparted"
   - "intel-ucode"
   - "iw"
+  - "network-manager-applet"
   - "networkmanager-openvpn"
   - "pass"
   - "pavucontrol"
