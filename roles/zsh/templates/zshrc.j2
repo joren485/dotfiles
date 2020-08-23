@@ -21,9 +21,6 @@ plugins=(
 {% if poetry_installed %}
     poetry
 {% endif %}
-{% if gpg_installed %}
-    gpg-agent
-{% endif %}
     dotenv
     python
     zsh-autosuggestions
@@ -32,9 +29,12 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-{% if gpg_installed %}
-gpg-connect-agent updatestartuptty /bye >/dev/null
-{% endif %}
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
 
 zstyle ':completion:*' rehash true
 

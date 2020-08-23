@@ -1,3 +1,5 @@
+export GPG_TTY=$(tty)
+
 export VISUAL=vim
 export EDITOR=vim
 export PAGER=vimpager

@@ -21,7 +21,6 @@
     dependencies:
       - "ansible"
       - "docker"
-      - "gpg"
       - "poetry"
   block:
     - name: "Check if plugin dependencies are installed"
