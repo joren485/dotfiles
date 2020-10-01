@@ -28,6 +28,7 @@ packages_common:
   - "python"
   - "python-pip"
   - "python-requests"
+  - "python-beautifulsoup4"
   - "reflector"
   - "rsync"
   - "rxvt-unicode-terminfo"
