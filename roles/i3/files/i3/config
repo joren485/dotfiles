@@ -137,7 +137,7 @@ bindsym XF86MonBrightnessDown exec light -U 1
 bindsym XF86MonBrightnessUp exec light -A 1
 
 # Set wallpaper
-exec --no-startup-id feh --bg-fill ~/.local/share/backgrounds/dino.png
+exec --no-startup-id feh --no-fehbg --bg-fill ~/.local/share/backgrounds/dino.png
 
 # Start notification daemon
 exec --no-startup-id dunst
