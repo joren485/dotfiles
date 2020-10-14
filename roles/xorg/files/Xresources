@@ -1,23 +1,23 @@
 ! Colors
-#define FOREGROUND  #c9c3c3
-#define BACKGROUND  #270f0f
+#define FOREGROUND  #c5c4c5
+#define BACKGROUND  #181518
 
-#define COLOR0      #270f0f
-#define COLOR8      #5d4b4b
-#define COLOR1      #c6504c
-#define COLOR9      #c6504c
-#define COLOR2      #be3b36
-#define COLOR10     #be3b36
-#define COLOR3      #aa6758
-#define COLOR11     #aa6758
-#define COLOR4      #9ea465
-#define COLOR12     #9ea465
-#define COLOR5      #a0b133
-#define COLOR13     #a0b133
-#define COLOR6      #97a88c
-#define COLOR14     #97a88c
-#define COLOR7      #c9c3c3
-#define COLOR15     #c9c3c3
+#define COLOR0      #181518
+#define COLOR8      #514f51
+#define COLOR1      #801647
+#define COLOR9      #801647
+#define COLOR2      #da305c
+#define COLOR10     #da305c
+#define COLOR3      #8a6f39
+#define COLOR11     #8a6f39
+#define COLOR4      #2b92d9
+#define COLOR12     #2b92d9
+#define COLOR5      #f47d4c
+#define COLOR13     #f47d4c
+#define COLOR6      #88ce90
+#define COLOR14     #88ce90
+#define COLOR7      #c5c4c5
+#define COLOR15     #c5c4c5
 
 *.foreground:       FOREGROUND
 *.background:       BACKGROUND
