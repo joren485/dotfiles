@@ -40,7 +40,7 @@ set noswapfile
 set encoding=utf-8
 
 " Visual
-silent! color nord
+silent! color abstract
 set ruler
 set cursorline
 set number
