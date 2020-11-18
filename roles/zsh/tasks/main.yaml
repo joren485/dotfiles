@@ -22,6 +22,7 @@
       - "ansible"
       - "docker"
       - "poetry"
+      - "pip"
   block:
     - name: "Check if plugin dependencies are installed"
       command: "which {{ item }}"

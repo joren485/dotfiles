@@ -21,6 +21,9 @@ plugins=(
 {% if poetry_installed %}
     poetry
 {% endif %}
+{% if pip_installed %}
+    pip
+{% endif %}
     dotenv
     python
     zsh-autosuggestions
