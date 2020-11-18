@@ -46,7 +46,6 @@ packages_host:
 
 packages_host_aur:
   - "google-chrome"
-  - "megasync"
   - "pycharm-professional"
   - "spotify"
   - "tor-browser"
