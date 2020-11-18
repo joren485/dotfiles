@@ -62,12 +62,6 @@
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/"
     version: "master"
 
-- name: "Clone zsh-completions"
-  git:
-    repo: "https://github.com/zsh-users/zsh-completions"
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-completions/"
-    version: "master"
-
 - name: "Copy theme"
   copy:
     src: "prompt.zsh-theme"
