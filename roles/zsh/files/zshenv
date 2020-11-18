@@ -1,5 +1,7 @@
 export GPG_TTY=$(tty)
 
+export BROWSER=google-chrome-stable
+
 export VISUAL=vim
 export EDITOR=vim
 export PAGER=vimpager
