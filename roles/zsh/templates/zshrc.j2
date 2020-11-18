@@ -10,6 +10,14 @@ HIST_STAMPS="%d/%m/%y %T"
 
 ZSH_DOTENV_PROMPT=false
 
+# Do not check for Oh My Zsh updates if we are logging in and we will start a graphical session.
+# Otherwise automatically update Oh My Zsh
+if [[ -o login ]] && systemctl -q is-active graphical.target; then
+    DISABLE_AUTO_UPDATE=true
+else
+    DISABLE_UPDATE_PROMPT=true
+fi
+
 plugins=(
 {% if ansible_installed %}
     ansible
