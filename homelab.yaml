@@ -33,6 +33,11 @@
       - role: "vim"
         tags: "vim"
 
+      - role: "backups"
+        tags:
+           - "backup"
+           - "backups"
+
       - role: "packages"
         tags:
             - "packages"

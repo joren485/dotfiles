@@ -10,6 +10,11 @@ ssh_key:
 
 package_vim: "gvim"
 
+restic_repository: "{{ vault_restic_repository }}"
+restic_password: "{{ vault_restic_password }}"
+
+backblaze_credentials: "{{ vault_backblaze_credentials }}"
+
 packages_host:
   - "android-tools"
   - "android-udev"
