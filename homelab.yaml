@@ -7,7 +7,9 @@
         tags: "common"
 
       - role: "ssh"
-        tags: "ssh"
+        tags:
+            - "ssh"
+            - "openssh"
 
       - role: "gnupg"
         tags:
@@ -36,9 +38,6 @@
             - "packages"
             - "git"
             - "docker"
-            - "ssh"
-            - "openssh"
-            - "dunst"
 
 - name: "Configure hosts at home"
   hosts: "homelab"
