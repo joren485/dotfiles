@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+export RESTIC_REPOSITORY="{{ restic_repository }}"
+export RESTIC_PASSWORD="{{ restic_password }}"
+
+export B2_ACCOUNT_ID="{{ backblaze_credentials.b2_account_id }}"
+export B2_ACCOUNT_KEY="{{ backblaze_credentials.b2_account_key }}"
+
+echo "Archiving installed apps on phone"
+if which adb >/dev/null && adb get-state >/dev/null 2>&1; then 
+    adb shell "pm list packages -3" > "{{ ansible_user_dir }}/archive/hosts/phone/installed_apps_$(date '+%F_%T').txt"
+else
+    echo "Could not connect to phone"
+fi
+
+echo "Archiving installed packages"
+pacman --query --explicit --native > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_$(date '+%F_%T').txt"
+pacman --query --deps --native > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_dependencies_$(date '+%F_%T').txt"
+pacman --query --explicit --foreign > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_aur_$(date '+%F_%T').txt"
+pacman --query --deps --foreign > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_aur_dependencies_$(date '+%F_%T').txt"
+
+echo "Running restic backup to Backblaze"
+restic backup "{{ ansible_user_dir }}/archive" "{{ ansible_user_dir }}/dotfiles" "{{ ansible_user_dir }}/projects" "{{ ansible_user_dir }}/study"
