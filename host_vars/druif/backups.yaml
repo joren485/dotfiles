@@ -1,0 +1,14 @@
+---
+
+restic_repository_backblaze: "{{ vault_restic_repository }}"
+restic_repository_local: "/run/media/joren/Samsung_T5/restic/"
+restic_password: "{{ vault_restic_password }}"
+
+backblaze_credentials: "{{ vault_backblaze_credentials }}"
+
+backup_source_directories:
+  - "{{ ansible_user_dir }}/archive"
+  - "{{ ansible_user_dir }}/dotfiles"
+  - "{{ ansible_user_dir }}/projects"
+  - "{{ ansible_user_dir }}/study"
+
