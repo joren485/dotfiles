@@ -13,6 +13,7 @@
       - "playerctl"
       - "ttf-dejavu"
       - "feh"
+      - "udiskie"
     state: "present"
 
 - name: "Create necessary directories"
