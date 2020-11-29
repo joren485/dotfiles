@@ -10,6 +10,7 @@
   file:
     path: "{{ ansible_user_dir }}/.local/bin/"
     state: "directory"
+    mode: "0755"
 
 - name: "Copy backup script"
   template:

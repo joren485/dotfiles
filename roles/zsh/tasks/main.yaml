@@ -41,6 +41,7 @@
   copy:
     src: "{{ item }}"
     dest: "{{ ansible_user_dir }}/.{{ item }}"
+    mode: "0644"
   loop:
     - "zlogin"
     - "zshenv"
@@ -49,6 +50,7 @@
   template:
     src: "zshrc.j2"
     dest: "{{ ansible_user_dir }}/.zshrc"
+    mode: "0644"
 
 - name: "Clone oh-my-zsh"
   git:
@@ -66,6 +68,7 @@
   copy:
     src: "prompt.zsh-theme"
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/prompt.zsh-theme"
+    mode: "0644"
 
 - name: "Install Poetry completions"
   when: "poetry_installed"
@@ -74,6 +77,7 @@
       file:
         state: "directory"
         path: "{{ ansible_user_dir }}/.oh-my-zsh/plugins/poetry/"
+        mode: "0755"
 
     - name: "Generate Poetry completions"
       shell: "poetry completions zsh > {{ ansible_user_dir }}/.oh-my-zsh/plugins/poetry/_poetry"

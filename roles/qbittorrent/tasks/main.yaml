@@ -1,6 +1,7 @@
 ---
 
-- include_vars: "vault.yaml"
+- name: "Include role vault"
+  include_vars: "vault.yaml"
 
 - name: "Install qBittorrent and dependencies"
   become: yes
@@ -72,11 +73,13 @@
       file:
         path: "{{ ansible_user_dir }}/.config/qBittorrent/"
         state: "directory"
+        mode: "0755"
 
     - name: "Copy qBittorrent.conf"
       template:
         src: "qBittorrent.conf.j2"
         dest: "{{ ansible_user_dir }}/.config/qBittorrent/qBittorrent.conf"
+        mode: "0644"
 
     - name: "Enable and start qBittorrent"
       become: yes
@@ -91,6 +94,7 @@
       file:
         path: "{{ ansible_user_dir }}/.local/bin/"
         state: "directory"
+        mode: "0755"
 
     - name: "Copy port forward script"
       copy:

@@ -20,6 +20,7 @@
   file:
     path: "{{ ansible_user_dir }}/{{ item }}"
     state: "directory"
+    mode: "0755"
   loop:
     - ".local/bin/"
     - ".local/share/backgrounds/"
@@ -57,3 +58,4 @@
   copy:
     src: "logind.conf"
     dest: "/etc/systemd/logind.conf"
+    mode: "0644"

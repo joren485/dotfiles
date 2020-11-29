@@ -6,45 +6,37 @@ from enum import Enum
 
 
 class PlaybackStatus(Enum):
-    PAUSED = 'Paused'
-    PLAYING = 'Playing'
-    STOPPED = 'Stopped'
+    PAUSED = "Paused"
+    PLAYING = "Playing"
+    STOPPED = "Stopped"
 
 
-ICON_PLAY = ''
-ICON_PAUSE = ''
-ICON_STOP = ''
+ICON_PLAY = ""
+ICON_PAUSE = ""
+ICON_STOP = ""
 
 try:
 
     session_bus = dbus.SessionBus()
 
     spotify_bus = session_bus.get_object(
-        'org.mpris.MediaPlayer2.spotify',
-        '/org/mpris/MediaPlayer2'
+        "org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2"
     )
 
-    spotify_properties = dbus.Interface(
-        spotify_bus,
-        'org.freedesktop.DBus.Properties'
-    )
+    spotify_properties = dbus.Interface(spotify_bus, "org.freedesktop.DBus.Properties")
 
-    metadata = spotify_properties.Get(
-        'org.mpris.MediaPlayer2.Player',
-        'Metadata'
-    )
+    metadata = spotify_properties.Get("org.mpris.MediaPlayer2.Player", "Metadata")
 
     playback_status = spotify_properties.Get(
-        'org.mpris.MediaPlayer2.Player',
-        'PlaybackStatus'
+        "org.mpris.MediaPlayer2.Player", "PlaybackStatus"
     )
 
 except dbus.exceptions.DBusException:
-    print(' ~ ')
+    print(" ~ ")
 
 else:
 
-    icon = ''
+    icon = ""
     if PlaybackStatus(playback_status) == PlaybackStatus.PAUSED:
         icon = ICON_PAUSE
     elif PlaybackStatus(playback_status) == PlaybackStatus.PLAYING:
@@ -60,6 +52,6 @@ else:
     )
 
     if len(string) > 80:
-        string = string[:77] + '...'
+        string = string[:77] + "..."
 
     print(string)

@@ -6,7 +6,7 @@ export B2_ACCOUNT_ID="{{ backblaze_credentials.b2_account_id }}"
 export B2_ACCOUNT_KEY="{{ backblaze_credentials.b2_account_key }}"
 
 echo "[*] Archiving installed apps on phone."
-if which adb >/dev/null && adb get-state >/dev/null 2>&1; then 
+if which adb >/dev/null && adb get-state >/dev/null 2>&1; then
     adb shell "pm list packages -3" > "{{ ansible_user_dir }}/archive/hosts/phone/installed_apps_$(date '+%F_%T').txt"
 else
     echo "[-] Could not connect to phone."
@@ -19,7 +19,7 @@ pacman --query --explicit --foreign > "{{ ansible_user_dir }}/archive/hosts/drui
 pacman --query --deps --foreign > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_aur_dependencies_$(date '+%F_%T').txt"
 
 echo "[*] Running Restic backup to {{ restic_repository_local }}."
-if [ -d "{{ restic_repository_local }}" ] 
+if [ -d "{{ restic_repository_local }}" ]
 then
     restic --repo "{{ restic_repository_local }}" backup "{{ backup_source_directories|map('quote')|join('\" \"') }}"
 else

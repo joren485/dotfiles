@@ -13,7 +13,7 @@
 - name: "Install packages"
   become: yes
   package:
-    name: "{{packages }}"
+    name: "{{ packages }}"
     state: "present"
 
 - name: "Show wich AUR packages to install"
@@ -64,11 +64,13 @@
       file:
         path: "{{ ansible_user_dir }}/.config/git/"
         state: "directory"
+        mode: "0755"
 
     - name: "Copy git configuration files"
       copy:
         src: "git/{{ item }}"
         dest: "{{ ansible_user_dir }}/.config/git/{{ item }}"
+        mode: "0644"
       loop:
         - "config"
         - "attributes"

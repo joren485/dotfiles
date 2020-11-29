@@ -149,4 +149,4 @@ exec --no-startup-id xss-lock lock_screen
 exec --no-startup-id MONITOR="eDP1" polybar --reload --quiet main
 
 # Start udiskie
-exec --no-startup-id udiskie --automount --notify --no-tray --file-manager="" 
+exec --no-startup-id udiskie --automount --notify --no-tray --file-manager=""
