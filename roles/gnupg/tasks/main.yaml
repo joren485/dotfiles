@@ -7,7 +7,9 @@
     state: "present"
 
 - name: "Import PGP key"
-  shell: "echo {{ vault_pgp_private_key | quote }} | gpg --batch --import"
+  shell: |
+    set -o pipefail
+    echo {{ vault_pgp_private_key | quote }} | gpg --batch --import
   register: "result_private_key_import"
   changed_when: "result_private_key_import is defined and 'secret keys imported: 1' in result_private_key_import.stderr"
 
@@ -15,4 +17,5 @@
   copy:
     src: "gpg-agent.conf"
     dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
+    mode: "0644"
   notify: "Reload gpg-agent"

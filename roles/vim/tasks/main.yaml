@@ -19,11 +19,13 @@
   file:
     path: "{{ ansible_user_dir }}/.vim/autoload/"
     state: "directory"
+    mode: "0755"
 
 - name: "Copy .vimrc"
   copy:
     src: "vimrc"
     dest: "{{ ansible_user_dir }}/.vimrc"
+    mode: "0644"
 
 - name: "Install vim-plug"
   get_url:
