@@ -16,4 +16,4 @@
   template:
     src: "backup.sh.j2"
     dest: "{{ ansible_user_dir }}/.local/bin/backup.sh"
-    mode: "755"
+    mode: "0755"

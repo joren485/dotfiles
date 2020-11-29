@@ -32,7 +32,7 @@
   get_url:
     url: "https://i.imgur.com/RKad4BW.png"
     dest: "{{ ansible_user_dir }}/.local/share/backgrounds/triangle.png"
-    mode: "644"
+    mode: "0644"
 
 - name: "Copy configuration files"
   copy:
