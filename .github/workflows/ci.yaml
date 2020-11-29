@@ -1,0 +1,38 @@
+---
+
+name: Linting
+on: [push]
+
+jobs:
+    ansible-lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Check for trailing whitespaces
+              run: grep --exclude-dir=".git" --exclude='*.md' --files-with-matches --recursive '[[:blank:]]$' && exit 1 || echo 'No trailing whitespaces found.'
+
+            - name: Check for files with the yml extension
+              run: if [[ -n $(find . -iname '*.yml') ]]; then exit 1; fi
+
+            - uses: actions/setup-python@v2
+
+            - name: Install dependencies
+              run: pip install --no-cache-dir --upgrade --quiet pip ansible-lint black
+
+            - name: Disable the vault password
+              run: sed -i 's/^vault_password_file/#&/' ansible.cfg
+
+            - name: Run ansible-lint
+              run: ansible-lint --nocolor homelab.yaml remote.yaml
+
+            - name: Run playbook syntax check
+              run: ansible-playbook homelab.yaml remote.yaml --syntax-check
+
+            - name: Run shellcheck
+              run: find . -type f -name "*.sh*" -exec shellcheck {} \;
+
+            - name: Run black
+              run: black --check .
