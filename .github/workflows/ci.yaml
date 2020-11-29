@@ -35,4 +35,4 @@ jobs:
               run: find . -type f -name "*.sh*" -exec shellcheck {} \;
 
             - name: Run black
-              run: black --check .
+              run: black --include="\.py(?:\.j2)?" --check .
