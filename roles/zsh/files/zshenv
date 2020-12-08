@@ -4,7 +4,6 @@ export BROWSER=google-chrome-stable
 
 export VISUAL=vim
 export EDITOR=vim
-export PAGER=vimpager
 
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
