@@ -42,11 +42,11 @@
 
 - name: "Setup Private Internet Access VPN"
   block:
-    - name: "Copy Frankfurt config"
+    - name: "Copy OpenVPN config"
       become: yes
       copy:
-        src: "openvpn/frankfurt.conf"
-        dest: "/etc/openvpn/client/frankfurt.conf"
+        src: "netherlands.ovpn"
+        dest: "/etc/openvpn/client/netherlands.conf"
         owner: "root"
         group: "root"
         mode: "0600"
@@ -56,16 +56,50 @@
       template:
         src: "openvpn_login.j2"
         dest: "/etc/openvpn/login"
-        owner: "root"
-        group: "root"
+        owner: "openvpn"
+        group: "network"
         mode: "0600"
 
     - name: "Enable and start OpenVPN"
       become: yes
       systemd:
-        name: "openvpn-client@frankfurt"
+        name: "openvpn-client@netherlands"
         state: "started"
         enabled: yes
+
+- name: "Setup port forward script"
+  block:
+    - name: "Create .local/bin/"
+      file:
+        path: "{{ ansible_user_dir }}/.local/bin/"
+        state: "directory"
+        mode: "0755"
+
+    - name: "Copy port forward script"
+      copy:
+        src: "setup-port-forward.py"
+        dest: "{{ ansible_user_dir }}/.local/bin/setup-port-forward.py"
+        mode: "0755"
+
+    - name: "Copy port forwarding systemd files"
+      become: yes
+      template:
+        src: "setup-port-forward.{{ item }}.j2"
+        dest: "/usr/lib/systemd/system/setup-port-forward.{{ item }}"
+        owner: "root"
+        group: "root"
+        mode: "0644"
+      loop:
+        - "timer"
+        - "service"
+
+    - name: "Enable port forward service"
+      become: yes
+      systemd:
+        name: "setup-port-forward.timer"
+        enabled: yes
+        daemon_reload: yes
+
 
 - name: "Setup qBittorrent"
   block:
@@ -88,35 +122,12 @@
         state: "started"
         enabled: yes
 
-- name: "Setup port forward script"
-  block:
-    - name: "Create .local/bin/"
-      file:
-        path: "{{ ansible_user_dir }}/.local/bin/"
-        state: "directory"
-        mode: "0755"
-
-    - name: "Copy port forward script"
-      copy:
-        src: "setup-port-forward.py"
-        dest: "{{ ansible_user_dir }}/.local/bin/setup-port-forward.py"
-        mode: "0755"
-
-    - name: "Copy port forward unit file"
-      become: yes
-      copy:
-        src: "pia-qbittorrent-port-forward.service"
-        dest: "/usr/lib/systemd/system/pia-qbittorrent-port-forward.service"
-        owner: "root"
-        group: "root"
-        mode: "0644"
-
-    - name: "Enable port forward service"
-      become: yes
-      systemd:
-        name: "pia-qbittorrent-port-forward"
-        enabled: yes
-        daemon_reload: yes
+    - name: "Run port forwarding script"
+      command: >-
+        {{ ansible_user_dir }}/.local/bin/setup-port-forward.py
+        --username='{{ private_internet_access_credentials.username }}'
+        --password='{{ private_internet_access_credentials.password }}'
+      changed_when: no
 
 - name: "Setup NFS shares"
   become: yes
