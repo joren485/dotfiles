@@ -9,3 +9,10 @@ courgette
 aubergine
 courgette
 pompoen
+
+[netdata_parents]
+pompoen
+
+[netdata_children]
+aubergine
+courgette

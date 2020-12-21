@@ -1,0 +1,50 @@
+---
+
+- name: "Include role vault"
+  include_vars: "vault.yaml"
+
+- name: "Install dependencies"
+  become: yes
+  package:
+    name:
+      - "netdata"
+    state: "present"
+
+- name: "Enable and start netdata"
+  become: yes
+  systemd:
+    name: "netdata"
+    state: "started"
+    enabled: yes
+
+- name: "Copy Netdata configuration files"
+  become: yes
+  template:
+    src: "{{ item }}.conf.j2"
+    dest: "/etc/netdata/{{ item }}.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: "Restart Netdata"
+  loop:
+    - "netdata"
+    - "stream"
+
+- name: "Install fping"
+  when: "netdata_host_type == 'parent'"
+  block:
+    - name: "Install parent dependencies"
+      become: yes
+      package:
+        name: "fping"
+        state: "present"
+
+    - name: "Copy fping configuration"
+      become: yes
+      template:
+        src: "fping.conf.j2"
+        dest: "/etc/netdata/fping.conf"
+        owner: "root"
+        group: "root"
+        mode: "0644"
+      notify: "Restart Netdata"

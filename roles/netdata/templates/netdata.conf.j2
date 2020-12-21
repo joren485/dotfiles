@@ -1,0 +1,15 @@
+# {{ ansible_managed }}
+[global]
+{% if netdata_host_type == "child" %}
+    memory mode = none
+{% endif %}
+
+[web]
+{% if netdata_host_type == "child" %}
+    mode = none
+{% endif %}
+{% if netdata_host_type == "parent" %}
+    web files owner = root
+    web files group = netdata
+    bind to = {{ ansible_default_ipv4.address }}
+{% endif %}
