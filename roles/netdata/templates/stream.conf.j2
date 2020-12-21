@@ -1,0 +1,12 @@
+# {{ ansible_managed }}
+{% if netdata_host_type == "child" %}
+[stream]
+    enabled = yes
+    destination = pompoen:19999
+    api key = {{ netdata_api_key }}
+{% endif %}
+{% if netdata_host_type == "parent" %}
+[{{ netdata_api_key }}]
+    enabled = yes
+    allow from = *
+{% endif %}
