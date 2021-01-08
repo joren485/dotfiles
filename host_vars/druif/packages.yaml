@@ -32,7 +32,6 @@ packages_host:
   - "veracrypt"
   - "vlc"
   - "wireshark-qt"
-  - "xf86-video-intel"
   - "zathura"
   - "zathura-pdf-poppler"
 
