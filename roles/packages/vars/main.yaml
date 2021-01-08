@@ -33,7 +33,6 @@ packages_common:
   - "reflector"
   - "rsync"
   - "rxvt-unicode-terminfo"
-  - "smartmontools"
   - "speedtest-cli"
   - "sshpass"
   - "strace"
