@@ -39,3 +39,14 @@
     regexp: "^#?PasswordAuthentication (yes|no)$"
     line: "PasswordAuthentication no"
     state: "present"
+
+- name: "Disable system beep"
+  become: yes
+  lineinfile:
+    path: "/etc/modprobe.d/nobeep.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+    line: "blacklist pcspkr"
+    state: "present"
+    create: yes
