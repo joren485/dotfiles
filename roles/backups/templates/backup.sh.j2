@@ -21,10 +21,10 @@ pacman --query --deps --foreign > "{{ ansible_user_dir }}/archive/hosts/druif/pa
 echo "[*] Running Restic backup to {{ restic_repository_local }}."
 if [ -d "{{ restic_repository_local }}" ]
 then
-    restic --repo "{{ restic_repository_local }}" backup "{{ backup_source_directories|map('quote')|join('\" \"') }}"
+    restic --repo "{{ restic_repository_local }}" backup "{{ backup_sources|map('quote')|join('\" \"') }}"
 else
     echo "[-] {{ restic_repository_local }} not available as a backup location."
 fi
 
 echo "[*] Running Restic backup to Backblaze."
-restic --repo "{{ restic_repository_backblaze }}" backup "{{ backup_source_directories|map('quote')|join('\" \"') }}"
+restic --repo "{{ restic_repository_backblaze }}" backup "{{ backup_sources|map('quote')|join('\" \"') }}"
