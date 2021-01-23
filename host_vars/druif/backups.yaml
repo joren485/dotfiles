@@ -6,9 +6,12 @@ restic_password: "{{ vault_restic_password }}"
 
 backblaze_credentials: "{{ vault_backblaze_credentials }}"
 
-backup_source_directories:
+backup_sources:
   - "{{ ansible_user_dir }}/archive"
   - "{{ ansible_user_dir }}/dotfiles"
   - "{{ ansible_user_dir }}/projects"
   - "{{ ansible_user_dir }}/study"
-
+  - "{{ ansible_user_dir }}/.bash_history"
+  - "{{ ansible_user_dir }}/.lesshst"
+  - "{{ ansible_user_dir }}/.python_history"
+  - "{{ ansible_user_dir }}/.zsh_history"
