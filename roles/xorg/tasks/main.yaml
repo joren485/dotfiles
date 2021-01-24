@@ -10,6 +10,7 @@
       - "ttf-dejavu"
       - "xterm"
       - "arandr"
+      - "xclip"
     state: "present"
 
 - name: "Create .local/bin/"
