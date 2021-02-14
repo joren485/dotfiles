@@ -28,9 +28,6 @@ jobs:
             - name: Run ansible-lint
               run: ansible-lint --nocolor -x 701 homelab.yaml remote.yaml
 
-            - name: Run playbook syntax check
-              run: ansible-playbook homelab.yaml remote.yaml --syntax-check
-
             - name: Run shellcheck
               run: find . -type f -name "*.sh*" -exec shellcheck {} \;
 
