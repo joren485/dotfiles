@@ -1,4 +1,4 @@
-local time='%{$fg[red]%}%*%{$reset_color%}'
+local time='%{$fg[red]%}%D{%H:%M:%S}%{$reset_color%}'
 
 local user='%{$fg[magenta]%}%n@%{$fg[magenta]%}%m%{$reset_color%}'
 local user_remote='%{$fg_bold[green]%}%n@%{$fg_bold[green]%}%m%{$reset_color%}'
