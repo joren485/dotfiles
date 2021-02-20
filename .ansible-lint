@@ -1,6 +1,5 @@
 ---
 
-quiet: yes
 exclude_paths:
     - ".github"
     - "group_vars/all/vault.yaml"
