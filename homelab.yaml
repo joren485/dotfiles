@@ -35,8 +35,8 @@
 
       - role: "backups"
         tags:
-           - "backup"
-           - "backups"
+            - "backup"
+            - "backups"
 
       - role: "packages"
         tags:
@@ -68,21 +68,21 @@
 - name: "Setup Netdata on parents"
   hosts: "netdata_parents"
   roles:
-    - role: "netdata"
-      vars:
-        netdata_host_type: "parent"
-      tags:
-        - "netdata"
-        - "netdata-parents"
-        - "netdata-parent"
+      - role: "netdata"
+        vars:
+            netdata_host_type: "parent"
+        tags:
+            - "netdata"
+            - "netdata-parents"
+            - "netdata-parent"
 
 - name: "Setup Netdata on children"
   hosts: "netdata_children"
   roles:
-    - role: "netdata"
-      vars:
-        netdata_host_type: "child"
-      tags:
-        - "netdata"
-        - "netdata-children"
-        - "netdata-child"
+      - role: "netdata"
+        vars:
+            netdata_host_type: "child"
+        tags:
+            - "netdata"
+            - "netdata-children"
+            - "netdata-child"

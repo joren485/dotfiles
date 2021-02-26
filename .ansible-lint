@@ -6,3 +6,6 @@ exclude_paths:
     - "roles/netdata/vars/vault.yaml"
     - "roles/qbittorrent/vars/vault.yaml"
     - "host_vars/druif/vault.yaml"
+
+skip_list:
+    - "truthy"

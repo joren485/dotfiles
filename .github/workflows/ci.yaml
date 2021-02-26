@@ -20,7 +20,7 @@ jobs:
             - uses: actions/setup-python@v2
 
             - name: Install dependencies
-              run: pip install --no-cache-dir --upgrade --quiet ansible ansible-lint black
+              run: pip install --no-cache-dir --upgrade --quiet "ansible-lint[community,yamllint]" black
 
             - name: Disable the vault password
               run: sed -i 's/^vault_password_file/#&/' ansible.cfg
