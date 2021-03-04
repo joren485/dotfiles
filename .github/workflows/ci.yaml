@@ -1,35 +1,35 @@
 ---
 
-name: Linting
-on: [push]
+name: "Linting"
+on: ["push"]
 
 jobs:
     ansible-lint:
-        name: Lint
-        runs-on: ubuntu-latest
+        name: "Lint"
+        runs-on: "ubuntu-latest"
         steps:
-            - name: Checkout repository
-              uses: actions/checkout@v2
+            - name: "Checkout repository"
+              uses: "actions/checkout@v2"
 
-            - name: Check for trailing whitespaces
-              run: grep --exclude-dir=".git" --exclude='*.md' --files-with-matches --recursive '[[:blank:]]$' && exit 1 || echo 'No trailing whitespaces found.'
+            - name: "Check for trailing whitespaces"
+              run: "grep --exclude-dir='.git' --exclude='*.md' --files-with-matches --recursive '[[:blank:]]$' && exit 1 || echo 'No trailing whitespaces found.'"
 
-            - name: Check for files with the yml extension
-              run: if [[ -n $(find . -iname '*.yml') ]]; then exit 1; fi
+            - name: "Check for files with the yml extension"
+              run: "if [[ -n $(find . -iname '*.yml') ]]; then exit 1; fi"
 
-            - uses: actions/setup-python@v2
+            - uses: "actions/setup-python@v2"
 
-            - name: Install dependencies
-              run: pip install --no-cache-dir --upgrade --quiet "ansible-lint[community,yamllint]" black
+            - name: "Install dependencies"
+              run: "pip install --no-cache-dir --upgrade --quiet ansible-lint[community,yamllint] black"
 
-            - name: Disable the vault password
-              run: sed -i 's/^vault_password_file/#&/' ansible.cfg
+            - name: "Disable the vault password"
+              run: "sed -i 's/^vault_password_file/#&/' ansible.cfg"
 
-            - name: Run ansible-lint
-              run: ansible-lint -q
+            - name: "Run ansible-lint"
+              run: "ansible-lint -q"
 
-            - name: Run shellcheck
-              run: find . -type f -name "*.sh*" -exec shellcheck {} \;
+            - name: "Run shellcheck"
+              run: "find . -type f -name '*.sh*' -exec shellcheck {} \\;"
 
-            - name: Run black
-              run: black --include="\.py(?:\.j2)?" --check .
+            - name: "Run black"
+              run: "black --include='\\.py(?:\\.j2)?' --check ."
