@@ -8,6 +8,7 @@ packages_common:
   - "curl"
   - "dsniff"
   - "htop"
+  - "inetutils"
   - "jq"
   - "ldns"
   - "linux"
