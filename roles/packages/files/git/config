@@ -14,6 +14,9 @@
         amend = commit --amend
         aa = commit --amend --all
 
+[init]
+        defaultBranch = main
+
 [diff "ansible-vault"]
         textconv = ansible-vault view
 
