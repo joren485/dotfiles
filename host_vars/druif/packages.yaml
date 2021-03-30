@@ -13,6 +13,7 @@ packages_host:
   - "docker"
   - "docker-compose"
   - "firefox"
+  - "fwupd"
   - "git"
   - "gpart"
   - "gparted"
