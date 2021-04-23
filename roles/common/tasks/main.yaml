@@ -18,6 +18,7 @@
     comment: "Plex Media Server"
     uid: "976"
     state: "present"
+    create_home: no
 
 - name: "Set locale"
   become: yes
