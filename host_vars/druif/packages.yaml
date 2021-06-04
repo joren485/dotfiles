@@ -19,7 +19,6 @@ packages_host:
   - "gparted"
   - "intel-ucode"
   - "iw"
-  - "mupdf-gl"
   - "network-manager-applet"
   - "networkmanager-openvpn"
   - "pavucontrol"
@@ -33,6 +32,8 @@ packages_host:
   - "veracrypt"
   - "vlc"
   - "wireshark-qt"
+  - "zathura"
+  - "zathura-pdf-mupdf"
 
 packages_host_aur:
   - "google-chrome"
