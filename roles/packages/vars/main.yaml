@@ -9,6 +9,7 @@ packages_common:
   - "dsniff"
   - "htop"
   - "inetutils"
+  - "iperf3"
   - "jq"
   - "ldns"
   - "linux"
