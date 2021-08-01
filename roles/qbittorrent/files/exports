@@ -1,2 +1,2 @@
-/srv/qbittorrent/plex aubergine(rw,sync)
-/srv/qbittorrent/ druif(rw,sync)
+/srv/qbittorrent/plex aubergine(rw)
+/srv/qbittorrent/ 192.168.1.0/24(ro,insecure) druif(rw)
