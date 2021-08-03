@@ -10,78 +10,51 @@
   pacman:
     update_cache: yes
 
+- name: "Install pacman hooks"
+  become: yes
+  block:
+    - name: "Install pacman-contrib"
+      pacman:
+        name: "pacman-contrib"
+        state: "present"
+
+    - name: "Enable pacman hooks directory"
+      lineinfile:
+        path: "/etc/pacman.conf"
+        line: "HookDir = /etc/pacman.d/hooks/"
+        regexp: '^#?HookDir\s*='
+
+    - name: "Create /etc/pacman.d/hooks"
+      file:
+        path: "/etc/pacman.d/hooks"
+        state: "directory"
+        mode: "0755"
+        owner: "root"
+        group: "root"
+
+    - name: "Copy hook files"
+      copy:
+        src: "pacman/{{ item }}"
+        dest: "/etc/pacman.d/hooks/95-{{ item }}"
+        mode: "0755"
+        owner: "root"
+        group: "root"
+      loop:
+        - "pacdiff.hook"
+        - "systemd-boot-pacman.hook"
+
+
 - name: "Install packages"
   become: yes
   package:
     name: "{{ packages }}"
     state: "present"
 
-- name: "Show wich AUR packages to install"
+- name: "Show which AUR packages to install"
   when: "packages_common_aur and packages_host_aur"
   debug:
     msg: "Please install {{ item }} on {{ ansible_hostname }}."
   loop: "{{ packages_aur }}"
 
-- name: "Enable NetworkManager"
-  when: "'networkmanager' in packages"
-  become: yes
-  systemd:
-    name: "NetworkManager"
-    state: "started"
-    enabled: yes
-    daemon_reload: yes
-
-- name: "Setup C&CZ VPN"
-  when: "'networkmanager-openvpn' in packages"
-  become: yes
-  copy:
-    src: "networkmanager/openvpn-science.nmconnection"
-    dest: "/etc/NetworkManager/system-connections/openvpn-science.nmconnection"
-    owner: "root"
-    group: "root"
-    mode: "0600"
-
-- name: "Add user to adbusers group"
-  when: "'android-tools' in packages"
-  become: yes
-  user:
-    name: "{{ ansible_user }}"
-    groups: "adbusers"
-    append: yes
-
-- name: "Add user to docker group"
-  when: "'docker' in packages"
-  become: yes
-  user:
-    name: "{{ ansible_user }}"
-    groups: "docker"
-    append: yes
-
-- name: "Setup Git configuration"
-  when: "'git' in packages"
-  block:
-    - name: "Create Git config directory"
-      file:
-        path: "{{ ansible_user_dir }}/.config/git/"
-        state: "directory"
-        mode: "0755"
-
-    - name: "Copy git configuration files"
-      copy:
-        src: "git/{{ item }}"
-        dest: "{{ ansible_user_dir }}/.config/git/{{ item }}"
-        mode: "0644"
-      loop:
-        - "config"
-        - "attributes"
-
-- name: "Mount and add NFS share"
-  when: "'plex-media-server' in packages_aur"
-  mount:
-    src: "courgette:/srv/qbittorrent/plex/"
-    path: "/mnt/plex/"
-    fstype: "nfs"
-    opts: "defaults,timeo=900,retrans=5,_netdev"
-    dump: "0"
-    passno: "0"
-    state: "present"
+- name: "Run package specific config"
+  import_tasks: "package_config.yaml"
