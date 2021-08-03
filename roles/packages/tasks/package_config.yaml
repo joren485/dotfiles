@@ -1,0 +1,65 @@
+---
+
+- name: "Enable NetworkManager"
+  when: "'networkmanager' in packages"
+  become: yes
+  systemd:
+    name: "NetworkManager"
+    state: "started"
+    enabled: yes
+    daemon_reload: yes
+
+- name: "Setup C&CZ VPN"
+  when: "'networkmanager-openvpn' in packages"
+  become: yes
+  copy:
+    src: "networkmanager/openvpn-science.nmconnection"
+    dest: "/etc/NetworkManager/system-connections/openvpn-science.nmconnection"
+    owner: "root"
+    group: "root"
+    mode: "0600"
+
+- name: "Add user to adbusers group"
+  when: "'android-tools' in packages"
+  become: yes
+  user:
+    name: "{{ ansible_user }}"
+    groups: "adbusers"
+    append: yes
+
+- name: "Add user to docker group"
+  when: "'docker' in packages"
+  become: yes
+  user:
+    name: "{{ ansible_user }}"
+    groups: "docker"
+    append: yes
+
+- name: "Setup Git configuration"
+  when: "'git' in packages"
+  block:
+    - name: "Create Git config directory"
+      file:
+        path: "{{ ansible_user_dir }}/.config/git/"
+        state: "directory"
+        mode: "0755"
+
+    - name: "Copy git configuration files"
+      copy:
+        src: "git/{{ item }}"
+        dest: "{{ ansible_user_dir }}/.config/git/{{ item }}"
+        mode: "0644"
+      loop:
+        - "config"
+        - "attributes"
+
+- name: "Mount and add NFS share"
+  when: "'plex-media-server' in packages_aur"
+  mount:
+    src: "courgette:/srv/qbittorrent/plex/"
+    path: "/mnt/plex/"
+    fstype: "nfs"
+    opts: "defaults,timeo=900,retrans=5,_netdev"
+    dump: "0"
+    passno: "0"
+    state: "present"

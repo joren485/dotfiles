@@ -24,7 +24,6 @@ packages_common:
   - "nmap"
   - "openbsd-netcat"
   - "p7zip"
-  - "pacman-contrib"
   - "polkit"
   - "progress"
   - "pwgen"
@@ -48,5 +47,4 @@ packages_common:
   - "whois"
   - "zip"
 
-packages_common_aur:
-  - "systemd-boot-pacman-hook"
+packages_common_aur: []
