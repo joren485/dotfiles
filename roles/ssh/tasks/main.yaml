@@ -37,3 +37,11 @@
     src: "config"
     mode: "0644"
     dest: "{{ ansible_user_dir }}/.ssh/config"
+
+- name: "Disable SSH password logins"
+  become: yes
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "^#?PasswordAuthentication (yes|no)$"
+    line: "PasswordAuthentication no"
+    state: "present"
