@@ -39,7 +39,6 @@
     append: yes
 
 - name: "Copy python scripts files"
-  become: yes
   copy:
     src: "scripts/{{ item }}"
     dest: "{{ ansible_user_dir }}/.local/bin/{{ item }}"
