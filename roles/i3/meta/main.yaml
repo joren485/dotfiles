@@ -2,3 +2,4 @@
 
 dependencies:
   - role: "xorg"
+  - role: "polybar"
