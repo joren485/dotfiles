@@ -1,5 +1,0 @@
----
-
-dependencies:
-  - role: "xorg"
-  - role: "i3"
