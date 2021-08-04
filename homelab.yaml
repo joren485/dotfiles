@@ -6,6 +6,17 @@
       - role: "common"
         tags: "common"
 
+      - role: "users"
+        tags:
+            - "user"
+            - "users"
+
+      - role: "packages"
+        tags:
+            - "packages"
+            - "git"
+            - "docker"
+
       - role: "ssh"
         tags:
             - "ssh"
@@ -32,17 +43,19 @@
             - "backup"
             - "backups"
 
-      - role: "packages"
-        tags:
-            - "packages"
-            - "git"
-            - "docker"
-
 - name: "Configure hosts at home"
   hosts: "homelab"
   roles:
       - role: "common"
         tags: "common"
+
+      - role: "users"
+        tags:
+            - "user"
+            - "users"
+
+      - role: "packages"
+        tags: "packages"
 
       - role: "zsh"
         tags: "zsh"
@@ -50,8 +63,6 @@
       - role: "vim"
         tags: "vim"
 
-      - role: "packages"
-        tags: "packages"
 
 - name: "Setup qBittorrent"
   hosts: "qbittorrent"
