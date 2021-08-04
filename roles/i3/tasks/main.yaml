@@ -53,13 +53,6 @@
     - src: "i3/config"
       dest: ".config/i3/config"
 
-- name: "Copy logind.conf"
-  become: yes
-  copy:
-    src: "logind.conf"
-    dest: "/etc/systemd/logind.conf"
-    mode: "0644"
-
 - name: "Place dock script"
   copy:
     src: "dock.sh"
