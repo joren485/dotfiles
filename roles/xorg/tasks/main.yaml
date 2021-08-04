@@ -28,15 +28,6 @@
     - "Xresources"
     - "xinitrc"
 
-- name: "Place dock scripts"
-  copy:
-    src: "{{ item }}"
-    dest: "{{ ansible_user_dir }}/.local/bin/{{ item }}"
-    mode: "0755"
-  loop:
-    - "undock.sh"
-    - "dock.sh"
-
 - name: "Setup fonts"
   block:
     - name: "Install fonts"

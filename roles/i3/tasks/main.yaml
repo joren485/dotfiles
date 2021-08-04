@@ -59,3 +59,9 @@
     src: "logind.conf"
     dest: "/etc/systemd/logind.conf"
     mode: "0644"
+
+- name: "Place dock script"
+  copy:
+    src: "dock.sh"
+    dest: "{{ ansible_user_dir }}/.local/bin/dock.sh"
+    mode: "0755"
