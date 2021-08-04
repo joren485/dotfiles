@@ -1,0 +1,35 @@
+---
+
+- name: "Allow wheel group sudo permissions"
+  become: yes
+  copy:
+    src: "00-wheel"
+    dest: "/etc/sudoers.d/00-wheel"
+    mode: "0440"
+    owner: "root"
+    group: "root"
+    validate: "visudo -cf %s"
+
+- name: "Create main user"
+  become: yes
+  user:
+    name: "{{ ansible_user }}"
+    state: "present"
+    append: yes
+    groups:
+      - "wheel"
+
+- name: "Create plex user"
+  become: yes
+  user:
+    name: "plex"
+    comment: "Plex Media Server"
+    uid: "976"
+    state: "present"
+    create_home: no
+
+- name: "Disable root password"
+  become: yes
+  user:
+    name: "root"
+    password_lock: yes

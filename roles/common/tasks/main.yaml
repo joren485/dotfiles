@@ -5,21 +5,6 @@
   hostname:
     name: "{{ inventory_hostname }}"
 
-- name: "Disable root password"
-  become: yes
-  user:
-    name: "root"
-    password_lock: yes
-
-- name: "Create plex user"
-  become: yes
-  user:
-    name: "plex"
-    comment: "Plex Media Server"
-    uid: "976"
-    state: "present"
-    create_home: no
-
 - name: "Set locale"
   become: yes
   block:
