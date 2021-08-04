@@ -26,7 +26,6 @@ packages_host:
   - "network-manager-applet"
   - "networkmanager-openvpn"
   - "pavucontrol"
-  - "pulseaudio"
   - "pwgen"
   - "python-black"
   - "python-poetry"

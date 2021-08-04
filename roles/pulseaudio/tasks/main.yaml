@@ -1,0 +1,31 @@
+---
+
+- name: "Install dependencies"
+  become: yes
+  pacman:
+    name:
+      - "bluez"
+      - "bluez-utils"
+      - "blueman"
+      - "pulseaudio"
+      - "pulseaudio-bluetooth"
+
+- name: "Enable automatically switching profiles on Bluetooth devices"
+  become: yes
+  lineinfile:
+    path: "/etc/pulse/default.pa"
+    line: "load-module module-bluetooth-policy auto_switch=2"
+    regexp: "^load-module module-bluetooth-policy"
+
+- name: "Enable bluetooth service"
+  become: yes
+  systemd:
+    name: "bluetooth"
+    state: "started"
+    enabled: yes
+
+- name: "Copy headset connection script"
+  copy:
+    src: "connect_headset.sh"
+    dest: "{{ ansible_user_dir }}/.local/bin/connect_headset.sh"
+    mode: "0755"

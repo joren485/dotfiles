@@ -150,3 +150,6 @@ exec --no-startup-id MONITOR="eDP-1" polybar --reload --quiet main
 
 # Start udiskie
 exec --no-startup-id udiskie --automount --notify --no-tray --file-manager=""
+
+# Connect bluetooth headset
+exec --no-startup-id connect_headset.sh
