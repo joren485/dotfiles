@@ -1,20 +1,13 @@
 call plug#begin('~/.vim/plug')
-Plug 'rafi/awesome-vim-colorschemes'
 
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
+let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
 
 Plug 'w0rp/ale'
 
@@ -30,6 +23,9 @@ let g:vimtex_view_general_viewer='zathura'
 let g:vimtex_compiler_latexmk = {
     \ 'build_dir' : 'build',
     \}
+
+Plug 'jasonccox/vim-wayland-clipboard'
+
 call plug#end()
 
 " Files
@@ -40,7 +36,6 @@ set noswapfile
 set encoding=utf-8
 
 " Visual
-silent! color abstract
 set ruler
 set cursorline
 set number
@@ -67,9 +62,6 @@ set ignorecase
 set smartcase
 set incsearch
 set showmatch
-
-" Copying
-set clipboard=unnamedplus
 
 " Spellcheck
 set spelllang=en,nl

@@ -1,6 +1,0 @@
----
-
-dependencies:
-  - role: "xorg"
-  - role: "polybar"
-  - role: "pulseaudio"

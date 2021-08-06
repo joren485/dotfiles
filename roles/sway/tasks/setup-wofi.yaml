@@ -1,0 +1,24 @@
+---
+
+- name: "Install dependencies"
+  pacman:
+    name:
+      - "wofi"
+
+- name: "Create .config/wofi/"
+  file:
+    path: "{{ ansible_user_dir }}/.config/wofi/"
+    state: "directory"
+    mode: "0755"
+
+- name: "Copy config"
+  copy:
+    src: "wofi/config"
+    dest: "{{ ansible_user_dir }}/.config/wofi/config"
+    mode: "0644"
+
+- name: "Copy templates"
+  template:
+    src: "wofi/style.css.j2"
+    dest: "{{ ansible_user_dir }}/.config/wofi/style.css"
+    mode: "0644"

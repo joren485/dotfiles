@@ -1,0 +1,87 @@
+{
+    "height": 50,
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["custom/spotify"],
+    "modules-right": ["custom/bitcoin", "backlight", "pulseaudio", "battery", "network", "clock", "tray", "custom/power"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "format": "{name}|{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "10": "",
+            "default": ""
+        }
+    },
+
+    "custom/spotify":{
+        "format": " {}",
+        "exec-if": "pgrep --exact spotify",
+        "exec": "spotify_info.py",
+        "interval": 1,
+        "on-click": "swaymsg workspace 10",
+        "tooltip": false,
+    },
+
+    "custom/bitcoin": {
+        "format": "<span color='#FFBB11'></span> {}",
+        "exec-if": "ping -c 1 coinbase.com",
+        "exec": "coinbase_usd_checker.py",
+        "interval": "5",
+        "tooltip": false,
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [""],
+        "on-scroll-up": "light -A 5",
+        "on-scroll-down": "light -U 5",
+        "tooltip": false,
+    },
+
+    "pulseaudio":{
+        "format": "{icon} {volume}%",
+        "format-muted": " MUTED",
+        "on-click": "pavucontrol",
+        "scroll-step": 5,
+        "format-icons":{
+            "default": ["", "", ""]
+        },
+    },
+
+    "battery": {
+        "full-at": 98,
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-full": " 100%",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25,
+        "tooltip": false,
+    },
+
+    "network":{
+        "interface": "wlp0s20f3",
+        "format-wifi": " {essid}",
+        "format-linked": " DOWN",
+        "tooltip-format-wifi": " {essid} | {signalStrength}% | {ifname} | {ipaddr}/{cidr}",
+        "max-length": 30,
+        "interval": 1,
+    },
+
+    "clock": {
+		"format": "{: %d %b  %H:%M:%S}",
+        "interval": 1,
+        "tooltip": false,
+	},
+
+    "custom/power":{
+        "format": "",
+        "on-click": "swaynag -t warning -m 'Power Menu Options' -b ' Logout' 'swaymsg exit' -b ' reboot' 'reboot' -b ' shutdown' 'poweroff'",
+        "tooltip": false,
+    }
+}
+

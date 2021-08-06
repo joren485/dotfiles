@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-TMPBG=/tmp/screen.png
-
-scrot "${TMPBG}"
-convert "${TMPBG}" -scale 20% -scale 500% "${TMPBG}"
-i3lock --image="${TMPBG}"
-
-rm /tmp/screen.png

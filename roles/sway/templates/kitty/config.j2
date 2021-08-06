@@ -1,0 +1,18 @@
+foreground   {{ colors.foreground }}
+background   {{ colors.black }}
+cursor       {{ colors.foreground }}
+
+{% for n in range(16) %}
+color{{n}} {{ colors[n] }}
+{% endfor %}
+
+cursor_shape underline
+
+copy_on_select yes
+
+url_color {{ colors.primary }}
+url_style single
+
+enable_audio_bell no
+
+background_opacity 0.8

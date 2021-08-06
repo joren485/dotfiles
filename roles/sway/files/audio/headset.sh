@@ -28,6 +28,6 @@ elif [[ $1 == "disconnect" ]]; then
     fi
 
 else
-    echo "Unknown option given"
+    echo -e "Unknown option given: $1\nUsage: headset.sh connect|disconnect"
     exit 1;
 fi

@@ -1,0 +1,55 @@
+---
+
+- name: "Install dependencies"
+  pacman:
+    name:
+      - "sway"
+      - "swaylock"
+      - "swayidle"
+      - "grim"
+      - "slurp"
+      - "wl-clipboard"
+      - "archlinux-wallpaper"
+      - "playerctl"
+      - "xorg-xwayland"
+      - "ttf-dejavu"
+      - "noto-fonts-emoji"
+
+- name: "Setup audio"
+  import_tasks: "setup-audio.yaml"
+  tags:
+    - "audio"
+    - "pulse"
+    - "pulseaudio"
+
+- name: "Setup Wofi"
+  import_tasks: "setup-wofi.yaml"
+  tags:
+    - "wofi"
+
+- name: "Setup Kitty"
+  import_tasks: "setup-kitty.yaml"
+  tags:
+    - "kitty"
+
+- name: "Setup Dunst"
+  import_tasks: "setup-dunst.yaml"
+  tags:
+    - "dunst"
+
+- name: "Setup Waybar"
+  import_tasks: "setup-waybar.yaml"
+  tags:
+    - "waybar"
+
+- name: "Create .config/sway/"
+  file:
+    path: "{{ ansible_user_dir }}/.config/sway/"
+    state: "directory"
+    mode: "0755"
+
+- name: "Copy Sway config"
+  template:
+    src: "sway/config.j2"
+    dest: "{{ ansible_user_dir }}/.config/sway/config"
+    mode: "0644"
