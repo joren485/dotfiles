@@ -1,33 +1,32 @@
 ---
 
-- name: "Check if polybar is manually installed"
-  command: "which polybar"
-  changed_when: no
-  check_mode: no
-
 - name: "Install dependencies"
-  become: yes
-  package:
+  pacman:
     name:
+      - "waybar"
+      - "light"
       - "dbus-python"
-    state: "present"
+      - "otf-font-awesome"
 
-- name: "Create .config/polybar/"
+- name: "Create necessary directories"
   file:
-    path: "{{ ansible_user_dir }}/.config/polybar/"
+    path: "{{ ansible_user_dir }}/{{ item }}"
     state: "directory"
     mode: "0755"
+  loop:
+    - ".local/bin/"
+    - ".config/waybar/"
 
-- name: "Create .local/bin/"
-  file:
-    path: "{{ ansible_user_dir }}/.local/bin/"
-    state: "directory"
-    mode: "0755"
-
-- name: "Copy Polybar config"
+- name: "Copy config"
   copy:
-    src: "config"
-    dest: "{{ ansible_user_dir }}/.config/polybar/config"
+    src: "waybar/config"
+    dest: "{{ ansible_user_dir }}/.config/waybar/config"
+    mode: "0644"
+
+- name: "Copy style template"
+  template:
+    src: "waybar/style.css.j2"
+    dest: "{{ ansible_user_dir }}/.config/waybar/style.css"
     mode: "0644"
 
 - name: "Add user to video group"

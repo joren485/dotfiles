@@ -1,0 +1,62 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "DejaVu Sans Mono";
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: {{ colors.foreground }};
+}
+
+#workspaces button {
+    background: {{ colors.background }};
+    border: 2px solid {{ colors.background }};
+    border-radius: 5px;
+    color: {{ colors.foreground }};
+    padding: 0px 15px;
+    margin: 10px 0px 0px 10px;
+}
+
+#workspaces button.focused {
+    border: 2px solid {{ colors.primary }};
+    color: {{ colors.primary }};
+}
+
+#workspaces button:hover {
+    border: 2px solid {{ colors.foreground }};
+    color: {{ colors.foreground }};
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#tray, #clock, #battery, #backlight, #pulseaudio, #network, #custom-bitcoin, #custom-spotify, #custom-power {
+    background: {{ colors.background }};
+    border: 2px solid {{ colors.background }};
+    border-radius: 5px;
+    color: {{ colors.foreground }};
+	margin: 10px 10px 0px 0px;
+    padding: 0px 10px;
+}
+
+#clock {
+    color: {{ colors.foreground }};
+}
+
+#pulseaudio.muted {
+    color: {{ colors.alert }};
+}
+
+#battery.full {
+    color: {{ colors.green }};
+}
+
+#network {
+    color: {{ colors.blue }};
+}
+
+#network.linked {
+    color: {{ colors.alert }};
+}
