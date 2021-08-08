@@ -1,3 +1,5 @@
+# Ansible managed
+
 local time='%{$fg[red]%}%D{%H:%M:%S}%{$reset_color%}'
 
 local user='%{$fg[magenta]%}%n@%{$fg[magenta]%}%m%{$reset_color%}'

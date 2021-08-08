@@ -1,3 +1,5 @@
+# Ansible managed
+
 [user]
         email = jorenvrancken@gmail.com
         name = Joren Vrancken

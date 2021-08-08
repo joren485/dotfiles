@@ -1,3 +1,5 @@
+# Ansible managed
+
 [Trigger]
 Operation = Install
 Operation = Upgrade

@@ -1,8 +1,9 @@
 #!/usr/bin/env /bin/bash
+# Ansible managed
+
 set -e
 
 HEADSET_MAC_ADDRESS="F8:5C:7D:31:8E:3F"
-
 
 if bluetoothctl show | grep --quiet "Powered: no"; then
     echo "Powering on bluetooth";

@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+# Ansible managed
 
 import sys
 import socket
