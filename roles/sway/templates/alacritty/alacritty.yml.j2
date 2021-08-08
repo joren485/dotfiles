@@ -1,14 +1,16 @@
+---
+
 # {{ ansible_managed }}
 # vi: ft=yaml
 
 colors:
   primary:
-    background: "{{ colors.background }}"
+    background: "{{ colors.black }}"
     foreground: "{{ colors.foreground }}"
 
   normal:
     black:    "{{ colors.black }}"
-    red:      "{{ colors.black }}"
+    red:      "{{ colors.red }}"
     green:    "{{ colors.green }}"
     yellow:   "{{ colors.yellow }}"
     blue:     "{{ colors.blue }}"
@@ -19,7 +21,7 @@ colors:
   # Bright colors
   bright:
     black:    "{{ colors.gray }}"
-    red:      "{{ colors.black }}"
+    red:      "{{ colors.red }}"
     green:    "{{ colors.green }}"
     yellow:   "{{ colors.yellow }}"
     blue:     "{{ colors.blue }}"
@@ -32,6 +34,6 @@ background_opacity: 0.8
 cursor:
   style:
     shape: underline
-
-    blinking: Off
+  vi_mode_style:
+    shape: underline
   unfocused_hollow: false
