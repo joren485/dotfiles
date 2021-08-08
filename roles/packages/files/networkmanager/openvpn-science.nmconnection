@@ -1,3 +1,5 @@
+# Ansible managed
+
 [connection]
 id=openvpn-science
 uuid=44524cdf-4f81-4e8b-8cf0-aba9e3c28f87

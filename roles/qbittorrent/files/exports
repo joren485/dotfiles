@@ -1,2 +1,4 @@
+# Ansible managed
+
 /srv/qbittorrent/plex aubergine(rw)
 /srv/qbittorrent/ 192.168.1.0/24(ro,insecure) druif(rw)

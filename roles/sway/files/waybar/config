@@ -1,3 +1,5 @@
+// Ansible Managed
+// vi:ft=javascript
 {
     "height": 50,
     "modules-left": ["sway/workspaces"],
