@@ -15,6 +15,9 @@
       - "ttf-dejavu"
       - "noto-fonts-emoji"
 
+      # To list which applications are using XWayland
+      - "xorg-xlsclients"
+
 - name: "Setup audio"
   import_tasks: "setup-audio.yaml"
   tags:
