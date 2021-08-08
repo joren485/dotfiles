@@ -63,3 +63,12 @@
     dump: "0"
     passno: "0"
     state: "present"
+
+- name: "Make Chrome use Wayland"
+  when: "'google-chrome' in packages_aur"
+  copy:
+    content: |
+      --enable-features=UseOzonePlatform
+      --ozone-platform=wayland
+    dest: "{{ ansible_user_dir }}/.config/chrome-flags.conf"
+    mode: "0644"
