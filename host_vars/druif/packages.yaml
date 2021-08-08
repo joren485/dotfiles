@@ -18,6 +18,7 @@ packages_host:
   - "gpart"
   - "gparted"
   - "intel-ucode"
+  - "intel-media-driver"
   - "iw"
   - "linux"
   - "linux-headers"
