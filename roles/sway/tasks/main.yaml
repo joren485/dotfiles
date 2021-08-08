@@ -30,10 +30,10 @@
   tags:
     - "wofi"
 
-- name: "Setup Kitty"
-  import_tasks: "setup-kitty.yaml"
+- name: "Setup Alacritty"
+  import_tasks: "setup-alacritty.yaml"
   tags:
-    - "kitty"
+    - "alacritty"
 
 - name: "Setup Dunst"
   import_tasks: "setup-dunst.yaml"
