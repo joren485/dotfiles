@@ -33,7 +33,7 @@
         "format": "<span color='#FFBB11'></span> {}",
         "exec-if": "ping -c 1 coinbase.com",
         "exec": "coinbase_usd_checker.py",
-        "interval": "5",
+        "interval": 60,
         "tooltip": false,
     },
 
