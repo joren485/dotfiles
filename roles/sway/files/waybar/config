@@ -4,7 +4,18 @@
     "height": 50,
     "modules-left": ["sway/workspaces"],
     "modules-center": ["custom/spotify"],
-    "modules-right": ["custom/bitcoin", "backlight", "pulseaudio", "battery", "network", "clock", "tray", "custom/power"],
+    "modules-right": [
+        "custom/bitcoin",
+        "backlight",
+        "pulseaudio",
+        "battery",
+        "network#wifi",
+        "network#eth",
+        "network#ethusb",
+        "clock",
+        "tray",
+        "custom/power"
+    ],
     "sway/workspaces": {
         "disable-scroll": true,
         "format": "{name}|{icon}",
@@ -65,17 +76,42 @@
         "tooltip": false,
     },
 
-    "network":{
+    "network#eth":{
+        "interface": "enp0s31f6",
+        "format": " UP",
+        "format-linked": "",
+        "format-disconnected": "",
+        "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
+        "max-length": 30,
+        "interval": 1,
+        "on-click": "swaymsg exec 'alacritty --command nmtui'"
+    },
+
+    "network#ethusb":{
+        "interface": "enp7s0u2u1u2",
+        "format": " UP",
+        "format-linked": "",
+        "format-disconnected": "",
+        "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
+        "max-length": 30,
+        "interval": 1,
+        "on-click": "swaymsg exec 'alacritty --command nmtui'"
+    },
+
+    "network#wifi":{
         "interface": "wlp0s20f3",
         "format-wifi": " {essid}",
         "format-linked": " DOWN",
+        "format-disconnected": " DOWN",
+        "tooltip-format": " {ifname}",
         "tooltip-format-wifi": " {essid} | {signalStrength}% | {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
         "interval": 1,
+        "on-click": "swaymsg exec 'alacritty --command nmtui'"
     },
 
     "clock": {
-		"format": "{: %d %b  %H:%M:%S}",
+	"format": "{: %d %b  %H:%M:%S}",
         "interval": 1,
         "tooltip": false,
 	},
