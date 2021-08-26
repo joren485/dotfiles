@@ -32,7 +32,7 @@
         rebase = true
 
 [core]
-        editor = vim
+        editor = nvim
 
 [url "git@github.com"]
         pushInsteadOf = git://github.com
