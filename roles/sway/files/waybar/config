@@ -83,7 +83,6 @@
         "format-disconnected": "",
         "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "interval": 1,
         "on-click": "swaymsg exec 'alacritty --command nmtui'"
     },
 
@@ -94,7 +93,6 @@
         "format-disconnected": "",
         "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "interval": 1,
         "on-click": "swaymsg exec 'alacritty --command nmtui'"
     },
 
@@ -106,7 +104,6 @@
         "tooltip-format": " {ifname}",
         "tooltip-format-wifi": " {essid} | {signalStrength}% | {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "interval": 1,
         "on-click": "swaymsg exec 'alacritty --command nmtui'"
     },
 
