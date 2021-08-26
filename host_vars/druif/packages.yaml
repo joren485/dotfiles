@@ -1,7 +1,5 @@
 ---
 
-package_vim: "gvim"
-
 packages_host:
   - "android-tools"
   - "android-udev"
