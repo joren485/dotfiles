@@ -115,7 +115,7 @@
 
     "custom/power":{
         "format": "",
-        "on-click": "swaynag -t warning -m 'Power Menu Options' -b ' Logout' 'swaymsg exit' -b ' reboot' 'reboot' -b ' shutdown' 'poweroff'",
+        "on-click": "swaynag -t warning -m 'Power Menu Options' -b ' Logout' 'swaymsg exit' -b ' lock' 'swaylock --daemonize --image=/usr/share/backgrounds/archlinux/small.png' -b ' sleep' 'systemctl suspend' -b ' reboot' 'reboot' -b ' shutdown' 'poweroff'",
         "tooltip": false,
     }
 }
