@@ -28,3 +28,11 @@
     line: "blacklist pcspkr"
     state: "present"
     create: yes
+
+- name: "Disable locking user after 3 tries"
+  become: yes
+  lineinfile:
+    dest: "/etc/security/faillock.conf"
+    regexp: '#? ?deny ?= ?\d+'
+    line: "deny = 0"
+    state: "present"
