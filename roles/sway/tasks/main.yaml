@@ -24,11 +24,11 @@
       - "xorg-xlsclients"
 
 - name: "Setup audio"
-  import_tasks: "setup-audio.yaml"
+  import_tasks: "setup-pipewire.yaml"
   tags:
     - "audio"
-    - "pulse"
-    - "pulseaudio"
+    - "pipewire"
+    - "bluetooth"
 
 - name: "Setup Wofi"
   import_tasks: "setup-wofi.yaml"

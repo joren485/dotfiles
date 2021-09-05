@@ -23,8 +23,10 @@ export LC_TELEPHONE=nl_NL.UTF-8
 export LC_MEASUREMENT=nl_NL.UTF-8
 export LC_IDENTIFICATION=nl_NL.UTF-8
 
-### Wayland
+# Wayland
 export MOZ_ENABLE_WAYLAND=1
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
 
-# Allows JetBrains products to start on Wayland
+## Allows JetBrains products to start on Wayland
 export _JAVA_AWT_WM_NONREPARENTING=1

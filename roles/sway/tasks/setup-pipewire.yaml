@@ -1,0 +1,47 @@
+---
+
+- name: "Install dependencies"
+  become: yes
+  pacman:
+    name:
+      - "bluez"
+      - "bluez-utils"
+      - "blueman"
+      - "pipewire-pulse"
+      - "pipewire-alsa"
+      - "pipewire-docs"
+      - "xdg-desktop-portal-wlr"
+      - "pavucontrol"
+
+- name: "Enable automatically switching profiles on Bluetooth devices"
+  copy:
+    content: >-
+      {{
+        lookup("file", "/usr/share/pipewire/media-session.d/bluez-monitor.conf")
+        | regex_replace(
+          "#?bluez5\.autoswitch-profile = \w+",
+          "bluez5.autoswitch-profile = true"
+        )
+      }}
+    dest: "{{ ansible_user_dir }}\
+           /.config/pipewire/media-session.d/bluez-monitor.conf"
+    mode: "0644"
+
+- name: "Enable bluetooth service"
+  become: yes
+  systemd:
+    name: "bluetooth"
+    state: "started"
+    enabled: yes
+
+- name: "Copy headset connection script"
+  copy:
+    src: "audio/headset.sh"
+    dest: "{{ ansible_user_dir }}/.local/bin/headset.sh"
+    mode: "0755"
+
+- name: "Enable WebRTC PipeWire support in Chrome"
+  debug:
+    msg:
+      - "Enable the #enable-webrtc-pipewire-capturer flag in Chrome."
+      - "See chrome://flags/#enable-webrtc-pipewire-capturer"
