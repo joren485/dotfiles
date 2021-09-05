@@ -70,5 +70,7 @@
     content: |
       --enable-features=UseOzonePlatform
       --ozone-platform=wayland
+      --enable-features=WebUIDarkMode
+      --force-dark-mode
     dest: "{{ ansible_user_dir }}/.config/chrome-flags.conf"
     mode: "0644"
