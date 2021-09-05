@@ -26,7 +26,6 @@ packages_host:
   - "network-manager-applet"
   - "networkmanager-openvpn"
   - "otf-font-awesome"
-  - "pavucontrol"
   - "pwgen"
   - "python-black"
   - "python-poetry"
