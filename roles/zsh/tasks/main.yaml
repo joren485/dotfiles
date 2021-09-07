@@ -16,41 +16,44 @@
   changed_when: no
   check_mode: no
 
-- name: "Check which plugin dependencies are installed"
+- name: "Check if relevant applications are installed"
   vars:
-    dependencies:
+    applications:
       - "ansible"
       - "docker"
       - "poetry"
       - "pip"
+      - "sway"
   block:
-    - name: "Check if plugin dependencies are installed"
+    - name: "Check if application is installed"
       command: "which {{ item }}"
       register: "which_output"
       changed_when: no
       failed_when: no
       check_mode: no
-      loop: "{{ dependencies }}"
+      loop: "{{ applications }}"
 
     - name: "Set '_installed' boolean values"
       set_fact:
         "{{ item.item }}_installed": "{{ item.rc == 0 }}"
       loop: "{{ which_output.results }}"
 
-- name: "Copy ZSH configuration files"
+- name: "Copy ZSH files"
   copy:
     src: "{{ item }}"
     dest: "{{ ansible_user_dir }}/.{{ item }}"
     mode: "0644"
   loop:
     - "zlogin"
-    - "zshenv"
 
-- name: "Copy .zshrc"
+- name: "Copy ZSH template files"
   template:
-    src: "zshrc.j2"
-    dest: "{{ ansible_user_dir }}/.zshrc"
+    src: "{{ item }}.j2"
+    dest: "{{ ansible_user_dir }}/.{{ item }}"
     mode: "0644"
+  loop:
+    - "zshrc"
+    - "zshenv"
 
 - name: "Clone oh-my-zsh"
   git:
