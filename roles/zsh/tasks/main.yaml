@@ -70,19 +70,6 @@
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/prompt.zsh-theme"
     mode: "0644"
 
-- name: "Install Poetry completions"
-  when: "poetry_installed"
-  block:
-    - name: "Create Poetry plugin directory"
-      file:
-        state: "directory"
-        path: "{{ ansible_user_dir }}/.oh-my-zsh/plugins/poetry/"
-        mode: "0755"
-
-    - name: "Generate Poetry completions"
-      shell: "poetry completions zsh > {{ ansible_user_dir }}/.oh-my-zsh/plugins/poetry/_poetry"
-      changed_when: yes
-
 - name: "Change user shell to ZSH"
   when: "'zsh' not in ansible_user_shell"
   expect:
