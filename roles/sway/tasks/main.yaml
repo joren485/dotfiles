@@ -12,6 +12,7 @@
       - "archlinux-wallpaper"
       - "playerctl"
       - "xorg-xwayland"
+      - "qt5-wayland"
 
       # Fonts
       - "ttf-dejavu"
