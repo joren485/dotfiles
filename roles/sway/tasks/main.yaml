@@ -51,6 +51,11 @@
   tags:
     - "waybar"
 
+- name: "Setup swaynag"
+  import_tasks: "setup-swaynag.yaml"
+  tags:
+    - "swaynag"
+
 - name: "Create .config/sway/"
   file:
     path: "{{ ansible_user_dir }}/.config/sway/"
