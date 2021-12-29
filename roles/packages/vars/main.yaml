@@ -25,6 +25,7 @@ packages_common:
   - "openbsd-netcat"
   - "p7zip"
   - "polkit"
+  - "pacman-contrib"
   - "progress"
   - "pwgen"
   - "python"
