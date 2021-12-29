@@ -1,6 +1,6 @@
 ---
 
-restic_repository_backblaze: "{{ vault_restic_repository }}"
+restic_repository_backblaze: "{{ vault_restic_repository_backblaze }}"
 restic_repository_local: "/run/media/joren/Samsung_T5/restic/"
 restic_password: "{{ vault_restic_password }}"
 
