@@ -1,5 +1,39 @@
 ---
 
+- name: "Install pacman hooks"
+  become: yes
+  block:
+    - name: "Enable pacman hooks directory"
+      lineinfile:
+        path: "/etc/pacman.conf"
+        line: "HookDir = /etc/pacman.d/hooks/"
+        regexp: '^#?HookDir\s*='
+
+    - name: "Create /etc/pacman.d/hooks"
+      file:
+        path: "/etc/pacman.d/hooks"
+        state: "directory"
+        mode: "0755"
+        owner: "root"
+        group: "root"
+
+    - name: "Copy hook files"
+      copy:
+        src: "pacman/{{ item }}"
+        dest: "/etc/pacman.d/hooks/95-{{ item }}"
+        mode: "0755"
+        owner: "root"
+        group: "root"
+      loop:
+        - "pacdiff.hook"
+
+- name: "Update bootloader after update"
+  become: yes
+  systemd:
+    name: "systemd-boot-update"
+    state: "started"
+    enabeld: "yes"
+
 - name: "Enable NetworkManager"
   when: "'networkmanager' in packages"
   become: yes
