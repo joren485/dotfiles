@@ -72,8 +72,7 @@
         "format-charging": " {capacity}%",
         "format-full": " 100%",
         "format-icons": ["", "", "", "", ""],
-        "max-length": 25,
-        "tooltip": false,
+        "format-time": "{H}:{M}",
     },
 
     "network#eth":{
