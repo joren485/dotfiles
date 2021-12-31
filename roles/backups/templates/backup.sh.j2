@@ -14,10 +14,7 @@ else
 fi
 
 echo "[*] Archiving installed packages."
-pacman --query --explicit --native > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_$(date '+%F_%T').txt"
-pacman --query --deps --native > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_dependencies_$(date '+%F_%T').txt"
-pacman --query --explicit --foreign > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_aur_$(date '+%F_%T').txt"
-pacman --query --deps --foreign > "{{ ansible_user_dir }}/archive/hosts/druif/packages/packages_aur_dependencies_$(date '+%F_%T').txt"
+pacman --query > "{{ ansible_user_dir }}/archive/hosts/druif/packages/$(date '+%F_%T').txt"
 
 echo "[*] Running Restic backup to {{ restic_repository_local }}."
 if [ -d "{{ restic_repository_local }}" ]
