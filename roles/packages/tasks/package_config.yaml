@@ -32,7 +32,7 @@
   systemd:
     name: "systemd-boot-update"
     state: "started"
-    enabeld: "yes"
+    enabled: "yes"
 
 - name: "Enable NetworkManager"
   when: "'networkmanager' in packages"
