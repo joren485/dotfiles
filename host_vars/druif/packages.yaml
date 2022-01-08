@@ -39,7 +39,6 @@ packages_host:
   - "zathura-pdf-mupdf"
 
 packages_host_aur:
-  - "google-chrome"
   - "pycharm-professional"
   - "spotify"
   - "tor-browser"
