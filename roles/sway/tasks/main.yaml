@@ -50,6 +50,7 @@
   import_tasks: "setup-waybar.yaml"
   tags:
     - "waybar"
+    - "swaynag"
 
 - name: "Setup swaynag"
   import_tasks: "setup-swaynag.yaml"
