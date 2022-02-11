@@ -12,6 +12,7 @@
         "network#wifi",
         "network#eth",
         "network#ethusb",
+        "idle_inhibitor",
         "clock",
         "tray",
         "custom/power"
