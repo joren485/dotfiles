@@ -37,7 +37,7 @@
         "exec": "spotify_info.py",
         "interval": 1,
         "on-click": "swaymsg workspace 10",
-        "tooltip": false,
+        "tooltip": false
     },
 
     "custom/bitcoin": {
@@ -45,7 +45,7 @@
         "exec-if": "ping -c 1 coinbase.com",
         "exec": "coinbase_usd_checker.py",
         "interval": 60,
-        "tooltip": false,
+        "tooltip": false
     },
 
     "backlight": {
@@ -53,7 +53,7 @@
         "format-icons": [""],
         "on-scroll-up": "light -A 5",
         "on-scroll-down": "light -U 5",
-        "tooltip": false,
+        "tooltip": false
     },
 
     "pulseaudio":{
@@ -63,7 +63,7 @@
         "scroll-step": 5,
         "format-icons":{
             "default": ["", "", ""]
-        },
+        }
     },
 
     "battery": {
@@ -72,7 +72,7 @@
         "format-charging": " {capacity}%",
         "format-full": " 100%",
         "format-icons": ["", "", "", "", ""],
-        "format-time": "{H}:{M}",
+        "format-time": "{H}:{M}"
     },
 
     "network#eth":{
@@ -109,14 +109,14 @@
     "clock": {
 	"format": "{: %a %d %b  %H:%M:%S}",
         "interval": 1,
-        "tooltip": false,
+        "tooltip": false
 	},
 
     "custom/power":{
         "format": "",
         "on-click": "swaynag -t warning -m 'Power Menu Options' -Z ' Lock' 'swaylock --daemonize --image=/usr/share/backgrounds/archlinux/small.png' -Z ' Logout' 'swaymsg exit' -Z '  Sleep' 'systemctl suspend' -Z ' Reboot' 'reboot' -Z ' Shutdown' 'poweroff'",
-        "tooltip": false,
-    }
+        "tooltip": false
+    },
 
     "idle_inhibitor": {
         "format": "{icon}",
