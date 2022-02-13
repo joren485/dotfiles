@@ -28,17 +28,19 @@ client.unfocused        {{ colors.background}}  {{ colors.background }} {{ color
 client.urgent           {{ colors.alert }}      {{ colors.background }} {{ colors.foreground }} {{ colors.alert }}    {{ colors.alert }}
 
 ### Behaviour
-
 exec swayidle -w \
     timeout 300 "$lock" \
     before-sleep "$lock"
 
-input "type:keyboard" {
+### Keyboard layout
+{% for keyboard_identifier in keyboard_identifiers %}
+input "{{ keyboard_identifier }}" {
     xkb_layout us
     xkb_model pc104
     xkb_variant altgr-intl
 }
 
+{% endfor %}
 ### Key bindings
 
 # Start a terminal
