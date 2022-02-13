@@ -1,5 +1,9 @@
 ---
 
+keyboard_identifiers:
+  - "6940:6968:Corsair_Corsair_Gaming_K70_RGB_RAPIDFIRE_Keyboard__Keyboard"
+  - "1:1:AT_Translated_Set_2_keyboard"
+
 # This theme is based on the Pywal base16-classic theme
 colors:
 
