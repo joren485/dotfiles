@@ -34,7 +34,8 @@
     state: "directory"
     owner: "plex"
     group: "plex"
-    mode: "0755"
+    mode: "a=r,u+w,a+X"
+    recurse: yes
   loop:
     - "plex/"
     - "plex/movies/"
