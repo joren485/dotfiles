@@ -39,9 +39,3 @@
     src: "audio/headset.sh"
     dest: "{{ ansible_user_dir }}/.local/bin/headset.sh"
     mode: "0755"
-
-- name: "Enable WebRTC PipeWire support in Chrome"
-  debug:
-    msg:
-      - "Enable the #enable-webrtc-pipewire-capturer flag in Chrome."
-      - "See chrome://flags/#enable-webrtc-pipewire-capturer"
