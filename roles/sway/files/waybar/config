@@ -99,8 +99,8 @@
     "network#wifi":{
         "interface": "wlp0s20f3",
         "format-wifi": " {essid}",
-        "format-linked": " DOWN",
-        "format-disconnected": " DOWN",
+        "format-linked": "",
+        "format-disconnected": "",
         "tooltip-format": " {ifname}",
         "tooltip-format-wifi": " {essid} | {signalStrength}% | {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
