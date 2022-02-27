@@ -4,7 +4,6 @@ netdata_api_key: "{{ vault_netdata_api_key }}"
 
 netdata_hosts_to_ping:
   - "8.8.8.8"
-  - "ru.nl"
   - "appel"
   - "banaan"
   - "courgette"
