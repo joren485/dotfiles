@@ -1,50 +1,7 @@
 ---
 
-- name: "Configure laptop"
-  hosts: "druif"
-  roles:
-      - role: "common"
-        tags: "common"
-
-      - role: "users"
-        tags:
-            - "user"
-            - "users"
-
-      - role: "packages"
-        tags:
-            - "packages"
-            - "git"
-            - "docker"
-
-      - role: "ssh"
-        tags:
-            - "ssh"
-            - "openssh"
-
-      - role: "gnupg"
-        tags:
-            - "gnupg"
-            - "gpg"
-            - "gpg2"
-            - "pgp"
-
-      - role: "zsh"
-        tags: "zsh"
-
-      - role: "sway"
-        tags: "sway"
-
-      - role: "vim"
-        tags: "vim"
-
-      - role: "backups"
-        tags:
-            - "backup"
-            - "backups"
-
-- name: "Configure hosts at home"
-  hosts: "homelab"
+- name: "Run global configuration"
+  hosts: "all"
   roles:
       - role: "common"
         tags: "common"
@@ -63,31 +20,25 @@
       - role: "vim"
         tags: "vim"
 
-
-- name: "Setup qBittorrent"
-  hosts: "qbittorrent"
+- name: "Configure laptop"
+  hosts: "druif"
   roles:
-      - role: "qbittorrent"
-        tags: "qbittorrent"
-
-- name: "Setup Netdata on parents"
-  hosts: "netdata_parents"
-  roles:
-      - role: "netdata"
-        vars:
-            netdata_host_type: "parent"
+      - role: "ssh"
         tags:
-            - "netdata"
-            - "netdata-parents"
-            - "netdata-parent"
+            - "ssh"
+            - "openssh"
 
-- name: "Setup Netdata on children"
-  hosts: "netdata_children"
-  roles:
-      - role: "netdata"
-        vars:
-            netdata_host_type: "child"
+      - role: "gnupg"
         tags:
-            - "netdata"
-            - "netdata-children"
-            - "netdata-child"
+            - "gnupg"
+            - "gpg"
+            - "gpg2"
+            - "pgp"
+
+      - role: "sway"
+        tags: "sway"
+
+      - role: "backups"
+        tags:
+            - "backup"
+            - "backups"

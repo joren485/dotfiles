@@ -1,4 +1,0 @@
-# Ansible managed
-
-/srv/qbittorrent/plex aubergine(rw)
-/srv/qbittorrent/ 10.0.0.0/16(ro,insecure) druif(rw)

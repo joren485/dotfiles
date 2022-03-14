@@ -1,16 +1,13 @@
 druif
 
-[qbittorrent]
-courgette
-
 [homelab]
-aubergine
-courgette
-pompoen
+peen
 
-[netdata_parents]
-pompoen
+[seedbox]
+peen
 
-[netdata_children]
-aubergine
-courgette
+[unifi_controller]
+peen
+
+[media_server]
+peen
