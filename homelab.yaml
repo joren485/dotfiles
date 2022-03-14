@@ -42,3 +42,9 @@
         tags:
             - "backup"
             - "backups"
+
+- name: "Setup Unifi Controllers"
+  hosts: "unifi_controller"
+  roles:
+      - role: "unifi"
+        tags: "unifi"

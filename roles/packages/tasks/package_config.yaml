@@ -61,14 +61,6 @@
     groups: "adbusers"
     append: yes
 
-- name: "Add user to docker group"
-  when: "'docker' in packages"
-  become: yes
-  user:
-    name: "{{ ansible_user }}"
-    groups: "docker"
-    append: yes
-
 - name: "Setup Git configuration"
   when: "'git' in packages"
   block:
