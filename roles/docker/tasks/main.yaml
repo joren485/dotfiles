@@ -6,6 +6,7 @@
     name:
       - "docker"
       - "docker-compose"
+      - "python-docker"
     state: "present"
 
 - name: "Add user to docker group"
@@ -21,3 +22,7 @@
     name: "docker"
     state: "started"
     enabled: yes
+
+- name: "Setup a docker-compose project"
+  when: "project_name is defined"
+  include_tasks: "setup-docker-compose.yaml"

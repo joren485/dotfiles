@@ -1,0 +1,38 @@
+---
+
+# {{ ansible_managed }}
+# vi: ft=yaml
+
+services:
+  mongo:
+    image: "mongo:latest"
+    user: "{{ users.mongo.uid }}:{{ users.mongo.gid }}"
+    volumes:
+      - "{{ project_root }}/{{ users.mongo.relative_home }}/db/:/data/db/"
+      - "{{ project_root }}/{{ users.mongo.relative_home }}/configdb/:/data/configdb/"
+    environment:
+      TZ: "Europe/Amsterdam"
+
+  controller:
+    image: "jacobalberty/unifi:latest"
+    init: true
+    depends_on:
+      - "mongo"
+    volumes:
+      - "{{ project_root }}/{{ users.unifi.relative_home }}:/unifi"
+    environment:
+      TZ: "Europe/Amsterdam"
+      DB_NAME: "unifi"
+      DB_URI: "mongodb://mongo/unifi"
+      STATDB_URI: "mongodb://mongo/unifi_stat"
+      UNIFI_UID: "{{ users.unifi.uid }}"
+      UNIFI_GID: "{{ users.unifi.gid }}"
+      RUNAS_UID0: "false"
+    ports:
+      - "3478:3478/udp"
+      - "6789:6789/tcp"
+      - "8080:8080/tcp"
+      - "8443:8443/tcp"
+      - "8880:8880/tcp"
+      - "8843:8843/tcp"
+      - "10001:10001/udp"

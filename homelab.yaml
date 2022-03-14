@@ -46,5 +46,23 @@
 - name: "Setup Unifi Controllers"
   hosts: "unifi_controller"
   roles:
-      - role: "unifi"
+      - role: "docker"
         tags: "unifi"
+        vars:
+            project_name: "unifi"
+            users:
+                mongo:
+                    name: "mongo"
+                    uid: "600"
+                    gid: "600"
+                    relative_home: "mongo"
+                    comment: "MongoDB"
+                    relative_extra_dirs:
+                        - "db"
+                        - "dbconfig"
+                unifi:
+                    name: "unifi"
+                    uid: "601"
+                    gid: "601"
+                    relative_home: "config"
+                    comment: "Unifi Controller"
