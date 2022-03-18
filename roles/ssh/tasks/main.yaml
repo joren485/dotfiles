@@ -15,6 +15,7 @@
     mode: "0700"
 
 - name: "Install SSH key"
+  when: "ssh_key is defined"
   block:
     - name: "Install public key"
       copy:
@@ -45,3 +46,11 @@
     regexp: "^#?PasswordAuthentication (yes|no)$"
     line: "PasswordAuthentication no"
     state: "present"
+
+- name: "Start SSH server"
+  become: yes
+  when: "ssh_server"
+  systemd:
+    name: "sshd"
+    state: "started"
+    enabled: "yes"

@@ -11,6 +11,10 @@
             - "user"
             - "users"
 
+      - role: "ssh"
+        tags:
+            - "ssh"
+
       - role: "packages"
         tags: "packages"
 
@@ -23,10 +27,7 @@
 - name: "Configure laptop"
   hosts: "druif"
   roles:
-      - role: "ssh"
-        tags:
-            - "ssh"
-            - "openssh"
+
 
       - role: "gnupg"
         tags:

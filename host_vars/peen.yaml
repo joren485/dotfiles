@@ -1,4 +1,6 @@
 ---
 
+ssh_server: yes
+
 packages_host:
   - "amd-ucode"
