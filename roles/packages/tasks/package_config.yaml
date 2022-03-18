@@ -27,13 +27,6 @@
       loop:
         - "pacdiff.hook"
 
-- name: "Update bootloader after update"
-  become: yes
-  systemd:
-    name: "systemd-boot-update"
-    state: "started"
-    enabled: "yes"
-
 - name: "Enable NetworkManager"
   when: "'networkmanager' in packages"
   become: yes

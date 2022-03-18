@@ -36,3 +36,10 @@
     regexp: '#? ?deny ?= ?\d+'
     line: "deny = 0"
     state: "present"
+
+- name: "Update bootloader after update"
+  become: yes
+  systemd:
+    name: "systemd-boot-update"
+    state: "started"
+    enabled: "yes"
