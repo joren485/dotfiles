@@ -104,3 +104,9 @@
                     comment: "Transmission"
                     extra_directories:
                         - "/srv/share/transmission/"
+
+- name: "Setup NFS"
+  hosts: "fileservers"
+  roles:
+      - role: "nfs"
+        tags: "nfs"
