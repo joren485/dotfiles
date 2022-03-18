@@ -34,7 +34,8 @@
           docker-compose
           --file="{{ project_root }}/docker-compose.yaml"
           pull
-          --quiet
+      register: "docker_compose_pull"
+      changed_when: "'Pull complete' in docker_compose_pull.stdout"
 
     - name: "Start Containers"
       command:
@@ -44,3 +45,5 @@
           up
           --detach
           --remove-orphans
+      register: "docker_compose_up"
+      changed_when: "'Started' in docker_compose_up.stdout"
