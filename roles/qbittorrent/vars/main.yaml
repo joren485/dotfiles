@@ -1,9 +1,0 @@
----
-
-private_internet_access_credentials:
-  username: "{{ vault_private_internet_access_username }}"
-  password: "{{ vault_private_internet_access_password }}"
-
-qbittorrent_hash: "{{ vault_qbittorrent_hash }}"
-
-port_forward_timer_schedule: "*:0/15"

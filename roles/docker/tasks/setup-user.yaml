@@ -1,0 +1,51 @@
+---
+
+- name: "Create group '{{ user.name }}'"
+  become: yes
+  group:
+    name: "{{ user.name }}"
+    gid: "{{ user.gid }}"
+    system: yes
+
+- name: "Create user '{{ user.name }}'"
+  become: yes
+  user:
+    name: "{{ user.name }}"
+    comment: "{{ user.comment|default('') }}"
+    uid: "{{ user.uid }}"
+    groups: "{{ user.name }}"
+    home: "{{ project_root }}/{{ user.home }}"
+    create_home: no
+    system: yes
+    shell: "/usr/bin/nologin"
+
+- name: "Create empty home directory"
+  become: yes
+  file:
+    path: "{{ project_root }}/{{ user.home }}"
+    state: "directory"
+    mode: "0755"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+
+- name: "Create directories relative to home directory"
+  become: yes
+  when: "user.extra_directories is defined and not item.startswith('/')"
+  file:
+    path: "{{ project_root }}/{{ user.home }}/{{ item }}"
+    state: "directory"
+    mode: "0755"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+  loop: "{{ user.extra_directories }}"
+
+- name: "Create (absolute) directories"
+  become: yes
+  when: "user.extra_directories is defined and item.startswith('/')"
+  file:
+    path: "{{ project_root }}/{{ user.home }}/{{ item }}"
+    state: "directory"
+    mode: "0755"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+  loop: "{{ user.extra_directories }}"

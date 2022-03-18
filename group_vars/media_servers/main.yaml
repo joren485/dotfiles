@@ -1,0 +1,3 @@
+---
+
+plex_claim_token: "{{ vault_plex_claim_token }}"

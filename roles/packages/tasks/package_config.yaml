@@ -61,14 +61,6 @@
     groups: "adbusers"
     append: yes
 
-- name: "Add user to docker group"
-  when: "'docker' in packages"
-  become: yes
-  user:
-    name: "{{ ansible_user }}"
-    groups: "docker"
-    append: yes
-
 - name: "Setup Git configuration"
   when: "'git' in packages"
   block:
@@ -86,14 +78,3 @@
       loop:
         - "config"
         - "attributes"
-
-- name: "Mount and add NFS share"
-  when: "'plex-media-server' in packages_aur"
-  mount:
-    src: "courgette:/srv/qbittorrent/plex/"
-    path: "/mnt/plex/"
-    fstype: "nfs"
-    opts: "defaults,timeo=900,retrans=5,_netdev"
-    dump: "0"
-    passno: "0"
-    state: "present"

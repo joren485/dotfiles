@@ -1,7 +1,0 @@
----
-
-- name: "Restart Netdata"
-  become: yes
-  systemd:
-    name: "netdata"
-    state: "restarted"

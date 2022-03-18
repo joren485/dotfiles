@@ -1,0 +1,3 @@
+---
+
+pia_credentials: "{{ vault_pia_credentials }}"

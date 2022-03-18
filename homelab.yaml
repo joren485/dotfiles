@@ -1,7 +1,7 @@
 ---
 
-- name: "Configure laptop"
-  hosts: "druif"
+- name: "Run global configuration"
+  hosts: "all"
   roles:
       - role: "common"
         tags: "common"
@@ -10,49 +10,10 @@
         tags:
             - "user"
             - "users"
-
-      - role: "packages"
-        tags:
-            - "packages"
-            - "git"
-            - "docker"
 
       - role: "ssh"
         tags:
             - "ssh"
-            - "openssh"
-
-      - role: "gnupg"
-        tags:
-            - "gnupg"
-            - "gpg"
-            - "gpg2"
-            - "pgp"
-
-      - role: "zsh"
-        tags: "zsh"
-
-      - role: "sway"
-        tags: "sway"
-
-      - role: "vim"
-        tags: "vim"
-
-      - role: "backups"
-        tags:
-            - "backup"
-            - "backups"
-
-- name: "Configure hosts at home"
-  hosts: "homelab"
-  roles:
-      - role: "common"
-        tags: "common"
-
-      - role: "users"
-        tags:
-            - "user"
-            - "users"
 
       - role: "packages"
         tags: "packages"
@@ -63,31 +24,89 @@
       - role: "vim"
         tags: "vim"
 
-
-- name: "Setup qBittorrent"
-  hosts: "qbittorrent"
+- name: "Configure laptop"
+  hosts: "druif"
   roles:
-      - role: "qbittorrent"
-        tags: "qbittorrent"
 
-- name: "Setup Netdata on parents"
-  hosts: "netdata_parents"
-  roles:
-      - role: "netdata"
-        vars:
-            netdata_host_type: "parent"
+
+      - role: "gnupg"
         tags:
-            - "netdata"
-            - "netdata-parents"
-            - "netdata-parent"
+            - "gnupg"
+            - "gpg"
+            - "gpg2"
+            - "pgp"
 
-- name: "Setup Netdata on children"
-  hosts: "netdata_children"
-  roles:
-      - role: "netdata"
-        vars:
-            netdata_host_type: "child"
+      - role: "sway"
+        tags: "sway"
+
+      - role: "backups"
         tags:
-            - "netdata"
-            - "netdata-children"
-            - "netdata-child"
+            - "backup"
+            - "backups"
+
+- name: "Setup Unifi Controllers"
+  hosts: "unifi_controllers"
+  roles:
+      - role: "docker"
+        tags: "unifi"
+        vars:
+            project_name: "unifi"
+            users:
+                mongo:
+                    name: "mongo"
+                    uid: "600"
+                    gid: "600"
+                    home: "mongo"
+                    comment: "MongoDB"
+                    extra_directories:
+                        - "db"
+                        - "dbconfig"
+                unifi:
+                    name: "unifi"
+                    uid: "601"
+                    gid: "601"
+                    home: "config"
+                    comment: "Unifi Controller"
+
+- name: "Setup Plex Controllers"
+  hosts: "media_servers"
+  roles:
+      - role: "docker"
+        tags: "plex"
+        vars:
+            project_name: "plex"
+            users:
+                plex:
+                    name: "plex"
+                    uid: "602"
+                    gid: "602"
+                    home: "config"
+                    comment: "Plex Media Server"
+                    extra_directories:
+                        - "transcode"
+                        - "/srv/share/plex/"
+                        - "/srv/share/plex/movies/"
+                        - "/srv/share/plex/tv-shows/"
+
+- name: "Setup Transmission"
+  hosts: "seedboxes"
+  roles:
+      - role: "docker"
+        tags: "transmission"
+        vars:
+            project_name: "transmission"
+            users:
+                transmission:
+                    name: "transmission"
+                    uid: "603"
+                    gid: "603"
+                    home: "config"
+                    comment: "Transmission"
+                    extra_directories:
+                        - "/srv/share/transmission/"
+
+- name: "Setup NFS"
+  hosts: "fileservers"
+  roles:
+      - role: "nfs"
+        tags: "nfs"

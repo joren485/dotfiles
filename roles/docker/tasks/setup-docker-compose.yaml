@@ -1,0 +1,49 @@
+---
+
+- name: "Set project root variable"
+  set_fact:
+    project_root: "/srv/{{ project_name }}"
+
+- name: "Create project root"
+  become: "yes"
+  file:
+    path: "{{ project_root }}"
+    state: "directory"
+    mode: "0755"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: "Setup user and group"
+  include_tasks: "setup-user.yaml"
+  loop: "{{ users.values() }}"
+  loop_control:
+    loop_var: "user"
+
+- name: "Place docker-compose.yaml"
+  template:
+    src: "docker-compose/{{ project_name }}.yaml.j2"
+    dest: "{{ project_root }}/docker-compose.yaml"
+    mode: "0644"
+    validate: "docker-compose --file %s convert --quiet"
+
+- name: "Setup containers"
+  block:
+    - name: "Pull containers"
+      command:
+        cmd: >-
+          docker-compose
+          --file="{{ project_root }}/docker-compose.yaml"
+          pull
+      register: "docker_compose_pull"
+      changed_when: "'Pull complete' in docker_compose_pull.stdout"
+
+    - name: "Start Containers"
+      command:
+        cmd: >-
+          docker-compose
+          --file="{{ project_root }}/docker-compose.yaml"
+          up
+          --detach
+          --remove-orphans
+      register: "docker_compose_up"
+      changed_when: "'Started' in docker_compose_up.stdout"
