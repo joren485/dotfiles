@@ -8,8 +8,6 @@ packages_host:
   - "arch-wiki-docs"
   - "archlinux-wallpaper"
   - "dkms"
-  - "docker"
-  - "docker-compose"
   - "firefox"
   - "fwupd"
   - "git"
