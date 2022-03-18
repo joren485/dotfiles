@@ -30,8 +30,6 @@ packages_common:
   - "pwgen"
   - "python"
   - "python-pip"
-  - "python-requests"
-  - "python-beautifulsoup4"
   - "reflector"
   - "rsync"
   - "speedtest-cli"
