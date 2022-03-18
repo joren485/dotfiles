@@ -86,3 +86,20 @@
                         - "/srv/share/plex/"
                         - "/srv/share/plex/movies/"
                         - "/srv/share/plex/tv-shows/"
+
+- name: "Setup Transmission"
+  hosts: "seedboxes"
+  roles:
+      - role: "docker"
+        tags: "transmission"
+        vars:
+            project_name: "transmission"
+            users:
+                transmission:
+                    name: "transmission"
+                    uid: "603"
+                    gid: "603"
+                    home: "config"
+                    comment: "Transmission"
+                    extra_directories:
+                        - "/srv/share/transmission/"
