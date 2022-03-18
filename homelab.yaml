@@ -44,7 +44,7 @@
             - "backups"
 
 - name: "Setup Unifi Controllers"
-  hosts: "unifi_controller"
+  hosts: "unifi_controllers"
   roles:
       - role: "docker"
         tags: "unifi"
@@ -55,14 +55,34 @@
                     name: "mongo"
                     uid: "600"
                     gid: "600"
-                    relative_home: "mongo"
+                    home: "mongo"
                     comment: "MongoDB"
-                    relative_extra_dirs:
+                    extra_directories:
                         - "db"
                         - "dbconfig"
                 unifi:
                     name: "unifi"
                     uid: "601"
                     gid: "601"
-                    relative_home: "config"
+                    home: "config"
                     comment: "Unifi Controller"
+
+- name: "Setup Plex Controllers"
+  hosts: "media_servers"
+  roles:
+      - role: "docker"
+        tags: "plex"
+        vars:
+            project_name: "plex"
+            users:
+                plex:
+                    name: "plex"
+                    uid: "602"
+                    gid: "602"
+                    home: "config"
+                    comment: "Plex Media Server"
+                    extra_directories:
+                        - "transcode"
+                        - "/srv/share/plex/"
+                        - "/srv/share/plex/movies/"
+                        - "/srv/share/plex/tv-shows/"
