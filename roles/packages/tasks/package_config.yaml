@@ -43,16 +43,6 @@
     enabled: yes
     daemon_reload: yes
 
-- name: "Setup C&CZ VPN"
-  when: "'networkmanager-openvpn' in packages"
-  become: yes
-  copy:
-    src: "networkmanager/openvpn-science.nmconnection"
-    dest: "/etc/NetworkManager/system-connections/openvpn-science.nmconnection"
-    owner: "root"
-    group: "root"
-    mode: "0600"
-
 - name: "Add user to adbusers group"
   when: "'android-tools' in packages"
   become: yes
