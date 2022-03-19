@@ -19,7 +19,7 @@
 - name: "Show which AUR packages to install"
   when: "packages_common_aur and packages_host_aur"
   debug:
-    msg: "Please install {{ item }} on {{ ansible_hostname }}."
+    msg: "Please install {{ item }} on {{ inventory_hostname }}."
   loop: "{{ packages_aur }}"
 
 - name: "Run package specific config"

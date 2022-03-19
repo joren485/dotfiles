@@ -9,7 +9,7 @@ services:
     environment:
       TZ: "Europe/Amsterdam"
       PLEX_CLAIM: "{{ plex_claim_token }}"
-      ADVERTISE_IP: "https://{{ ansible_hostname }}:32400/"
+      ADVERTISE_IP: "https://{{ inventory_hostname }}:32400/"
       PLEX_UID: "{{ users.plex.uid }}"
       PLEX_GID: "{{ users.plex.gid }}"
     devices:
