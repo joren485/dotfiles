@@ -4,7 +4,6 @@
   when: "has_sudo"
   become: yes
   package:
-    state: "present"
     name:
       - "neovim"
       - "vim"

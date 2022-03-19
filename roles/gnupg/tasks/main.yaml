@@ -4,7 +4,6 @@
   become: yes
   package:
     name: "gnupg"
-    state: "present"
 
 - name: "Import PGP key"
   when: "pgp_private_key is defined"

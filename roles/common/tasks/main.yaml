@@ -11,12 +11,10 @@
     - name: "Ensure en_US.UTF-8 exists"
       locale_gen:
         name: "en_US.UTF-8"
-        state: "present"
 
     - name: "Ensure nl_NL.UTF-8 exists"
       locale_gen:
         name: "nl_NL.UTF-8"
-        state: "present"
 
 - name: "Disable system beep"
   become: yes
@@ -26,7 +24,6 @@
     group: "root"
     mode: "0644"
     line: "blacklist pcspkr"
-    state: "present"
     create: yes
 
 - name: "Update bootloader after update"
