@@ -14,8 +14,12 @@
       - role: "ssh"
         tags: "ssh"
 
-      - role: "packages"
-        tags: "packages"
+      - role: "gnupg"
+        tags:
+            - "gnupg"
+            - "gpg"
+            - "gpg2"
+            - "pgp"
 
       - role: "git"
         tags: "git"
@@ -26,17 +30,12 @@
       - role: "vim"
         tags: "vim"
 
+      - role: "packages"
+        tags: "packages"
+
 - name: "Configure laptop"
   hosts: "druif"
   roles:
-
-      - role: "gnupg"
-        tags:
-            - "gnupg"
-            - "gpg"
-            - "gpg2"
-            - "pgp"
-
       - role: "sway"
         tags: "sway"
 
