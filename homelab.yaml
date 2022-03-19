@@ -60,7 +60,7 @@
                     comment: "MongoDB"
                     extra_directories:
                         - "db"
-                        - "dbconfig"
+                        - "configdb"
                 unifi:
                     name: "unifi"
                     uid: "601"
