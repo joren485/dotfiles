@@ -3,3 +3,5 @@
 network:
   gateway: "10.0.0.1"
   nameserver: "10.0.0.1"
+
+wifi: "{{ vault_wifi }}"

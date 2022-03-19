@@ -3,3 +3,34 @@
 - name: "Install Network Manger"
   pacman:
     name: "networkmanager"
+
+- name: "Add Network Manager profile for Thinkpad dock"
+  community.general.nmcli:
+    conn_name: "Dock"
+    ifname: "enp7s0u2u1u2"
+    type: "ethernet"
+    ip4: "10.0.0.2/16"
+    gw4: "10.0.0.1"
+    dns4: "10.0.0.1"
+    dns4_search: "internal.nietaanraken.nl"
+    state: "present"
+
+- name: "Add Network Manager profile for Thinkpad port"
+  community.general.nmcli:
+    conn_name: "Thinkpad"
+    ifname: "enp0s31f6"
+    type: "ethernet"
+    autoconnect: no
+    state: "present"
+
+- name: "Add Network Manager profile for Wireless network"
+  community.general.nmcli:
+    conn_name: "{{ wifi.ssid }}"
+    ifname: "wlp0s20f3"
+    type: "wifi"
+    autoconnect: no
+    ssid: "Banaan"
+    wifi_sec:
+      key-mgmt: wpa-psk
+      psk: "{{ wifi.password }}"
+    state: "present"
