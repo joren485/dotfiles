@@ -1,0 +1,21 @@
+---
+
+- name: "Install git"
+  pacman:
+    name: "git"
+    state: "present"
+
+- name: "Create Git config directory"
+  file:
+    path: "{{ ansible_user_dir }}/.config/git/"
+    state: "directory"
+    mode: "0755"
+
+- name: "Copy git configuration files"
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_user_dir }}/.config/git/{{ item }}"
+    mode: "0644"
+  loop:
+    - "config"
+    - "attributes"
