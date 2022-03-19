@@ -11,6 +11,9 @@
             - "user"
             - "users"
 
+      - role: "network"
+        tags: "network"
+
       - role: "packages"
         tags: "packages"
 

@@ -22,7 +22,6 @@ packages:
   - "mtr"
   - "nano"
   - "ncdu"
-  - "networkmanager"
   - "nfs-utils"
   - "nmap"
   - "openbsd-netcat"

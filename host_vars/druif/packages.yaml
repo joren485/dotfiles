@@ -22,7 +22,6 @@ packages_host:
   - "linux-lts"
   - "linux-lts-headers"
   - "network-manager-applet"
-  - "networkmanager-openvpn"
   - "otf-font-awesome"
   - "pwgen"
   - "python-black"
