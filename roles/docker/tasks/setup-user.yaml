@@ -43,7 +43,7 @@
   become: yes
   when: "user.extra_directories is defined and item.startswith('/')"
   file:
-    path: "{{ project_root }}/{{ user.home }}/{{ item }}"
+    path: "{{ item }}"
     state: "directory"
     mode: "0755"
     owner: "{{ user.name }}"
