@@ -35,3 +35,24 @@
     name: "systemd-boot-update"
     state: "started"
     enabled: "yes"
+
+- name: "Do nothing when the lid closes"
+  when: "'homelab' in group_names"
+  block:
+    - name: "Create /etc/systemd/logind.conf.d/"
+      become: yes
+      file:
+        path: "/etc/systemd/logind.conf.d/"
+        state: "directory"
+        mode: "0755"
+        owner: "root"
+        group: "root"
+
+    - name: "Copy lid.conf"
+      become: yes
+      copy:
+        src: "lid.conf"
+        dest: "/etc/systemd/logind.conf.d/lid.conf"
+        mode: "0755"
+        owner: "root"
+        group: "root"
