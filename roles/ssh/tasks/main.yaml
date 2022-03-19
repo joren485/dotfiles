@@ -4,7 +4,6 @@
   become: yes
   package:
     name: "openssh"
-    state: "present"
 
 - name: "Create .ssh directory"
   file:
@@ -45,7 +44,6 @@
     dest: "/etc/ssh/sshd_config"
     regexp: "^#?PasswordAuthentication (yes|no)$"
     line: "PasswordAuthentication no"
-    state: "present"
 
 - name: "Start SSH server"
   become: yes

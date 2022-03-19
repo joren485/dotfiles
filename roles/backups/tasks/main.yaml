@@ -4,7 +4,6 @@
   become: yes
   package:
     name: "restic"
-    state: "present"
 
 - name: "Create .local/bin/"
   file:

@@ -9,7 +9,6 @@
       - "git"
       - "curl"
       - "python-pexpect"
-    state: "present"
 
 - name: "Check if zsh is installed"
   command: "which zsh"

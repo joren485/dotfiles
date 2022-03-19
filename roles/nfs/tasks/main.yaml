@@ -4,7 +4,6 @@
   become: yes
   package:
     name: "nfs-utils"
-    state: "present"
 
 - name: "Copy exports"
   become: yes

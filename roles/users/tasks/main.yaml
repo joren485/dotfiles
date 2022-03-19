@@ -27,13 +27,11 @@
     dest: "/etc/security/faillock.conf"
     regexp: '#? ?deny ?= ?\d+'
     line: "deny = 0"
-    state: "present"
 
 - name: "Create main user"
   become: yes
   user:
     name: "{{ ansible_user }}"
-    state: "present"
     append: yes
     groups:
       - "wheel"

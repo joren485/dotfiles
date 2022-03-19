@@ -3,7 +3,6 @@
 - name: "Install git"
   pacman:
     name: "git"
-    state: "present"
 
 - name: "Create Git config directory"
   file:
