@@ -20,6 +20,11 @@ export LC_ADDRESS=nl_NL.UTF-8
 export LC_TELEPHONE=nl_NL.UTF-8
 export LC_MEASUREMENT=nl_NL.UTF-8
 export LC_IDENTIFICATION=nl_NL.UTF-8
+
+# https://github.com/alacritty/alacritty/issues/2210
+if [[ -z "$LS_COLORS" ]] && [[ -n "$(command -v dircolors)" ]] && [[ "$TERM" = "alacritty" ]]; then
+    eval "$(env TERM=alacritty-color dircolors)"
+fi
 {% if sway_installed %}
 
 export BROWSER=firefox
