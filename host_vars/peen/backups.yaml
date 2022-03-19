@@ -1,14 +1,15 @@
 ---
 
+backup_as_root: yes
+
 backup_sources:
-  - "{{ ansible_user_dir }}/archive"
-  - "{{ ansible_user_dir }}/dotfiles"
-  - "{{ ansible_user_dir }}/projects"
-  - "{{ ansible_user_dir }}/study"
+  - "/srv/plex/config/"
+  - "/srv/unifi/config/"
+  - "/srv/transmission/config"
   - "{{ ansible_user_dir }}/.bash_history"
   - "{{ ansible_user_dir }}/.python_history"
   - "{{ ansible_user_dir }}/.zsh_history"
 
 backup_repos:
-  - "/mnt/peen/joren/backup/"
+  - "/srv/share/joren/backup/"
   - "b2:backups-joren-vrancken"

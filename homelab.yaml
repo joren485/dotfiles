@@ -33,16 +33,16 @@
       - role: "vim"
         tags: "vim"
 
+      - role: "backups"
+        tags:
+            - "backup"
+            - "backups"
+
 - name: "Configure laptop"
   hosts: "druif"
   roles:
       - role: "sway"
         tags: "sway"
-
-      - role: "backups"
-        tags:
-            - "backup"
-            - "backups"
 
 - name: "Setup Unifi Controllers"
   hosts: "unifi_controllers"
