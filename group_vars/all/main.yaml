@@ -10,6 +10,7 @@ packages:
   - "bind-tools"
   - "curl"
   - "dsniff"
+  - "fwupd"
   - "htop"
   - "inetutils"
   - "iperf3"
