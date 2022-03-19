@@ -36,7 +36,7 @@ packages_host:
   - "zathura"
   - "zathura-pdf-mupdf"
 
-packages_host_aur:
+packages_aur_host:
   - "pycharm-professional"
   - "spotify"
   - "tor-browser"

@@ -1,9 +1,37 @@
 ---
 
-- name: "Combine package lists"
-  set_fact:
-    packages: "{{ packages_common + packages_host }}"
-    packages_aur: "{{ packages_common_aur + packages_host_aur }}"
+- name: "Install pacman"
+  pacman:
+    name:
+      - "pacman"
+      - "pacman-contrib"
+
+- name: "Install pacman hooks"
+  become: yes
+  block:
+    - name: "Enable pacman hooks directory"
+      lineinfile:
+        path: "/etc/pacman.conf"
+        line: "HookDir = /etc/pacman.d/hooks/"
+        regexp: '^#?HookDir\s*='
+
+    - name: "Create /etc/pacman.d/hooks"
+      file:
+        path: "/etc/pacman.d/hooks"
+        state: "directory"
+        mode: "0755"
+        owner: "root"
+        group: "root"
+
+    - name: "Copy hook files"
+      copy:
+        src: "pacman/{{ item }}"
+        dest: "/etc/pacman.d/hooks/95-{{ item }}"
+        mode: "0755"
+        owner: "root"
+        group: "root"
+      loop:
+        - "pacdiff.hook"
 
 - name: "Update pacman cache"
   become: yes
@@ -13,14 +41,10 @@
 - name: "Install packages"
   become: yes
   package:
-    name: "{{ packages }}"
+    name: "{{ packages_host + packages }}"
     state: "present"
 
 - name: "Show which AUR packages to install"
-  when: "packages_common_aur and packages_host_aur"
   debug:
     msg: "Please install {{ item }} on {{ inventory_hostname }}."
-  loop: "{{ packages_aur }}"
-
-- name: "Run package specific config"
-  import_tasks: "package_config.yaml"
+  loop: "{{ packages_aur_host }}"
