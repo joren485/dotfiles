@@ -15,6 +15,20 @@
     group: "root"
     validate: "visudo -cf %s"
 
+- name: "Disable root password"
+  become: yes
+  user:
+    name: "root"
+    password_lock: yes
+
+- name: "Disable locking user after 3 tries"
+  become: yes
+  lineinfile:
+    dest: "/etc/security/faillock.conf"
+    regexp: '#? ?deny ?= ?\d+'
+    line: "deny = 0"
+    state: "present"
+
 - name: "Create main user"
   become: yes
   user:
@@ -31,9 +45,3 @@
     name: "{{ ansible_user }}"
     groups: "adbusers"
     append: yes
-
-- name: "Disable root password"
-  become: yes
-  user:
-    name: "root"
-    password_lock: yes
