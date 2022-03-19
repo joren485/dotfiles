@@ -11,6 +11,9 @@
             - "user"
             - "users"
 
+      - role: "packages"
+        tags: "packages"
+
       - role: "ssh"
         tags: "ssh"
 
@@ -29,9 +32,6 @@
 
       - role: "vim"
         tags: "vim"
-
-      - role: "packages"
-        tags: "packages"
 
 - name: "Configure laptop"
   hosts: "druif"

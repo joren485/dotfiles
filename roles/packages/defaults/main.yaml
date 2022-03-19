@@ -1,4 +1,5 @@
 ---
 
+packages: []
 packages_host: []
-packages_host_aur: []
+packages_aur_host: []
