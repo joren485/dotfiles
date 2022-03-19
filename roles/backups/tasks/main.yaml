@@ -13,6 +13,7 @@
     mode: "0755"
 
 - name: "Copy backup script"
+  when: "backup_sources is defined and backup_repos is defined"
   template:
     src: "backup.sh.j2"
     dest: "{{ ansible_user_dir }}/.local/bin/backup.sh"

@@ -1,0 +1,4 @@
+---
+
+restic_password: "{{ vault_restic_password }}"
+backblaze_credentials: "{{ vault_backblaze_credentials }}"
