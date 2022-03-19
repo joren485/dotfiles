@@ -1,0 +1,20 @@
+---
+
+- name: "Place systemd-networkd config"
+  become: yes
+  template:
+    src: "peen/20-wired.j2"
+    dest: "/etc/systemd/network/20-wired.network"
+    mode: "0644"
+    owner: "root"
+    group: "root"
+
+- name: "Enable services"
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    state: "started"
+    enabled: yes
+  loop:
+    - "systemd-networkd"
+    - "systemd-resolved"

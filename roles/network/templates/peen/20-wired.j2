@@ -1,0 +1,9 @@
+# {{ ansible_managed }}
+
+[Match]
+Name=enp2s0
+
+[Network]
+Address=10.0.0.3/16
+Gateway={{ network.gateway }}
+DNS={{ network.nameserver }}

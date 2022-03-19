@@ -1,0 +1,4 @@
+---
+
+- name: "Setup network on specific host"
+  include_tasks: "{{ inventory_hostname }}.yaml"

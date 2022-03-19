@@ -1,0 +1,5 @@
+---
+
+- name: "Install Network Manger"
+  pacman:
+    name: "networkmanager"
