@@ -6,6 +6,3 @@ Host *
     CheckHostIP no
     StrictHostKeyChecking no
     ConnectTimeout 5
-    Compression yes
-    ControlMaster auto
-    ControlPath /tmp/.ssh_control-%h-%p-%r
