@@ -1,5 +1,10 @@
 ---
 
+- name: "Install packages"
+  pacman:
+    name:
+      - "sudo"
+
 - name: "Allow wheel group sudo permissions"
   become: yes
   copy:
@@ -18,6 +23,14 @@
     append: yes
     groups:
       - "wheel"
+
+- name: "Add user to adbusers group"
+  when: "'android-tools' in packages_host"
+  become: yes
+  user:
+    name: "{{ ansible_user }}"
+    groups: "adbusers"
+    append: yes
 
 - name: "Disable root password"
   become: yes
