@@ -49,7 +49,7 @@
 
 - name: "Start SSH server"
   become: yes
-  when: "ssh_server"
+  when: "'homelab' in group_names"
   systemd:
     name: "sshd"
     state: "started"
