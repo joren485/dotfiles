@@ -1,7 +1,10 @@
 ---
 
 network:
-  gateway: "10.0.0.1"
-  nameserver: "10.0.0.1"
+  gateway4: "10.0.0.1"
+  nameserver4: "10.0.0.3"
+  gateway6: "fd1f:1b37:9b97:0:10::1"
+  nameserver6: "fd1f:1b37:9b97:0:10::3"
+  domain: "internal.nietaanraken.nl"
 
 wifi: "{{ vault_wifi }}"
