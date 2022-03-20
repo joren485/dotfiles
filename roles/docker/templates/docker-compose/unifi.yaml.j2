@@ -6,6 +6,7 @@
 services:
   mongo:
     image: "mongo:latest"
+    restart: "unless-stopped"
     user: "{{ users.mongo.uid }}:{{ users.mongo.gid }}"
     volumes:
       - "{{ project_root }}/{{ users.mongo.relative_home }}/db/:/data/db/"
