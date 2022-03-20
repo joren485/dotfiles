@@ -9,12 +9,12 @@
     owner: "root"
     group: "root"
 
-- name: "Enable services"
+- name: "Enable systemd-networkd service"
   become: yes
   systemd:
-    name: "{{ item }}"
+    name: "systemd-networkd"
     state: "started"
     enabled: yes
-  loop:
-    - "systemd-networkd"
-    - "systemd-resolved"
+
+- name: "Setup dnsmasq"
+  include_tasks: "setup-dnsmasq.yaml"
