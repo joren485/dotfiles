@@ -13,7 +13,7 @@
     gw4: "{{ network.gateway4 }}"
     dns4: "{{ network.nameserver4 }}"
     dns4_search: "{{ network.domain }}"
-    ip6: "fd1f:1b37:9b97:0:10::3/48"
+    ip6: "fd1f:1b37:9b97:0:10::2/48"
     gw6: "{{ network.gateway6 }}"
     dns6: "{{ network.nameserver6 }}"
     dns6_search: "{{ network.domain }}"
