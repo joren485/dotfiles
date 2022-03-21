@@ -33,6 +33,13 @@
     state: "started"
     enabled: "yes"
 
+- name: "Start time sync daemon"
+  become: yes
+  systemd:
+    name: "systemd-timesyncd"
+    enabled: yes
+    daemon_reload: yes
+
 - name: "Do nothing when the lid closes"
   when: "'homelab' in group_names"
   block:
