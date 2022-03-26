@@ -15,6 +15,3 @@
     name: "systemd-networkd"
     state: "started"
     enabled: yes
-
-- name: "Setup dnsmasq"
-  include_tasks: "setup-dnsmasq.yaml"
