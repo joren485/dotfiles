@@ -7,10 +7,10 @@ services:
   mongo:
     image: "mongo:latest"
     restart: "unless-stopped"
-    user: "{{ users.mongo.uid }}:{{ users.mongo.gid }}"
+    user: "1000:1000"
     volumes:
-      - "{{ project_root }}/{{ users.mongo.home }}/db/:/data/db/"
-      - "{{ project_root }}/{{ users.mongo.home }}/configdb/:/data/configdb/"
+      - "./mongo/db/:/data/db/"
+      - "./mongo/configdb/:/data/configdb/"
     environment:
       TZ: "Europe/Amsterdam"
 
@@ -20,14 +20,14 @@ services:
     depends_on:
       - "mongo"
     volumes:
-      - "{{ project_root }}/{{ users.unifi.home }}:/unifi"
+      - "./config/:/unifi"
     environment:
       TZ: "Europe/Amsterdam"
       DB_NAME: "unifi"
       DB_URI: "mongodb://mongo/unifi"
       STATDB_URI: "mongodb://mongo/unifi_stat"
-      UNIFI_UID: "{{ users.unifi.uid }}"
-      UNIFI_GID: "{{ users.unifi.gid }}"
+      UNIFI_UID: "1000"
+      UNIFI_GID: "1000"
       RUNAS_UID0: "false"
     ports:
       - "3478:3478/udp"

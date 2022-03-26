@@ -9,17 +9,8 @@ export RESTIC_PASSWORD="{{ restic_password }}"
 export B2_ACCOUNT_ID="{{ backblaze_credentials.b2_account_id }}"
 export B2_ACCOUNT_KEY="{{ backblaze_credentials.b2_account_key }}"
 
-{% if backup_as_root %}
-echo "[*] Setting CAP_DAC_READ_SEARCH on ${RESTIC}"
-sudo setcap cap_dac_read_search=+ep ${RESTIC}
-{% endif %}
-
 {% for repo in backup_repos %}
 echo "[*] Running Restic backup to {{ repo }}."
 ${RESTIC} --repo "{{ repo  }}" backup --tag "{{ inventory_hostname }}" "{{ backup_sources|map('quote')|join('\" \"') }}"
 {% endfor %}
 
-{% if backup_as_root %}
-echo "[*] Removing CAP_DAC_READ_SEARCH on ${RESTIC}"
-sudo setcap cap_dac_read_search=-ep ${RESTIC}
-{% endif %}
