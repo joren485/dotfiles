@@ -8,7 +8,7 @@
 - name: "Template DNS and config files"
   become: yes
   template:
-    src: "peen/{{ item }}.j2"
+    src: "{{ item }}.j2"
     dest: "/etc/{{ item }}"
     mode: "0644"
     owner: "root"
