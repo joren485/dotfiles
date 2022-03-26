@@ -1,7 +1,5 @@
 ---
 
-backup_as_root: yes
-
 backup_sources:
   - "/srv/plex/config/"
   - "/srv/unifi/config/"

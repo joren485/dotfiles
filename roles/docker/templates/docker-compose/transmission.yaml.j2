@@ -22,5 +22,5 @@ services:
             OPENVPN_PASSWORD: "{{ pia_credentials.password }}"
             LOCAL_NETWORK: "10.0.0.0/16"
             TRANSMISSION_HOME: "/config/transmission-home/"
-            PUID: "{{ users.transmission.uid }}"
-            PGID: "{{ users.transmission.gid }}"
+            PUID: "1000"
+            PGID: "1000"

@@ -59,23 +59,12 @@
       - role: "docker"
         tags: "unifi"
         vars:
-            project_name: "unifi"
-            users:
-                mongo:
-                    name: "mongo"
-                    uid: "600"
-                    gid: "600"
-                    home: "mongo"
-                    comment: "MongoDB"
-                    extra_directories:
-                        - "db"
-                        - "configdb"
-                unifi:
-                    name: "unifi"
-                    uid: "601"
-                    gid: "601"
-                    home: "config"
-                    comment: "Unifi Controller"
+            project:
+                name: "unifi"
+                directories:
+                    - "mongo/db/"
+                    - "mongo/configdb/"
+                    - "config/"
 
 - name: "Setup Plex Controllers"
   hosts: "media_servers"
@@ -83,19 +72,14 @@
       - role: "docker"
         tags: "plex"
         vars:
-            project_name: "plex"
-            users:
-                plex:
-                    name: "plex"
-                    uid: "602"
-                    gid: "602"
-                    home: "config"
-                    comment: "Plex Media Server"
-                    extra_directories:
-                        - "transcode"
-                        - "/srv/share/plex/"
-                        - "/srv/share/plex/movies/"
-                        - "/srv/share/plex/tv-shows/"
+            project:
+                name: "plex"
+                directories:
+                    - "config/"
+                    - "transcode/"
+                    - "/srv/share/plex/"
+                    - "/srv/share/plex/movies/"
+                    - "/srv/share/plex/tv-shows/"
 
 - name: "Setup Transmission"
   hosts: "seedboxes"
@@ -103,16 +87,10 @@
       - role: "docker"
         tags: "transmission"
         vars:
-            project_name: "transmission"
-            users:
-                transmission:
-                    name: "transmission"
-                    uid: "603"
-                    gid: "603"
-                    home: "config"
-                    comment: "Transmission"
-                    extra_directories:
-                        - "/srv/share/transmission/"
+            project:
+                name: "transmission"
+                directories:
+                    - "/srv/share/transmission/"
 
 - name: "Setup NFS"
   hosts: "fileservers"

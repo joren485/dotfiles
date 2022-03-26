@@ -23,5 +23,5 @@
     enabled: yes
 
 - name: "Setup a docker-compose project"
-  when: "project_name is defined"
+  when: "project is defined"
   include_tasks: "setup-docker-compose.yaml"
