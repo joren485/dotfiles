@@ -1,7 +1,6 @@
 ---
 
 backup_sources:
-  - "{{ ansible_user_dir }}/archive"
   - "{{ ansible_user_dir }}/dotfiles"
   - "{{ ansible_user_dir }}/projects"
   - "{{ ansible_user_dir }}/study"
@@ -10,5 +9,5 @@ backup_sources:
   - "{{ ansible_user_dir }}/.zsh_history"
 
 backup_repos:
-  - "/mnt/peen/joren/backup/"
+  - "sftp:peen:/srv/backup/"
   - "b2:backups-joren-vrancken"
