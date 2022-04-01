@@ -1,13 +1,14 @@
 ---
 
 backup_sources:
-  - "/srv/plex/config/"
-  - "/srv/unifi/config/"
+  - "/srv/share/joren/"
+  - "/srv/plex/"
+  - "/srv/unifi/"
   - "/srv/transmission/config"
   - "{{ ansible_user_dir }}/.bash_history"
   - "{{ ansible_user_dir }}/.python_history"
   - "{{ ansible_user_dir }}/.zsh_history"
 
 backup_repos:
-  - "/srv/share/joren/backup/"
+  - "/srv/backup/"
   - "b2:backups-joren-vrancken"
