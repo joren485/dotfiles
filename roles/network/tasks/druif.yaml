@@ -2,7 +2,9 @@
 
 - name: "Install Network Manger"
   pacman:
-    name: "networkmanager"
+    name:
+      - "networkmanager"
+      - "network-manager-applet"
 
 - name: "Add Network Manager profile for Thinkpad dock"
   community.general.nmcli:
@@ -40,3 +42,12 @@
       key-mgmt: wpa-psk
       psk: "{{ wifi.password }}"
     state: "present"
+
+- name: "Add Network Manager profile for Wireguard"
+  become: yes
+  template:
+    src: "druif/WireguardHome.nmconnection.j2"
+    dest: "/etc/NetworkManager/system-connections/WireguardHome.nmconnection"
+    owner: "root"
+    group: "root"
+    mode: "0600"
