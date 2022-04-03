@@ -5,9 +5,6 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'itchyny/lightline.vim'
 let g:lightline = {'colorscheme': 'wombat'}
 
-Plug 'lambdalisue/suda.vim'
-cnoremap W SudaWrite
-
 Plug 'dense-analysis/ale'
 
 Plug 'airblade/vim-gitgutter'
