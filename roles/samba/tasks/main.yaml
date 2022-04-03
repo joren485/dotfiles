@@ -1,0 +1,33 @@
+---
+
+- name: "Install Samba"
+  become: yes
+  package:
+    name:
+      - "samba"
+
+- name: "Template smb.conf"
+  become: yes
+  template:
+    src: "smb.conf.j2"
+    dest: "/etc/samba/smb.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+
+- name: "Configure Samba users"
+  become: yes
+  shell: |
+    set -o pipefail
+    (pdbedit --user={{ ansible_user }} 2>&1 > /dev/null) ||
+    (echo '{{ ansible_become_password }}'; echo '{{ ansible_become_password }}') |
+    smbpasswd -s -a {{ ansible_user }}
+  register: smbpasswd
+  changed_when: "'Added user' in smbpasswd.stdout"
+
+- name: "Start Samba server"
+  become: yes
+  systemd:
+    name: "smb"
+    enabled: yes
+    daemon_reload: yes

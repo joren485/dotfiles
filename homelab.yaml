@@ -92,8 +92,8 @@
                 directories:
                     - "/srv/share/transmission/"
 
-- name: "Setup NFS"
+- name: "Setup Samba server"
   hosts: "fileservers"
   roles:
-      - role: "nfs"
-        tags: "nfs"
+      - role: "samba"
+        tags: "samba"
