@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+[global]
+    server string = Samba Server {{ inventory_hostname }}
+    logging = systemd
+
+[SHARE]
+    path = /srv/share/
+    browseable = yes
+    writable = yes
+    create mask = 0664
+    directory mask = 2775
+    force create mode = 0664
+    force directory mode = 2775

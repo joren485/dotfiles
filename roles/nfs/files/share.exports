@@ -1,3 +1,0 @@
-# Ansible managed
-
-/srv/share/ 10.0.0.0/16(rw,async,insecure,no_root_squash)
