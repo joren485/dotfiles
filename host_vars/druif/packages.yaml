@@ -11,7 +11,6 @@ packages_host:
   - "intel-ucode"
   - "intel-media-driver"
   - "iw"
-  - "network-manager-applet"
   - "pwgen"
   - "python-black"
   - "python-poetry"

@@ -7,3 +7,5 @@ pgp_private_key: "{{ vault_pgp_private_key }}"
 ssh_key:
   public: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJw2wAiOf4+UUBPdYd3pKTcCMEosiAGBLnFUX31ki6SL {{ ansible_user }}@{{ inventory_hostname }}"
   private: "{{ vault_ssh_private_key }}"
+
+wireguard: "{{ vault_wireguard }}"
