@@ -5,11 +5,11 @@
   template:
     src: "peen/{{ item }}.j2"
     dest: "/etc/systemd/network/{{ item }}"
-    mode: "0640"
+    mode: "0644"
     owner: "root"
     group: "root"
   loop:
-    - "20-wired"
+    - "20-wired.network"
     - "99-wg0.network"
     - "99-wg0.netdev"
 
