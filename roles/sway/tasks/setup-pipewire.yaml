@@ -10,22 +10,9 @@
       - "pipewire-pulse"
       - "pipewire-alsa"
       - "pipewire-docs"
+      - "wireplumber"
       - "xdg-desktop-portal-wlr"
       - "pavucontrol"
-
-- name: "Enable automatically switching profiles on Bluetooth devices"
-  copy:
-    content: >-
-      {{
-        lookup("file", "/usr/share/pipewire/media-session.d/bluez-monitor.conf")
-        | regex_replace(
-          "#?bluez5\.autoswitch-profile = \w+",
-          "bluez5.autoswitch-profile = true"
-        )
-      }}
-    dest: "{{ ansible_user_dir }}\
-           /.config/pipewire/media-session.d/bluez-monitor.conf"
-    mode: "0644"
 
 - name: "Enable bluetooth service"
   become: yes
