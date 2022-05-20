@@ -1,7 +1,7 @@
 ---
 
 backup_sources:
-  - "/srv/share/joren/"
+  - "/srv/share/archive/"
   - "/srv/plex/"
   - "/srv/unifi/"
   - "/srv/transmission/config"
