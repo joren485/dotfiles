@@ -11,6 +11,5 @@ exclude_paths:
 
 warn_list:
     - "fqcn-builtins"
+    - "yaml"
 
-skip_list:
-    - "truthy"

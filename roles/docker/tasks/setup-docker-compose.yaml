@@ -5,7 +5,7 @@
     project_root: "/srv/{{ project.name }}"
 
 - name: "Create project root"
-  become: "yes"
+  become: yes
   file:
     path: "{{ project_root }}"
     state: "directory"
