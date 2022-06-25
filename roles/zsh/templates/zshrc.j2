@@ -12,6 +12,9 @@ HIST_STAMPS="%d/%m/%y %T"
 
 ZSH_DOTENV_PROMPT=false
 
+# Do not escape URLs when copying them in the terminal
+DISABLE_MAGIC_FUNCTIONS=true
+
 # Do not check for Oh My Zsh updates if we are logging in and we will start a graphical session.
 # Otherwise automatically update Oh My Zsh
 if [[ -o login ]] && systemctl -q is-active graphical.target; then
