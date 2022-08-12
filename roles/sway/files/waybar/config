@@ -6,6 +6,7 @@
     "modules-center": ["custom/spotify"],
     "modules-right": [
         "custom/bitcoin",
+        "custom/ethereum",
         "backlight",
         "pulseaudio",
         "battery",
@@ -43,8 +44,16 @@
 
     "custom/bitcoin": {
         "format": "<span color='#FFBB11'></span> {}",
-        "exec-if": "ping -c 1 coinbase.com",
-        "exec": "coinbase_usd_checker.py",
+        "exec-if": "ping -c 1 api.coinbase.com",
+        "exec": "coinbase_usd_checker.py btc",
+        "interval": 60,
+        "tooltip": false
+    },
+
+    "custom/ethereum": {
+        "format": "<span color='#8A93B2'></span> {}",
+        "exec-if": "ping -c 1 api.coinbase.com",
+        "exec": "coinbase_usd_checker.py eth",
         "interval": 60,
         "tooltip": false
     },
@@ -128,4 +137,3 @@
         "tooltip": false
     }
 }
-
