@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # {{ ansible_managed }}
-# vi: ft=jinja
+{# vi: set ft=jinja: #}
 
 RESTIC="/usr/bin/restic"
 
@@ -9,8 +9,13 @@ export RESTIC_PASSWORD="{{ restic_password }}"
 export B2_ACCOUNT_ID="{{ backblaze_credentials.b2_account_id }}"
 export B2_ACCOUNT_KEY="{{ backblaze_credentials.b2_account_key }}"
 
+if [ $# -eq 0 ]
+    then
 {% for repo in backup_repos %}
-echo "[*] Running Restic backup to {{ repo }}."
-${RESTIC} --repo "{{ repo  }}" backup --tag "{{ inventory_hostname }}" "{{ backup_sources|map('quote')|join('\" \"') }}"
+    echo "[*] Running Restic backup to {{ repo }}."
+    ${RESTIC} --repo "{{ repo  }}" backup --tag "{{ inventory_hostname }}" "{{ backup_sources|map('quote')|join('\" \"') }}"
 {% endfor %}
-
+else
+    echo "[*] Running ${RESTIC} $*"
+    ${RESTIC} "$@"
+fi
