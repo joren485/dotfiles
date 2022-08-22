@@ -8,4 +8,5 @@ backup_sources:
   - "{{ ansible_user_dir }}/.zsh_history"
 
 backup_repos:
+  - "/mnt/share/backup"
   - "b2:backups-joren-vrancken"
