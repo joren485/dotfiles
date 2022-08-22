@@ -39,6 +39,7 @@ packages:
   - "rsync"
   - "speedtest-cli"
   - "sshpass"
+  - "screen"
   - "strace"
   - "sudo"
   - "tree"
