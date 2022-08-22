@@ -1,6 +1,0 @@
----
-
-wireguard: "{{ vault_wireguard }}"
-
-packages_host:
-  - "amd-ucode"

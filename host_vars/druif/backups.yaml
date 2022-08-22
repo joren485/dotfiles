@@ -9,5 +9,4 @@ backup_sources:
   - "{{ ansible_user_dir }}/.zsh_history"
 
 backup_repos:
-  - "sftp:peen:/srv/backup/"
   - "b2:backups-joren-vrancken"
