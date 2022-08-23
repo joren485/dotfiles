@@ -39,3 +39,13 @@
     name: "systemd-timesyncd"
     enabled: yes
     daemon_reload: yes
+
+- name: "Mount network share"
+  become: yes
+  mount:
+    src: "meloen:/mnt/MainPool/share"
+    path: "/mnt/share"
+    fstype: "nfs"
+    opts: "_netdev,x-systemd.automount"
+    boot: no
+    state: "present"
