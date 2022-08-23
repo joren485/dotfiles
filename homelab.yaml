@@ -36,6 +36,9 @@
       - role: "vim"
         tags: "vim"
 
+      - role: "docker"
+        tags: "docker"
+
       - role: "backups"
         tags:
             - "backup"
