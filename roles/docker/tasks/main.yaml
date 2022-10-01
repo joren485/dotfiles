@@ -2,7 +2,7 @@
 
 - name: "Install packages"
   become: true
-  ansible.builtin.package:
+  community.general.pacman:
     name:
       - "docker"
       - "docker-compose"

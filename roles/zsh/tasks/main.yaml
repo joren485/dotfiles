@@ -3,7 +3,7 @@
 - name: "Install zsh and dependencies"
   when: "has_sudo"
   become: true
-  ansible.builtin.package:
+  community.general.pacman:
     name:
       - "zsh"
       - "git"

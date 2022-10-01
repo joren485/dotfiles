@@ -2,7 +2,7 @@
 
 - name: "Install dependencies"
   become: true
-  pacman:
+  community.general.pacman:
     name:
       - "bluez"
       - "bluez-utils"

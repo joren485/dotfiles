@@ -2,7 +2,7 @@
 
 - name: "Install gnupng"
   become: true
-  ansible.builtin.package:
+  community.general.pacman:
     name: "gnupg"
 
 - name: "Import PGP key"

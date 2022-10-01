@@ -1,7 +1,7 @@
 ---
 
 - name: "Install dependencies"
-  pacman:
+  community.general.pacman:
     name:
       - "waybar"
       - "light"
