@@ -8,6 +8,3 @@ exclude_paths:
     - "roles/netdata/vars/vault.yaml"
     - "roles/qbittorrent/vars/vault.yaml"
     - "host_vars/druif/vault.yaml"
-
-warn_list:
-    - "template-instead-of-copy"
