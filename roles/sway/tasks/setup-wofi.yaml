@@ -6,19 +6,19 @@
       - "wofi"
 
 - name: "Create .config/wofi/"
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.config/wofi/"
     state: "directory"
     mode: "0755"
 
 - name: "Copy config"
-  copy:
+  ansible.builtin.copy:
     src: "wofi/config"
     dest: "{{ ansible_user_dir }}/.config/wofi/config"
     mode: "0644"
 
 - name: "Copy templates"
-  template:
+  ansible.builtin.template:
     src: "wofi/style.css.j2"
     dest: "{{ ansible_user_dir }}/.config/wofi/style.css"
     mode: "0644"

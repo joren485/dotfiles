@@ -2,7 +2,7 @@
 
 - name: "Install packages"
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - "docker"
       - "docker-compose"
@@ -10,7 +10,7 @@
 
 - name: "Add user to docker group"
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user }}"
     groups: "docker"
     append: true

@@ -2,7 +2,7 @@
 
 - name: "Set hostname"
   become: true
-  hostname:
+  ansible.builtin.hostname:
     name: "{{ inventory_hostname }}"
 
 - name: "Set locale"
@@ -18,7 +18,7 @@
 
 - name: "Disable system beep"
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "/etc/modprobe.d/nobeep.conf"
     owner: "root"
     group: "root"
@@ -28,21 +28,21 @@
 
 - name: "Update bootloader after update"
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: "systemd-boot-update"
     state: "started"
     enabled: true
 
 - name: "Start time sync daemon"
   become: true
-  systemd:
+  ansible.builtin.systemd:
     name: "systemd-timesyncd"
     enabled: true
     daemon_reload: true
 
 - name: "Mount network share"
   become: true
-  mount:
+  ansible.builtin.mount:
     src: "meloen:/mnt/MainPool/share"
     path: "/mnt/share"
     fstype: "nfs"

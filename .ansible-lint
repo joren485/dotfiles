@@ -10,6 +10,5 @@ exclude_paths:
     - "host_vars/druif/vault.yaml"
 
 warn_list:
-    - "fqcn-builtins"
     - "yaml"
     - "template-instead-of-copy"

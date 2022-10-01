@@ -2,11 +2,11 @@
 
 - name: "Install packages"
   become: true
-  package:
+  ansible.builtin.package:
     name: "openssh"
 
 - name: "Create .ssh directory"
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.ssh/"
     state: "directory"
     owner: "{{ ansible_user }}"
@@ -17,7 +17,7 @@
   when: "ssh_key is defined"
   block:
     - name: "Install public key"
-      copy:
+      ansible.builtin.copy:
         content: "{{ ssh_key.public }}"
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
@@ -25,7 +25,7 @@
         dest: "{{ ansible_user_dir }}/.ssh/id_ed25519.pub"
 
     - name: "Install SSH private key"
-      copy:
+      ansible.builtin.copy:
         content: "{{ ssh_key.private }}"
         owner: "{{ ansible_user }}"
         group: "{{ ansible_user }}"
@@ -33,14 +33,14 @@
         dest: "{{ ansible_user_dir }}/.ssh/id_ed25519"
 
 - name: "Copy user config"
-  copy:
+  ansible.builtin.copy:
     src: "config"
     mode: "0644"
     dest: "{{ ansible_user_dir }}/.ssh/config"
 
 - name: "Disable SSH password logins"
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "/etc/ssh/sshd_config"
     regexp: "^#?PasswordAuthentication (yes|no)$"
     line: "PasswordAuthentication no"
@@ -48,7 +48,7 @@
 - name: "Start SSH server"
   become: true
   when: "'homelab' in group_names"
-  systemd:
+  ansible.builtin.systemd:
     name: "sshd"
     state: "started"
     enabled: true

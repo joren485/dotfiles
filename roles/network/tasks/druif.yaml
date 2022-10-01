@@ -45,7 +45,7 @@
 
 - name: "Add Network Manager profile for Wireguard"
   become: true
-  template:
+  ansible.builtin.template:
     src: "druif/WireguardHome.nmconnection.j2"
     dest: "/etc/NetworkManager/system-connections/WireguardHome.nmconnection"
     owner: "root"
