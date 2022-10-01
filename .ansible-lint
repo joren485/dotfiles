@@ -10,5 +10,4 @@ exclude_paths:
     - "host_vars/druif/vault.yaml"
 
 warn_list:
-    - "yaml"
     - "template-instead-of-copy"
