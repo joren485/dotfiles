@@ -2,7 +2,7 @@
 
 - name: "Install zsh and dependencies"
   when: "has_sudo"
-  become: yes
+  become: true
   package:
     name:
       - "zsh"
@@ -12,8 +12,8 @@
 
 - name: "Check if zsh is installed"
   command: "which zsh"
-  changed_when: no
-  check_mode: no
+  changed_when: false
+  check_mode: false
 
 - name: "Check if relevant applications are installed"
   vars:
@@ -27,9 +27,9 @@
     - name: "Check if application is installed"
       command: "which {{ item }}"
       register: "which_output"
-      changed_when: no
-      failed_when: no
-      check_mode: no
+      changed_when: false
+      failed_when: false
+      check_mode: false
       loop: "{{ applications }}"
 
     - name: "Set '_installed' boolean values"

@@ -1,7 +1,7 @@
 ---
 
 - name: "Install dependencies"
-  become: yes
+  become: true
   pacman:
     name:
       - "bluez"
@@ -15,11 +15,11 @@
       - "pavucontrol"
 
 - name: "Enable bluetooth service"
-  become: yes
+  become: true
   systemd:
     name: "bluetooth"
     state: "started"
-    enabled: yes
+    enabled: true
 
 - name: "Copy headset connection script"
   copy:

@@ -30,12 +30,12 @@
     mode: "0644"
 
 - name: "Add user to video group"
-  become: yes
+  become: true
   user:
     name: "{{ ansible_user }}"
     groups:
       - "video"
-    append: yes
+    append: true
 
 - name: "Copy python scripts files"
   copy:
