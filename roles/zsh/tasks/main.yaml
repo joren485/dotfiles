@@ -3,7 +3,7 @@
 - name: "Install zsh and dependencies"
   when: "has_sudo"
   become: true
-  package:
+  ansible.builtin.package:
     name:
       - "zsh"
       - "git"
@@ -11,7 +11,7 @@
       - "python-pexpect"
 
 - name: "Check if zsh is installed"
-  command: "which zsh"
+  ansible.builtin.command: "which zsh"
   changed_when: false
   check_mode: false
 
@@ -25,7 +25,7 @@
       - "sway"
   block:
     - name: "Check if application is installed"
-      command: "which {{ item }}"
+      ansible.builtin.command: "which {{ item }}"
       register: "which_output"
       changed_when: false
       failed_when: false
@@ -33,12 +33,12 @@
       loop: "{{ applications }}"
 
     - name: "Set '_installed' boolean values"
-      set_fact:
+      ansible.builtin.set_fact:
         "{{ item.item }}_installed": "{{ item.rc == 0 }}"
       loop: "{{ which_output.results }}"
 
 - name: "Copy ZSH files"
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "{{ ansible_user_dir }}/.{{ item }}"
     mode: "0644"
@@ -46,7 +46,7 @@
     - "zlogin"
 
 - name: "Copy ZSH template files"
-  template:
+  ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "{{ ansible_user_dir }}/.{{ item }}"
     mode: "0644"
@@ -55,26 +55,26 @@
     - "zshenv"
 
 - name: "Clone oh-my-zsh"
-  git:
+  ansible.builtin.git:
     repo: "https://github.com/ohmyzsh/ohmyzsh.git"
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/"
     version: "master"
 
 - name: "Clone zsh-autosuggestions"
-  git:
+  ansible.builtin.git:
     repo: "https://github.com/zsh-users/zsh-autosuggestions"
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/"
     version: "master"
 
 - name: "Copy theme"
-  copy:
+  ansible.builtin.copy:
     src: "prompt.zsh-theme"
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/prompt.zsh-theme"
     mode: "0644"
 
 - name: "Change user shell to ZSH"
   when: "'zsh' not in ansible_user_shell"
-  expect:
+  ansible.builtin.>expect:
     command: "chsh --shell /usr/bin/zsh"
     responses:
       Password: "{{ ansible_become_password }}"

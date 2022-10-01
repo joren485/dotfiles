@@ -7,7 +7,7 @@
 
 - name: "Allow wheel group sudo permissions"
   become: true
-  copy:
+  ansible.builtin.copy:
     src: "00-wheel"
     dest: "/etc/sudoers.d/00-wheel"
     mode: "0440"
@@ -17,20 +17,20 @@
 
 - name: "Disable root password"
   become: true
-  user:
+  ansible.builtin.user:
     name: "root"
     password_lock: true
 
 - name: "Disable locking user after 3 tries"
   become: true
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "/etc/security/faillock.conf"
     regexp: '#? ?deny ?= ?\d+'
     line: "deny = 0"
 
 - name: "Create main user"
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user }}"
     append: true
     groups:
@@ -39,7 +39,7 @@
 - name: "Add user to adbusers group"
   when: "'android-tools' in packages_host"
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_user }}"
     groups: "adbusers"
     append: true

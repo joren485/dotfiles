@@ -10,13 +10,13 @@
   become: true
   block:
     - name: "Enable pacman hooks directory"
-      lineinfile:
+      ansible.builtin.lineinfile:
         path: "/etc/pacman.conf"
         line: "HookDir = /etc/pacman.d/hooks/"
         regexp: '^#?HookDir\s*='
 
     - name: "Create /etc/pacman.d/hooks"
-      file:
+      ansible.builtin.file:
         path: "/etc/pacman.d/hooks"
         state: "directory"
         mode: "0755"
@@ -24,7 +24,7 @@
         group: "root"
 
     - name: "Copy hook files"
-      copy:
+      ansible.builtin.copy:
         src: "pacman/{{ item }}"
         dest: "/etc/pacman.d/hooks/95-{{ item }}"
         mode: "0755"
@@ -40,10 +40,10 @@
 
 - name: "Install packages"
   become: true
-  package:
+  ansible.builtin.package:
     name: "{{ packages_host + packages }}"
 
 - name: "Show which AUR packages to install"
-  debug:
+  ansible.builtin.debug:
     msg: "Please install {{ item }} on {{ inventory_hostname }}."
   loop: "{{ packages_aur_host }}"
