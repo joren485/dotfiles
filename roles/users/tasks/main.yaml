@@ -6,7 +6,7 @@
       - "sudo"
 
 - name: "Allow wheel group sudo permissions"
-  become: yes
+  become: true
   copy:
     src: "00-wheel"
     dest: "/etc/sudoers.d/00-wheel"
@@ -16,30 +16,30 @@
     validate: "visudo -cf %s"
 
 - name: "Disable root password"
-  become: yes
+  become: true
   user:
     name: "root"
-    password_lock: yes
+    password_lock: true
 
 - name: "Disable locking user after 3 tries"
-  become: yes
+  become: true
   lineinfile:
     dest: "/etc/security/faillock.conf"
     regexp: '#? ?deny ?= ?\d+'
     line: "deny = 0"
 
 - name: "Create main user"
-  become: yes
+  become: true
   user:
     name: "{{ ansible_user }}"
-    append: yes
+    append: true
     groups:
       - "wheel"
 
 - name: "Add user to adbusers group"
   when: "'android-tools' in packages_host"
-  become: yes
+  become: true
   user:
     name: "{{ ansible_user }}"
     groups: "adbusers"
-    append: yes
+    append: true

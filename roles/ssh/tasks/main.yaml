@@ -1,7 +1,7 @@
 ---
 
 - name: "Install packages"
-  become: yes
+  become: true
   package:
     name: "openssh"
 
@@ -39,16 +39,16 @@
     dest: "{{ ansible_user_dir }}/.ssh/config"
 
 - name: "Disable SSH password logins"
-  become: yes
+  become: true
   lineinfile:
     dest: "/etc/ssh/sshd_config"
     regexp: "^#?PasswordAuthentication (yes|no)$"
     line: "PasswordAuthentication no"
 
 - name: "Start SSH server"
-  become: yes
+  become: true
   when: "'homelab' in group_names"
   systemd:
     name: "sshd"
     state: "started"
-    enabled: "yes"
+    enabled: true

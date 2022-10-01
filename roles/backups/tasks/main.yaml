@@ -1,7 +1,7 @@
 ---
 
 - name: "Install packages"
-  become: yes
+  become: true
   package:
     name: "restic"
 

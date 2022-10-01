@@ -1,7 +1,7 @@
 ---
 
 - name: "Install packages"
-  become: yes
+  become: true
   package:
     name:
       - "docker"
@@ -9,8 +9,8 @@
       - "python-docker"
 
 - name: "Add user to docker group"
-  become: yes
+  become: true
   user:
     name: "{{ ansible_user }}"
     groups: "docker"
-    append: yes
+    append: true

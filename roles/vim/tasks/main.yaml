@@ -2,7 +2,7 @@
 
 - name: "Install Vim"
   when: "has_sudo"
-  become: yes
+  become: true
   package:
     name:
       - "neovim"

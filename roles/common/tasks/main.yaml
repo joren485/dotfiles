@@ -1,12 +1,12 @@
 ---
 
 - name: "Set hostname"
-  become: yes
+  become: true
   hostname:
     name: "{{ inventory_hostname }}"
 
 - name: "Set locale"
-  become: yes
+  become: true
   block:
     - name: "Ensure en_US.UTF-8 exists"
       locale_gen:
@@ -17,35 +17,35 @@
         name: "nl_NL.UTF-8"
 
 - name: "Disable system beep"
-  become: yes
+  become: true
   lineinfile:
     path: "/etc/modprobe.d/nobeep.conf"
     owner: "root"
     group: "root"
     mode: "0644"
     line: "blacklist pcspkr"
-    create: yes
+    create: true
 
 - name: "Update bootloader after update"
-  become: yes
+  become: true
   systemd:
     name: "systemd-boot-update"
     state: "started"
-    enabled: "yes"
+    enabled: true
 
 - name: "Start time sync daemon"
-  become: yes
+  become: true
   systemd:
     name: "systemd-timesyncd"
-    enabled: yes
-    daemon_reload: yes
+    enabled: true
+    daemon_reload: true
 
 - name: "Mount network share"
-  become: yes
+  become: true
   mount:
     src: "meloen:/mnt/MainPool/share"
     path: "/mnt/share"
     fstype: "nfs"
     opts: "_netdev,x-systemd.automount"
-    boot: no
+    boot: false
     state: "present"

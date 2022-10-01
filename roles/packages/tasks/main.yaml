@@ -7,7 +7,7 @@
       - "pacman-contrib"
 
 - name: "Install pacman hooks"
-  become: yes
+  become: true
   block:
     - name: "Enable pacman hooks directory"
       lineinfile:
@@ -34,12 +34,12 @@
         - "pacdiff.hook"
 
 - name: "Update pacman cache"
-  become: yes
+  become: true
   pacman:
-    update_cache: yes
+    update_cache: true
 
 - name: "Install packages"
-  become: yes
+  become: true
   package:
     name: "{{ packages_host + packages }}"
 

@@ -28,7 +28,7 @@
     conn_name: "Thinkpad"
     ifname: "enp0s31f6"
     type: "ethernet"
-    autoconnect: no
+    autoconnect: false
     state: "present"
 
 - name: "Add Network Manager profile for Wireless network"
@@ -36,7 +36,7 @@
     conn_name: "{{ wifi.ssid }}"
     ifname: "wlp0s20f3"
     type: "wifi"
-    autoconnect: no
+    autoconnect: false
     ssid: "Banaan"
     wifi_sec:
       key-mgmt: wpa-psk
@@ -44,7 +44,7 @@
     state: "present"
 
 - name: "Add Network Manager profile for Wireguard"
-  become: yes
+  become: true
   template:
     src: "druif/WireguardHome.nmconnection.j2"
     dest: "/etc/NetworkManager/system-connections/WireguardHome.nmconnection"
