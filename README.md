@@ -1,6 +1,2 @@
-# dotfiles [![Build Status](https://travis-ci.org/joren485/dotfiles.svg?branch=master)](https://travis-ci.org/joren485/dotfiles)
+# dotfiles [![Build Status](https://github.com/joren485/dotfiles/actions/workflows/ci.yaml/badge.svg)](https://github.com/joren485/dotfiles/actions)
 The dotfiles for my setup.
-
-
-### Network
-![Network Diagram](networkdiagram.png)
