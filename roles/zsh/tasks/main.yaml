@@ -74,7 +74,7 @@
 
 - name: "Change user shell to ZSH"
   when: "'zsh' not in ansible_user_shell"
-  ansible.builtin.>expect:
+  ansible.builtin.expect:
     command: "chsh --shell /usr/bin/zsh"
     responses:
       Password: "{{ ansible_become_password }}"
