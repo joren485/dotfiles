@@ -1,7 +1,7 @@
 ---
 
 - name: "Install git"
-  pacman:
+  community.general.pacman:
     name: "git"
 
 - name: "Create Git config directory"

@@ -1,7 +1,7 @@
 ---
 
 - name: "Install Network Manger"
-  pacman:
+  community.general.pacman:
     name:
       - "networkmanager"
       - "network-manager-applet"

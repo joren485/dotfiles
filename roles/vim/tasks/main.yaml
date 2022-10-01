@@ -3,7 +3,7 @@
 - name: "Install Vim"
   when: "has_sudo"
   become: true
-  ansible.builtin.package:
+  community.general.pacman:
     name:
       - "neovim"
       - "vim"

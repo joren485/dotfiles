@@ -1,7 +1,7 @@
 ---
 
 - name: "Install pacman"
-  pacman:
+  community.general.pacman:
     name:
       - "pacman"
       - "pacman-contrib"
@@ -35,12 +35,12 @@
 
 - name: "Update pacman cache"
   become: true
-  pacman:
+  community.general.pacman:
     update_cache: true
 
 - name: "Install packages"
   become: true
-  ansible.builtin.package:
+  community.general.pacman:
     name: "{{ packages_host + packages }}"
 
 - name: "Show which AUR packages to install"
