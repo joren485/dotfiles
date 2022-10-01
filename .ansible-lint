@@ -12,4 +12,4 @@ exclude_paths:
 warn_list:
     - "fqcn-builtins"
     - "yaml"
-
+    - "template-instead-of-copy"
