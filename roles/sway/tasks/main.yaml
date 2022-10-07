@@ -25,35 +25,35 @@
       - "xorg-xlsclients"
 
 - name: "Setup audio"
-  import_tasks: "setup-pipewire.yaml"
+  ansible.builtin.import_tasks: "setup-pipewire.yaml"
   tags:
     - "audio"
     - "pipewire"
     - "bluetooth"
 
 - name: "Setup Wofi"
-  import_tasks: "setup-wofi.yaml"
+  ansible.builtin.import_tasks: "setup-wofi.yaml"
   tags:
     - "wofi"
 
 - name: "Setup Alacritty"
-  import_tasks: "setup-alacritty.yaml"
+  ansible.builtin.import_tasks: "setup-alacritty.yaml"
   tags:
     - "alacritty"
 
 - name: "Setup Dunst"
-  import_tasks: "setup-dunst.yaml"
+  ansible.builtin.import_tasks: "setup-dunst.yaml"
   tags:
     - "dunst"
 
 - name: "Setup Waybar"
-  import_tasks: "setup-waybar.yaml"
+  ansible.builtin.import_tasks: "setup-waybar.yaml"
   tags:
     - "waybar"
     - "swaynag"
 
 - name: "Setup swaynag"
-  import_tasks: "setup-swaynag.yaml"
+  ansible.builtin.import_tasks: "setup-swaynag.yaml"
   tags:
     - "swaynag"
 

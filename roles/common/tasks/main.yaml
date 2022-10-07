@@ -9,11 +9,11 @@
   become: true
   block:
     - name: "Ensure en_US.UTF-8 exists"
-      locale_gen:
+      community.general.locale_gen:
         name: "en_US.UTF-8"
 
     - name: "Ensure nl_NL.UTF-8 exists"
-      locale_gen:
+      community.general.locale_gen:
         name: "nl_NL.UTF-8"
 
 - name: "Disable system beep"
