@@ -24,6 +24,9 @@
       # To list which applications are using XWayland
       - "xorg-xlsclients"
 
+      # To run GUI applications as root
+      - "xorg-xhost"
+
 - name: "Setup audio"
   ansible.builtin.import_tasks: "setup-pipewire.yaml"
   tags:
