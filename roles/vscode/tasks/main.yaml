@@ -1,0 +1,17 @@
+---
+
+- name: "Install packages"
+  become: true
+  community.general.pacman:
+    name:
+      - "code"
+
+- name: "Create code-flags.conf file"
+  become: true
+  ansible.builtin.copy:
+    content: |
+      # Ansible Managed
+      --ozone-platform-hint=auto
+
+    dest: "{{ ansible_user_dir }}/.config/code-flags.conf"
+    mode: "0644"

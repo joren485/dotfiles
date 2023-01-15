@@ -145,6 +145,7 @@ bindsym $mod+Shift+s exec grim -g "$(slurp)" $(date +"/tmp/%Y-%m-%d_%H-%M-%S.png
 assign [app_id="Alacritty"] workspace number 1
 assign [app_id="firefox"] workspace number 2
 assign [class="vlc"] workspace number 4
+assign [app_id="code-oss"] workspace number 6
 assign [class="jetbrains-pycharm"] workspace number 6
 for_window [class="Spotify"] move to workspace number 10
 
@@ -171,4 +172,3 @@ exec dunst
 
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
-
