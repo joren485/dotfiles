@@ -1,14 +1,15 @@
 # {{ ansible_managed }}
 
 [connection]
-id=WireguardHome
-uuid=63a25a4e-2ee7-403f-b523-b5ca23b456c2
+id=truenas-wireguard
+uuid=6da139c7-1208-4b54-a77a-69188475a266
 type=wireguard
 autoconnect=false
 interface-name=wg0
-timestamp=1648998386
+timestamp=1673797205
 
 [wireguard]
+mtu=1420
 private-key={{ wireguard.private_key }}
 
 {% for peer in wireguard.peers %}
@@ -16,18 +17,18 @@ private-key={{ wireguard.private_key }}
 endpoint={{ peer.endpoint }}
 preshared-key={{ peer.pre_shared_key }}
 preshared-key-flags=0
-allowed-ips=10.0.0.0/8;
+allowed-ips=0.0.0.0/0;
 
 {% endfor %}
 
 [ipv4]
-address1=10.8.0.3/24,10.8.0.1
+address1=10.18.34.3/24
 dns=10.0.0.1;
 dns-search=internal.nietaanraken.nl;
 method=manual
 
 [ipv6]
 addr-gen-mode=stable-privacy
-method=disabled
+method=ignore
 
 [proxy]
