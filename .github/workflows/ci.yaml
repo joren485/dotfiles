@@ -17,10 +17,13 @@ jobs:
             - name: "Check for files with the yml extension"
               run: "if [[ -n $(find . -iname '*.yml') ]]; then exit 1; fi"
 
-            - uses: "actions/setup-python@v2"
+            - uses: "actions/setup-python@v3"
 
             - name: "Install dependencies"
-              run: "pip install --no-cache-dir --upgrade --quiet ansible-lint[community,yamllint] black"
+              run: "pip install --no-cache-dir --upgrade --quiet ansible ansible-lint black"
+
+            - name: "Disable Vault Password"
+              run: "sed --in-place --expression 's/vault_password_file/# vault_password_file/' ansible.cfg"
 
             - name: "Run ansible-lint"
               run: "ansible-lint -q"

@@ -17,7 +17,6 @@ ICON_PAUSE = ""
 ICON_STOP = ""
 
 try:
-
     session_bus = dbus.SessionBus()
 
     spotify_bus = session_bus.get_object(
@@ -36,7 +35,6 @@ except dbus.exceptions.DBusException:
     print(" ~ ")
 
 else:
-
     icon = ""
     if PlaybackStatus(playback_status) == PlaybackStatus.PAUSED:
         icon = ICON_PAUSE
