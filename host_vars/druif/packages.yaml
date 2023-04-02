@@ -5,6 +5,7 @@ packages_host:
   - "android-udev"
   - "ansible-lint"
   - "archlinux-wallpaper"
+  - "chromium"
   - "firefox"
   - "gparted"
   - "imv"
