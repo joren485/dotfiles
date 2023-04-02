@@ -2,3 +2,4 @@
 
 - name: "Reload gpg-agent"
   ansible.builtin.command: "gpg-connect-agent reloadagent /bye"
+  changed_when: false
