@@ -42,7 +42,7 @@
 
 - name: "Mount network share"
   become: true
-  ansible.builtin.mount:
+  ansible.posix.mount:
     src: "meloen:/mnt/MainPool/share"
     path: "/mnt/share"
     fstype: "nfs"
