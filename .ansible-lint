@@ -5,6 +5,4 @@
 exclude_paths:
     - ".github"
     - "group_vars/all/vault.yaml"
-    - "roles/netdata/vars/vault.yaml"
-    - "roles/qbittorrent/vars/vault.yaml"
     - "host_vars/druif/vault.yaml"
