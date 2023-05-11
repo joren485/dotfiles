@@ -5,9 +5,6 @@ import requests
 import ssl
 import sys
 
-from socket import timeout as socket_timeout
-from socket import error as socket_error
-
 URL_BTC = "https://api.coinbase.com/v2/prices/BTC-USD/spot"
 URL_ETH = "https://api.coinbase.com/v2/prices/ETH-USD/spot"
 
@@ -19,9 +16,9 @@ try:
     else:
         raise ValueError()
 
+    price = round(float(response.json()["data"]["amount"]), 2)
+
 except (IndexError, requests.exceptions.RequestException, ValueError):
     print("Error")
-
 else:
-    price = response.json()["data"]["amount"]
     print(f"${price}")
