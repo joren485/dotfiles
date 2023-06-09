@@ -6,3 +6,7 @@ exclude_paths:
     - ".github"
     - "group_vars/all/vault.yaml"
     - "host_vars/druif/vault.yaml"
+
+warn_list:
+    - "var-naming[no-role-prefix]"
+    - "var-naming[no-jinja]"
