@@ -17,6 +17,7 @@ packages:
   - "iperf3"
   - "jq"
   - "ldns"
+  - "libxcrypt-compat"
   - "linux"
   - "linux-firmware"
   - "linux-headers"
