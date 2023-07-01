@@ -1,12 +1,12 @@
 # {{ ansible_managed }}
 
 [connection]
-id=truenas-wireguard
-uuid=6da139c7-1208-4b54-a77a-69188475a266
+id=wireguard-home
+uuid=53e715d3-a2cb-4d6e-9aa0-11d99b22ca76
 type=wireguard
 autoconnect=false
 interface-name=wg0
-timestamp=1673797205
+timestamp=1688218188
 
 [wireguard]
 mtu=1420
@@ -24,11 +24,11 @@ allowed-ips=0.0.0.0/0;
 [ipv4]
 address1=10.18.34.3/24
 dns=10.0.0.1;
-dns-search=internal.nietaanraken.nl;
+dns-search={{ network.domain }};
 method=manual
 
 [ipv6]
 addr-gen-mode=stable-privacy
-method=ignore
+method=disabled
 
 [proxy]

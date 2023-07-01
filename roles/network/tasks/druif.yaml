@@ -8,7 +8,7 @@
 
 - name: "Add Network Manager profile for Thinkpad dock"
   community.general.nmcli:
-    conn_name: "Dock"
+    conn_name: "dock"
     ifname: "enp7s0u2u1u2"
     type: "ethernet"
     method4: "manual"
@@ -25,7 +25,7 @@
 
 - name: "Add Network Manager profile for Thinkpad port"
   community.general.nmcli:
-    conn_name: "Thinkpad"
+    conn_name: "thinkpad"
     ifname: "enp0s31f6"
     type: "ethernet"
     autoconnect: false
@@ -33,11 +33,11 @@
 
 - name: "Add Network Manager profile for Wireless network"
   community.general.nmcli:
-    conn_name: "{{ wifi.ssid }}"
+    conn_name: "{{ wifi.ssid | lower }}"
     ifname: "wlp0s20f3"
     type: "wifi"
     autoconnect: false
-    ssid: "Banaan"
+    ssid: "{{ wifi.ssid }}"
     wifi_sec:
       key-mgmt: wpa-psk
       psk: "{{ wifi.password }}"
@@ -46,8 +46,8 @@
 - name: "Add Network Manager profile for Wireguard"
   become: true
   ansible.builtin.template:
-    src: "druif/WireguardHome.nmconnection.j2"
-    dest: "/etc/NetworkManager/system-connections/WireguardHome.nmconnection"
+    src: "druif/wireguard-home.nmconnection.j2"
+    dest: "/etc/NetworkManager/system-connections/wireguard-home.nmconnection"
     owner: "root"
     group: "root"
     mode: "0600"
