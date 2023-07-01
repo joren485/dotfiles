@@ -13,6 +13,7 @@ packages_host:
   - "intel-media-driver"
   - "iw"
   - "pwgen"
+  - "pycharm-community-edition"
   - "python-black"
   - "python-poetry"
   - "veracrypt"
@@ -22,7 +23,6 @@ packages_host:
   - "zathura-pdf-mupdf"
 
 packages_aur_host:
-  - "pycharm-professional"
   - "spotify"
   - "tor-browser"
   - "ckb-next"
