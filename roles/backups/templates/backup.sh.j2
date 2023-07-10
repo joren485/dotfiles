@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # {{ ansible_managed }}
-{# vi: set ft=jinja: #}
+
+set -e
 
 RESTIC="/usr/bin/restic"
 
@@ -13,7 +14,7 @@ if [ $# -eq 0 ]
     then
 {% for repo in backup_repos %}
     echo "[*] Running Restic backup to {{ repo }}."
-    ${RESTIC} --repo "{{ repo  }}" backup --exclude-larger-than="105M" --tag "{{ inventory_hostname }}" "{{ backup_sources|map('quote')|join('\" \"') }}"
+    ${RESTIC} --repo "{{ repo  }}" backup --exclude-larger-than="105M" "{{ backup_sources|map('quote')|join('\" \"') }}"
 {% endfor %}
 else
     echo "[*] Running ${RESTIC} $*"
