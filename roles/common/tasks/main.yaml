@@ -40,6 +40,13 @@
     enabled: true
     daemon_reload: true
 
+- name: "Start the fstrim timer"
+  become: true
+  ansible.builtin.systemd:
+    name: "fstrim.timer"
+    state: "started"
+    enabled: true
+
 - name: "Mount network share"
   become: true
   ansible.posix.mount:
