@@ -117,7 +117,7 @@
     },
 
     "clock": {
-	"format": "{: %a %d %b  %H:%M:%S}",
+	"format": "{: %a %d %b  %H:%M:%OS}",
         "interval": 1,
         "tooltip": false
 	},
