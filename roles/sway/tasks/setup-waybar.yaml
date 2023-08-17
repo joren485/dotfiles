@@ -5,7 +5,6 @@
     name:
       - "waybar"
       - "light"
-      - "dbus-python"
       - "otf-font-awesome"
 
 - name: "Create necessary directories"
@@ -44,4 +43,3 @@
     mode: "0755"
   loop:
     - "coinbase_usd_checker.py"
-    - "spotify_info.py"
