@@ -2,11 +2,12 @@
 // vi:ft=javascript
 {
     "height": 50,
+    "fixed-center": false,
     "modules-left": ["sway/workspaces"],
-    "modules-center": ["custom/spotify"],
     "modules-right": [
         "custom/bitcoin",
         "custom/ethereum",
+        "bluetooth",
         "backlight",
         "pulseaudio",
         "battery",
@@ -33,15 +34,6 @@
         }
     },
 
-    "custom/spotify":{
-        "format": " {}",
-        "exec-if": "pgrep --exact spotify",
-        "exec": "spotify_info.py",
-        "interval": 1,
-        "on-click": "swaymsg workspace 10",
-        "tooltip": false
-    },
-
     "custom/bitcoin": {
         "format": "<span color='#FFBB11'></span> {}",
         "exec": "coinbase_usd_checker.py btc",
@@ -53,6 +45,17 @@
         "format": "<span color='#8A93B2'></span> {}",
         "exec": "coinbase_usd_checker.py eth",
         "interval": 60,
+        "tooltip": false
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": " DOWN",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} ({device_battery_percentage}%)",
+        "format-off": " DOWN",
+        "format-on": " UP",
+        "on-click": "headset.sh switch",
         "tooltip": false
     },
 
