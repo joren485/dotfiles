@@ -1,5 +1,5 @@
 // Ansible Managed
-// vi:ft=javascript
+// vi:ft=jsonc
 {
     "height": 50,
     "fixed-center": false,
