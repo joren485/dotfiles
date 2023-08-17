@@ -64,6 +64,8 @@
         "format-icons": [""],
         "on-scroll-up": "light -A 5",
         "on-scroll-down": "light -U 5",
+        "on-click": "light -A 1",
+        "on-click-right": "light -U 1",
         "tooltip": false
     },
 
@@ -83,7 +85,10 @@
         "format-charging": " {capacity}%",
         "format-full": " 100%",
         "format-icons": ["", "", "", "", ""],
-        "format-time": "{H}:{M}"
+        "format-time": "{H}:{M}",
+        "states": {
+            "warning": 30
+        }
     },
 
     "network#eth":{
@@ -93,7 +98,7 @@
         "format-disconnected": "",
         "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "on-click": "swaymsg exec 'alacritty --command nmtui'"
+        "on-click": "nm-applet --indicator"
     },
 
     "network#ethusb":{
@@ -103,7 +108,7 @@
         "format-disconnected": "",
         "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "on-click": "swaymsg exec 'alacritty --command nmtui'"
+        "on-click": "nm-applet --indicator"
     },
 
     "network#wifi":{
@@ -114,7 +119,7 @@
         "tooltip-format": " {ifname}",
         "tooltip-format-wifi": " {essid} | {signalStrength}% | {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "on-click": "swaymsg exec 'alacritty --command nmtui'"
+        "on-click": "nm-applet --indicator"
     },
 
     "clock": {
