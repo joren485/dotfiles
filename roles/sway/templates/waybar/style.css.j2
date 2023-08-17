@@ -54,22 +54,46 @@ window#waybar {
     color: {{ colors.alert }};
 }
 
-#clock {
-    color: {{ colors.foreground }};
+#backlight {
+    color: {{ colors.yellow }};
+}
+
+#pulseaudio {
+    color: {{ colors.green }};
 }
 
 #pulseaudio.muted {
     color: {{ colors.alert }};
 }
 
-#battery.full {
+#battery {
+    color: {{ colors.yellow }};
+}
+
+#battery.full, battery.charging {
     color: {{ colors.green }};
 }
 
+#battery.warning {
+    color: {{ colors.alert }};
+}
+
 #network {
-    color: {{ colors.blue }};
+    color: {{ colors.cyan }};
 }
 
 #network.linked, #network.disconnected {
     color: {{ colors.alert }};
+}
+
+#idle_inhibitor.activated {
+    color: {{ colors.green }};
+}
+
+#idle_inhibitor.deactivated {
+    color: {{ colors.alert }};
+}
+
+#clock {
+    color: {{ colors.foreground }};
 }
