@@ -93,7 +93,7 @@
         "format-disconnected": "",
         "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "on-click": "swaymsg exec 'alacritty --command nmtui'"
+        "on-click": "nm-applet --indicator"
     },
 
     "network#ethusb":{
@@ -103,7 +103,7 @@
         "format-disconnected": "",
         "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "on-click": "swaymsg exec 'alacritty --command nmtui'"
+        "on-click": "nm-applet --indicator"
     },
 
     "network#wifi":{
@@ -114,7 +114,7 @@
         "tooltip-format": " {ifname}",
         "tooltip-format-wifi": " {essid} | {signalStrength}% | {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
-        "on-click": "swaymsg exec 'alacritty --command nmtui'"
+        "on-click": "nm-applet --indicator"
     },
 
     "clock": {
