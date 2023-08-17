@@ -23,6 +23,6 @@
 
 - name: "Copy headset connection script"
   ansible.builtin.copy:
-    src: "audio/headset.sh"
+    src: "scripts/headset.sh"
     dest: "{{ ansible_user_dir }}/.local/bin/headset.sh"
     mode: "0755"

@@ -37,13 +37,21 @@ window#waybar {
     text-shadow: inherit;
 }
 
-#tray, #clock, #battery, #backlight, #pulseaudio, #network, #custom-bitcoin, #custom-ethereum, #idle_inhibitor, #custom-power {
+#tray, #clock, #battery, #backlight, #bluetooth, #pulseaudio, #network, #custom-bitcoin, #custom-ethereum, #idle_inhibitor, #custom-power {
     background: {{ colors.background }};
     border: 2px solid {{ colors.background }};
     border-radius: 5px;
     color: {{ colors.foreground }};
 	margin: 10px 10px 0px 0px;
     padding: 0px 10px;
+}
+
+#bluetooth.connected, #bluetooth.on {
+    color: {{ colors.blue }};
+}
+
+#bluetooth.disabled, #bluetooth.off {
+    color: {{ colors.alert }};
 }
 
 #clock {
