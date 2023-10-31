@@ -6,8 +6,9 @@ backup_sources:
   - "{{ ansible_user_dir }}/.python_history"
   - "{{ ansible_user_dir }}/.zsh_history"
   - "/mnt/share/archive"
-  - "/boot/"
+  - "/boot/loader"
 
 backup_repos:
+  - "{{ ansible_user_dir }}/backup"
   - "/mnt/share/backup"
   - "b2:backups-joren-vrancken"
