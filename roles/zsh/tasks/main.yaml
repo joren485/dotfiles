@@ -1,7 +1,6 @@
 ---
 
 - name: "Install zsh and dependencies"
-  when: "has_sudo"
   become: true
   community.general.pacman:
     name:
@@ -14,28 +13,6 @@
   ansible.builtin.command: "which zsh"
   changed_when: false
   check_mode: false
-
-- name: "Check if relevant applications are installed"
-  vars:
-    applications:
-      - "ansible"
-      - "docker"
-      - "poetry"
-      - "pip"
-      - "sway"
-  block:
-    - name: "Check if application is installed"
-      ansible.builtin.command: "which {{ item }}"
-      register: "which_output"
-      changed_when: false
-      failed_when: false
-      check_mode: false
-      loop: "{{ applications }}"
-
-    - name: "Set '_installed' boolean values"
-      ansible.builtin.set_fact:
-        "{{ item.item }}_installed": "{{ item.rc == 0 }}"
-      loop: "{{ which_output.results }}"
 
 - name: "Copy ZSH files"
   ansible.builtin.copy:

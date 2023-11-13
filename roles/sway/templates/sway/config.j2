@@ -22,10 +22,10 @@ gaps inner 5
 font DejaVu Sans Mono 10
 
 # class                 border                  backgr.                 text                    indicator               child_border
-client.focused          {{ colors.primary }}    {{ colors.background }} {{ colors.foreground }} {{ colors.primary }}    {{ colors.primary }}
-client.focused_inactive {{ colors.background }} {{ colors.background }} {{ colors.foreground }} {{ colors.background }} {{ colors.background }}
-client.unfocused        {{ colors.background}}  {{ colors.background }} {{ colors.foreground }} {{ colors.background }} {{ colors.background }}
-client.urgent           {{ colors.alert }}      {{ colors.background }} {{ colors.foreground }} {{ colors.alert }}    {{ colors.alert }}
+client.focused          {{ sway_colors.primary }}    {{ sway_colors.background }} {{ sway_colors.foreground }} {{ sway_colors.primary }}    {{ sway_colors.primary }}
+client.focused_inactive {{ sway_colors.background }} {{ sway_colors.background }} {{ sway_colors.foreground }} {{ sway_colors.background }} {{ sway_colors.background }}
+client.unfocused        {{ sway_colors.background}}  {{ sway_colors.background }} {{ sway_colors.foreground }} {{ sway_colors.background }} {{ sway_colors.background }}
+client.urgent           {{ sway_colors.alert }}      {{ sway_colors.background }} {{ sway_colors.foreground }} {{ sway_colors.alert }}    {{ sway_colors.alert }}
 
 ### Behaviour
 exec swayidle -w \
@@ -33,7 +33,7 @@ exec swayidle -w \
     before-sleep "$lock"
 
 ### Keyboard layout
-{% for keyboard_identifier in keyboard_identifiers %}
+{% for keyboard_identifier in sway_keyboard_identifiers %}
 input "{{ keyboard_identifier }}" {
     xkb_layout us
     xkb_model pc104

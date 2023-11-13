@@ -27,7 +27,6 @@ export PROMPT_EOL_MARK=""
 if [[ -z "$LS_COLORS" ]] && [[ -n "$(command -v dircolors)" ]] && [[ "$TERM" = "alacritty" ]]; then
     eval "$(env TERM=alacritty-color dircolors)"
 fi
-{% if sway_installed %}
 
 export BROWSER=firefox
 
@@ -38,4 +37,3 @@ export XDG_CURRENT_DESKTOP=sway
 
 ## Allows JetBrains products to start on Wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
-{% endif %}
