@@ -7,7 +7,6 @@
       - "code"
 
 - name: "Create code-flags.conf file"
-  become: true
   ansible.builtin.copy:
     content: |
       # Ansible Managed

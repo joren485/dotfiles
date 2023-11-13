@@ -26,6 +26,16 @@
     line: "blacklist pcspkr"
     create: true
 
+- name: "Set vm.compaction_proactiveness=0"
+  become: true
+  ansible.builtin.copy:
+    content: |
+      # Ansible Managed
+      vm.compaction_proactiveness=0
+
+    dest: "/etc/sysctl.d/compaction_proactiveness.conf"
+    mode: "0644"
+
 - name: "Update bootloader after update"
   become: true
   ansible.builtin.systemd:
