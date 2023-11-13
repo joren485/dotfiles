@@ -22,7 +22,7 @@ packages_host:
   - "zathura"
   - "zathura-pdf-mupdf"
 
-packages_aur_host:
+packages_host_aur:
   - "spotify"
   - "tor-browser"
   - "ckb-next"

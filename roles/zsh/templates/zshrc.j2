@@ -24,19 +24,11 @@ else
 fi
 
 plugins=(
-{% if ansible_installed %}
     ansible
-{% endif %}
-{% if docker_installed%}
     docker
     docker-compose
-{% endif %}
-{% if poetry_installed %}
     poetry
-{% endif %}
-{% if pip_installed %}
     pip
-{% endif %}
     dotenv
     python
     zsh-autosuggestions

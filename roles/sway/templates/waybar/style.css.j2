@@ -13,87 +13,87 @@
 
 window#waybar {
     background: transparent;
-    color: {{ colors.foreground }};
+    color: {{ sway_colors.foreground }};
 }
 
 #workspaces button {
-    background: {{ colors.background }};
-    border: 2px solid {{ colors.background }};
+    background: {{ sway_colors.background }};
+    border: 2px solid {{ sway_colors.background }};
     border-radius: 5px;
-    color: {{ colors.foreground }};
+    color: {{ sway_colors.foreground }};
     padding: 0px 15px;
     margin: 10px 0px 0px 10px;
 }
 
 #workspaces button.visible {
-    border: 2px solid {{ colors.primary }};
-    color: {{ colors.primary }};
+    border: 2px solid {{ sway_colors.primary }};
+    color: {{ sway_colors.primary }};
 }
 
 #workspaces button:hover {
-    border: 2px solid {{ colors.foreground }};
-    color: {{ colors.foreground }};
+    border: 2px solid {{ sway_colors.foreground }};
+    color: {{ sway_colors.foreground }};
     box-shadow: inherit;
     text-shadow: inherit;
 }
 
 #tray, #clock, #battery, #backlight, #bluetooth, #pulseaudio, #network, #custom-bitcoin, #custom-ethereum, #idle_inhibitor, #custom-power {
-    background: {{ colors.background }};
-    border: 2px solid {{ colors.background }};
+    background: {{ sway_colors.background }};
+    border: 2px solid {{ sway_colors.background }};
     border-radius: 5px;
-    color: {{ colors.foreground }};
+    color: {{ sway_colors.foreground }};
 	margin: 10px 10px 0px 0px;
     padding: 0px 10px;
 }
 
 #bluetooth.connected, #bluetooth.on {
-    color: {{ colors.blue }};
+    color: {{ sway_colors.blue }};
 }
 
 #bluetooth.disabled, #bluetooth.off {
-    color: {{ colors.alert }};
+    color: {{ sway_colors.alert }};
 }
 
 #backlight {
-    color: {{ colors.yellow }};
+    color: {{ sway_colors.yellow }};
 }
 
 #pulseaudio {
-    color: {{ colors.green }};
+    color: {{ sway_colors.green }};
 }
 
 #pulseaudio.muted {
-    color: {{ colors.alert }};
+    color: {{ sway_colors.alert }};
 }
 
 #battery {
-    color: {{ colors.yellow }};
+    color: {{ sway_colors.yellow }};
 }
 
 #battery.full, battery.charging {
-    color: {{ colors.green }};
+    color: {{ sway_colors.green }};
 }
 
 #battery.warning {
-    color: {{ colors.alert }};
+    color: {{ sway_colors.alert }};
 }
 
 #network {
-    color: {{ colors.cyan }};
+    color: {{ sway_colors.cyan }};
 }
 
 #network.linked, #network.disconnected {
-    color: {{ colors.alert }};
+    color: {{ sway_colors.alert }};
 }
 
 #idle_inhibitor.activated {
-    color: {{ colors.alert }};
+    color: {{ sway_colors.alert }};
 }
 
 #idle_inhibitor.deactivated {
-    color: {{ colors.green }};
+    color: {{ sway_colors.green }};
 }
 
 #clock {
-    color: {{ colors.foreground }};
+    color: {{ sway_colors.foreground }};
 }
