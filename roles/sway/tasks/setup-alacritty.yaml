@@ -11,8 +11,8 @@
     state: "directory"
     mode: "0755"
 
-- name: "Copy templates"
+- name: "Copy config template"
   ansible.builtin.template:
-    src: "alacritty/alacritty.yml.j2"
-    dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.yml"
+    src: "alacritty/alacritty.toml.j2"
+    dest: "{{ ansible_user_dir }}/.config/alacritty/alacritty.toml"
     mode: "0644"
