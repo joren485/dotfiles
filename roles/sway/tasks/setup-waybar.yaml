@@ -4,7 +4,7 @@
   community.general.pacman:
     name:
       - "waybar"
-      - "light"
+      - "acpilight"
       - "otf-font-awesome"
 
 - name: "Create necessary directories"
