@@ -21,9 +21,3 @@ packages_host:
   - "wireshark-qt"
   - "zathura"
   - "zathura-pdf-mupdf"
-
-packages_host_aur:
-  - "spotify"
-  - "tor-browser"
-  - "ckb-next"
-  - "ledger-live-bin"
