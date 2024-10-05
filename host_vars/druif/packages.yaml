@@ -14,7 +14,6 @@ packages_host:
   - "iw"
   - "pwgen"
   - "pycharm-community-edition"
-  - "python-black"
   - "python-poetry"
   - "veracrypt"
   - "vlc"

@@ -1,0 +1,11 @@
+---
+
+extends: "default"
+
+ignore:
+  - "vault.yaml"
+
+rules:
+  line-length: false
+  truthy:
+    check-keys: false
