@@ -1,3 +1,4 @@
 password_file
 .idea
 .vscode
+poetry.lock
