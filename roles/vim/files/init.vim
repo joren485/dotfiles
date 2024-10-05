@@ -12,6 +12,10 @@ set updatetime=10
 
 call plug#end()
 
+" Show trailing whitespace
+set list
+set listchars=trail:·
+
 " Disable swap files
 set noswapfile
 
