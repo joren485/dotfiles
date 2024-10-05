@@ -2,7 +2,6 @@
 # Ansible managed
 
 import requests
-import ssl
 import sys
 
 URL_BTC = "https://api.coinbase.com/v2/prices/BTC-USD/spot"
@@ -17,8 +16,7 @@ try:
         raise ValueError()
 
     price = round(float(response.json()["data"]["amount"]), 2)
-
-except (IndexError, requests.exceptions.RequestException, ValueError):
+except Exception:
     print("Error")
 else:
     print(f"${price}")
