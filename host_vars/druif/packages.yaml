@@ -3,7 +3,6 @@
 packages_host:
   - "android-tools"
   - "android-udev"
-  - "ansible-lint"
   - "archlinux-wallpaper"
   - "chromium"
   - "firefox"
