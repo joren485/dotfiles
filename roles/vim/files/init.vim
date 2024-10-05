@@ -3,7 +3,7 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'itchyny/lightline.vim'
-let g:lightline = {'colorscheme': 'wombat'}
+let g:lightline = {'colorscheme': 'solarized'}
 
 Plug 'dense-analysis/ale'
 
