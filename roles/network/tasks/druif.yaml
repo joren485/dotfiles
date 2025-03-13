@@ -11,16 +11,7 @@
     conn_name: "dock"
     ifname: "enp7s0u2u1u2"
     type: "ethernet"
-    method4: "manual"
-    ip4: "10.0.0.2/16"
-    gw4: "{{ network.gateway4 }}"
-    dns4: "{{ network.nameserver4 }}"
-    dns4_search: "{{ network.domain }}"
-    method6: "auto"
-    ip6: "fd1f:1b37:9b97:0:10::2/48"
-    gw6: "{{ network.gateway6 }}"
-    dns6: "{{ network.nameserver6 }}"
-    dns6_search: "{{ network.domain }}"
+    autoconnect: false
     state: "present"
 
 - name: "Add Network Manager profile for Thinkpad port"
@@ -36,12 +27,22 @@
     conn_name: "{{ wifi.ssid | lower }}"
     ifname: "wlp0s20f3"
     type: "wifi"
-    autoconnect: false
+    autoconnect: true
     ssid: "{{ wifi.ssid }}"
     wifi_sec:
       key-mgmt: wpa-psk
       psk: "{{ wifi.password }}"
     state: "present"
+    method4: "manual"
+    ip4: "10.0.0.2/16"
+    gw4: "{{ network.gateway4 }}"
+    dns4: "{{ network.nameserver4 }}"
+    dns4_search: "{{ network.domain }}"
+    method6: "auto"
+    ip6: "fd1f:1b37:9b97:0:10::2/48"
+    gw6: "{{ network.gateway6 }}"
+    dns6: "{{ network.nameserver6 }}"
+    dns6_search: "{{ network.domain }}"
 
 - name: "Add Network Manager profile for Wireguard"
   become: true
