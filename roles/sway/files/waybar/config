@@ -62,10 +62,6 @@
     "backlight": {
         "format": "{icon} {percent}%",
         "format-icons": [""],
-        "on-scroll-up": "xbacklight -inc 5",
-        "on-scroll-down": "xbacklight -dec 5",
-        "on-click": "xbacklight -inc 1",
-        "on-click-right": "xbacklight -dec 1",
         "tooltip": false
     },
 
