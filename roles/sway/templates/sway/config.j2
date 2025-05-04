@@ -7,9 +7,9 @@ set $menu wofi | xargs swaymsg --quiet exec --
 set $lock swaylock --daemonize --image="/usr/share/backgrounds/archlinux/small.png"
 
 ### Output configuration
-output DP-4 pos 0 0 res 1920x1080@143.981Hz
-output DP-5 pos 1920 0 res 1920x1080@143.981Hz
-output eDP-1 pos 3840 0 res 1920x1080@60.033Hz
+output eDP-1 pos 0 0 res 1920x1080@60.033Hz
+output DP-4 pos 1920 0 res 1920x1080@60.000Hz
+output DP-5 pos 3840 0 res 1920x1080@60.000Hz
 
 output * bg /usr/share/backgrounds/archlinux/small.png fill
 
