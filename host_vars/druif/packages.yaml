@@ -13,7 +13,6 @@ packages_host:
   - "iw"
   - "pwgen"
   - "pycharm-community-edition"
-  - "python-poetry"
   - "veracrypt"
   - "vlc"
   - "wireshark-qt"

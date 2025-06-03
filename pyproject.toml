@@ -1,15 +1,18 @@
-[tool.poetry]
+[project]
 name = "dotfiles"
-package-mode = false
+version = "1.0.0"
+description = "Dotfiles"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ansible>=11.6.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-ansible = "^10.4.0"
-
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.6.9"
-ansible-lint = { version = "^24.9.2", markers = "platform_system != 'Windows'" }
-yamllint = "^1.35.1"
+[dependency-groups]
+dev = [
+    "ansible-lint>=25.5.0",
+    "ruff>=0.11.12",
+]
 
 [tool.ruff.lint]
 select = ["ALL"]
@@ -24,7 +27,3 @@ ignore = [
     "T201",
     "TRY301",
 ]
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
