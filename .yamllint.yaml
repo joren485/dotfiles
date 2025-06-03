@@ -3,6 +3,8 @@
 extends: "default"
 
 ignore:
+  - ".git/"
+  - ".venv/"
   - "vault.yaml"
 
 rules:

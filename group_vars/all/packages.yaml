@@ -36,6 +36,8 @@ packages_common:
   - "pwgen"
   - "python"
   - "python-pip"
+  - "python-poetry"
+  - "uv"
   - "reflector"
   - "rsync"
   - "speedtest-cli"
