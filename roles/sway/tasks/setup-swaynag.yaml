@@ -1,6 +1,7 @@
 ---
 
 - name: "Create .config/swaynag/"
+  become: true
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.config/swaynag/"
     state: "directory"

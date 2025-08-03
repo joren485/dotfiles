@@ -1,10 +1,10 @@
 ---
 
 - name: "Install dependencies"
+  become: true
   community.general.pacman:
     name:
       - "waybar"
-      - "otf-font-awesome"
 
 - name: "Create necessary directories"
   ansible.builtin.file:

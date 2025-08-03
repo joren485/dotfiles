@@ -6,94 +6,94 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "DejaVu Sans Mono";
+    font-family: "FiraCode Nerd Font";
     font-size: 12px;
     min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    color: {{ sway_colors.foreground }};
+    color: {{ colors.foreground }};
 }
 
 #workspaces button {
-    background: {{ sway_colors.background }};
-    border: 2px solid {{ sway_colors.background }};
+    background: {{ colors.background }};
+    border: 2px solid {{ colors.background }};
     border-radius: 5px;
-    color: {{ sway_colors.foreground }};
+    color: {{ colors.foreground }};
     padding: 0px 15px;
     margin: 10px 0px 0px 10px;
 }
 
 #workspaces button.visible {
-    border: 2px solid {{ sway_colors.primary }};
-    color: {{ sway_colors.primary }};
+    border: 2px solid {{ colors.primary }};
+    color: {{ colors.primary }};
 }
 
 #workspaces button:hover {
-    border: 2px solid {{ sway_colors.foreground }};
-    color: {{ sway_colors.foreground }};
+    border: 2px solid {{ colors.foreground }};
+    color: {{ colors.foreground }};
     box-shadow: inherit;
     text-shadow: inherit;
 }
 
 #tray, #clock, #battery, #backlight, #bluetooth, #pulseaudio, #network, #custom-bitcoin, #custom-ethereum, #idle_inhibitor, #custom-power {
-    background: {{ sway_colors.background }};
-    border: 2px solid {{ sway_colors.background }};
+    background: {{ colors.background }};
+    border: 2px solid {{ colors.background }};
     border-radius: 5px;
-    color: {{ sway_colors.foreground }};
+    color: {{ colors.foreground }};
 	margin: 10px 10px 0px 0px;
     padding: 0px 10px;
 }
 
 #bluetooth.connected, #bluetooth.on {
-    color: {{ sway_colors.blue }};
+    color: {{ colors.blue }};
 }
 
 #bluetooth.disabled, #bluetooth.off {
-    color: {{ sway_colors.alert }};
+    color: {{ colors.alert }};
 }
 
 #backlight {
-    color: {{ sway_colors.yellow }};
+    color: {{ colors.yellow }};
 }
 
 #pulseaudio {
-    color: {{ sway_colors.green }};
+    color: {{ colors.green }};
 }
 
 #pulseaudio.muted {
-    color: {{ sway_colors.alert }};
+    color: {{ colors.alert }};
 }
 
 #battery {
-    color: {{ sway_colors.yellow }};
+    color: {{ colors.yellow }};
 }
 
 #battery.full, battery.charging {
-    color: {{ sway_colors.green }};
+    color: {{ colors.green }};
 }
 
 #battery.warning {
-    color: {{ sway_colors.alert }};
+    color: {{ colors.alert }};
 }
 
 #network {
-    color: {{ sway_colors.cyan }};
+    color: {{ colors.cyan }};
 }
 
 #network.linked, #network.disconnected {
-    color: {{ sway_colors.alert }};
+    color: {{ colors.alert }};
 }
 
 #idle_inhibitor.activated {
-    color: {{ sway_colors.alert }};
+    color: {{ colors.alert }};
 }
 
 #idle_inhibitor.deactivated {
-    color: {{ sway_colors.green }};
+    color: {{ colors.green }};
 }
 
 #clock {
-    color: {{ sway_colors.foreground }};
+    color: {{ colors.foreground }};
 }

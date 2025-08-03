@@ -1,0 +1,64 @@
+# {{ ansible_managed }}
+
+add_newline = false
+
+format = """
+$python\
+$time\
+$username\
+$hostname\
+$directory\
+$character\
+"""
+
+right_format = """
+$cmd_duration\
+$git_branch\
+$git_state\
+$git_status\
+"""
+
+[character]
+success_symbol = "[\\$]({{ colors.green }})"
+error_symbol = "[\\$]({{ colors.alert }})"
+
+[directory]
+format = "[$path]($style) "
+style = "{{ colors.blue }}"
+truncation_length = 0
+truncate_to_repo = false
+
+[cmd_duration]
+format = "[\\($duration\\)]($style) "
+style = "{{ colors.yellow }}"
+
+[git_branch]
+format = "[$branch]($style) "
+style = "{{ colors.green }}"
+
+[git_state]
+style = "bold {{ colors.red }}"
+
+[git_status]
+style = "{{ colors.red }}"
+deleted = "x"
+
+[hostname]
+format = "[@$hostname]($style) "
+ssh_only = false
+style = "{{ colors.magenta }}"
+
+[python]
+format = "[\\($virtualenv\\)]($style) "
+style = "{{ colors.yellow }}"
+detect_files = []
+
+[time]
+format= "[$time]($style) "
+style = "{{ colors.red }}"
+disabled = false
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "{{ colors.magenta }}"

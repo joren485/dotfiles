@@ -1,9 +1,6 @@
 # {{ ansible_managed }}
-
 export PATH=$PATH:${HOME}/.local/bin
 export ZSH=${HOME}/.oh-my-zsh
-
-ZSH_THEME="prompt"
 
 CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -24,13 +21,7 @@ else
 fi
 
 plugins=(
-    ansible
-    docker
-    docker-compose
-    poetry
-    pip
     dotenv
-    python
     zsh-autosuggestions
 )
 
@@ -46,3 +37,5 @@ fi
 zstyle ':completion:*' rehash true
 
 alias update_mirrorlist="sudo reflector --verbose --latest 5 --country Netherlands --sort rate --save /etc/pacman.d/mirrorlist"
+
+eval "$(starship init zsh)"
