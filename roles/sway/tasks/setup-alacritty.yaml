@@ -1,6 +1,7 @@
 ---
 
 - name: "Install dependencies"
+  become: true
   community.general.pacman:
     name:
       - "alacritty"

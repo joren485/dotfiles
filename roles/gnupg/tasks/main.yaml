@@ -10,8 +10,8 @@
   ansible.builtin.shell: |
     set -o pipefail
     echo {{ pgp_private_key | quote }} | gpg --batch --import
-  register: "result_private_key_import"
-  changed_when: "result_private_key_import is defined and 'secret keys imported: 1' in result_private_key_import.stderr"
+  register: "gnupg_result_private_key_import"
+  changed_when: "gnupg_result_private_key_import is defined and 'secret keys imported: 1' in gnupg_result_private_key_import.stderr"
 
 - name: "Create directory"
   ansible.builtin.file:

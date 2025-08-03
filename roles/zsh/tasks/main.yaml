@@ -8,11 +8,7 @@
       - "git"
       - "curl"
       - "python-pexpect"
-
-- name: "Check if zsh is installed"
-  ansible.builtin.command: "which zsh"
-  changed_when: false
-  check_mode: false
+      - "starship"
 
 - name: "Copy ZSH files"
   ansible.builtin.copy:
@@ -31,22 +27,24 @@
     - "zshrc"
     - "zshenv"
 
-- name: "Clone oh-my-zsh"
-  ansible.builtin.git:
-    repo: "https://github.com/ohmyzsh/ohmyzsh.git"
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/"
-    version: "master"
+- name: "Setup oh-my-zsh"
+  block:
+    - name: "Clone oh-my-zsh"
+      ansible.builtin.git:
+        repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+        dest: "{{ ansible_user_dir }}/.oh-my-zsh/"
+        version: "master"
 
-- name: "Clone zsh-autosuggestions"
-  ansible.builtin.git:
-    repo: "https://github.com/zsh-users/zsh-autosuggestions"
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/"
-    version: "master"
+    - name: "Clone zsh-autosuggestions"
+      ansible.builtin.git:
+        repo: "https://github.com/zsh-users/zsh-autosuggestions"
+        dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions/"
+        version: "master"
 
-- name: "Copy theme"
-  ansible.builtin.copy:
-    src: "prompt.zsh-theme"
-    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/prompt.zsh-theme"
+- name: "Setup Starship"
+  ansible.builtin.template:
+    src: "starship.toml.j2"
+    dest: "{{ ansible_user_dir }}/.config/starship.toml"
     mode: "0644"
 
 - name: "Change user shell to ZSH"

@@ -1,6 +1,7 @@
 ---
 
 - name: "Install dependencies"
+  become: true
   community.general.pacman:
     name:
       - "sway"
@@ -15,8 +16,12 @@
       - "qt5-wayland"
 
       # Fonts
-      - "ttf-dejavu"
+      - "ttf-firacode-nerd"
+      - "noto-fonts-cjk"
       - "noto-fonts-emoji"
+      - "noto-fonts-extra"
+      - "noto-fonts"
+      - "ttf-dejavu"
 
       # To list which applications are using XWayland
       - "xorg-xlsclients"

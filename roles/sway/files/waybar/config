@@ -1,5 +1,4 @@
 // Ansible Managed
-// vi:ft=jsonc
 {
     "height": 50,
     "fixed-center": false,
@@ -24,9 +23,9 @@
         "format": "{name}|{icon}",
         "format-icons": {
             "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
+            "2": "󰈹",
+            "3": "󰈹",
+            "4": "󰍹",
             "5": "",
             "6": "",
             "8": "",
@@ -35,14 +34,14 @@
     },
 
     "custom/bitcoin": {
-        "format": "<span color='#FFBB11'></span> {}",
+        "format": "<span color='#FFBB11'></span> {}",
         "exec": "coinbase_usd_checker.py btc",
         "interval": 60,
         "tooltip": false
     },
 
     "custom/ethereum": {
-        "format": "<span color='#8A93B2'></span> {}",
+        "format": "<span color='#8A93B2'></span> {}",
         "exec": "coinbase_usd_checker.py eth",
         "interval": 60,
         "tooltip": false
@@ -89,31 +88,31 @@
 
     "network#eth":{
         "interface": "enp0s31f6",
-        "format": " UP",
+        "format": " UP",
         "format-linked": "",
         "format-disconnected": "",
-        "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
+        "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
         "on-click": "nm-applet --indicator"
     },
 
     "network#ethusb":{
         "interface": "enp7s0u2u1u2",
-        "format": " UP",
+        "format": " UP",
         "format-linked": "",
         "format-disconnected": "",
-        "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
+        "tooltip-format": " {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
         "on-click": "nm-applet --indicator"
     },
 
     "network#wifi":{
         "interface": "wlp0s20f3",
-        "format-wifi": " {essid}",
+        "format-wifi": "  {essid}",
         "format-linked": "",
         "format-disconnected": "",
-        "tooltip-format": " {ifname}",
-        "tooltip-format-wifi": " {essid} | {signalStrength}% | {ifname} | {ipaddr}/{cidr}",
+        "tooltip-format": "  {ifname}",
+        "tooltip-format-wifi": "  {essid} | {signalStrength}% | {ifname} | {ipaddr}/{cidr}",
         "max-length": 30,
         "on-click": "nm-applet --indicator"
     },
@@ -126,15 +125,15 @@
 
     "custom/power":{
         "format": "",
-        "on-click": "swaynag -t warning -m 'Power Menu Options' -Z ' Lock' 'swaylock --daemonize --image=/usr/share/backgrounds/archlinux/small.png' -Z ' Logout' 'swaymsg exit' -Z '  Sleep' 'systemctl suspend' -Z ' Reboot' 'reboot' -Z ' Shutdown' 'poweroff'",
+        "on-click": "swaynag -t warning -m 'Power Menu Options' -Z ' Lock' 'swaylock --daemonize --image=/usr/share/backgrounds/archlinux/small.png' -Z ' Logout' 'swaymsg exit' -Z '  Sleep' 'systemctl suspend' -Z '  Reboot' 'reboot' -Z '  Shutdown' 'poweroff'",
         "tooltip": false
     },
 
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": " ",
-            "deactivated": " "
+            "activated": "󰍹 ",
+            "deactivated": "󰍹 "
         },
         "tooltip": false
     }
