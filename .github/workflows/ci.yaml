@@ -15,7 +15,7 @@ jobs:
               run: "sed --in-place --expression 's/vault_password_file/# vault_password_file/' ansible.cfg"
 
             - name: "Install uv"
-              uses: astral-sh/setup-uv@v5
+              uses: "astral-sh/setup-uv@v5"
 
             - name: "Set up Python"
               uses: "actions/setup-python@v5"
@@ -34,7 +34,7 @@ jobs:
             - name: "Run yamllint"
               run: "uv run yamllint --strict ."
 
-            - name: Minimize uv cache
+            - name: "Minimize uv cache"
               run: "uv cache prune --ci"
 
     shell:
