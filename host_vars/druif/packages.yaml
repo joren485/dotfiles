@@ -15,7 +15,7 @@ packages_host:
   - "pycharm-community-edition"
   - "veracrypt"
   - "vlc"
-  - "vlc-plugin-ffmpeg"
+  - "vlc-plugins-all"
   - "wireshark-qt"
   - "zathura"
   - "zathura-pdf-mupdf"
