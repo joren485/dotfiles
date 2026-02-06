@@ -5,11 +5,20 @@
   community.general.pacman:
     name: "restic"
 
-- name: "Create .local/bin/"
+- name: "Create directories"
   ansible.builtin.file:
-    path: "{{ ansible_user_dir }}/.local/bin/"
+    path: "{{ ansible_user_dir }}/{{ item }}"
     state: "directory"
     mode: "0755"
+  loop:
+    - ".local/bin/"
+    - ".config/restic/"
+
+- name: "Copy exclude.txt"
+  ansible.builtin.copy:
+    src: "exclude.txt"
+    dest: "{{ backups_restic_path_exclude_file }}"
+    mode: "0644"
 
 - name: "Copy backup script"
   when: "backup_sources is defined and backup_repos is defined"
