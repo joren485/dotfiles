@@ -14,7 +14,7 @@ if [ $# -eq 0 ]
     then
 {% for repo in backup_repos %}
     echo "[*] Running Restic backup to {{ repo }}."
-    ${RESTIC} --repo "{{ repo  }}" backup --exclude-larger-than="105M" "{{ backup_sources|map('quote')|join('\" \"') }}"
+    ${RESTIC} --repo "{{ repo }}" backup --exclude-file "{{ backups_restic_path_exclude_file }}" {{ backup_sources | map("quote") | join(" ") }}
 {% endfor %}
 else
     echo "[*] Running ${RESTIC} $*"
