@@ -1,0 +1,10 @@
+.venv/
+venv/
+.git/
+.mypy_cache/
+.ruff_cache/
+__pycache__/
+*.py[codz]
+.idea/
+.tox
+.npm
