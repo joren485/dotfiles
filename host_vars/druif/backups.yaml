@@ -5,6 +5,8 @@ backup_sources:
   - "{{ ansible_user_dir }}/.bash_history"
   - "{{ ansible_user_dir }}/.python_history"
   - "{{ ansible_user_dir }}/.zsh_history"
+  - "{{ ansible_user_dir }}/.claude/"
+  - "{{ ansible_user_dir }}/.claude.json"
   - "/mnt/share/archive/"
   - "/mnt/share/media/podcasts/"
   - "/mnt/share/media/audiobooks/"
