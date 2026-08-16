@@ -18,6 +18,7 @@ dev = [
 select = ["ALL"]
 ignore = [
     "BLE001",
+    "CPY001",
     "D100",
     "D203",
     "D212",
